@@ -57,6 +57,33 @@ jobs:
           # Submodule Loop patches:
           # Loop: Filename: Localizable.strings Main.strings
           curl https://github.com/unpeng/Loop/commit/d575d456dc33539eb14841dd213ec471ece5a8dc.patch | git apply -v --directory=Loop
+          
+          # Submodule LoopKit patches:
+          # LoopKit: Filename: LoopKitUI/Resources/zh-Hans.lproj/Localizable.strings
+          #                    LoopKitUI/Resources/zh-Hans.lproj/InsulinKit.strings
+          #                    LoopKit/Resources/zh-Hans.lproj/Localizable.strings
+          curl https://github.com/unpeng/LoopKit/commit/c5978cb1a5739d473cfa2827239db338bb148c7c.patch | git apply -v --directory=LoopKit
+
+          # Submodule LoopSupport patches:
+          # LoopSupport: Filename: LoopSupportKitUI/zh-Hans.lproj/Localizable.strings
+          curl https://github.com/unpeng/LoopSupport/commit/99f09fac3a69fb48a06f0435e1bfcdd0c16ea391.patch | git apply -v --directory=LoopSupport
+
+          # Submodule NightscoutService patches:
+          # NightscoutService: Filename: NightscoutServiceKitUI/zh-Hans.lproj/Localizable.strings
+          curl https://github.com/unpeng/NightscoutService/commit/b694359795d43ebee97be06358d441b316da82b1.patch | git apply -v --directory=NightscoutService
+
+          # Submodule OmniBLE patches:
+          # OmniBLE: Filename: OmniBLE/zh-Hans.lproj/Localizable.strings
+          curl https://github.com/unpeng/OmniBLE/commit/63f0ca7cc7c0f73943a86a7861767d30dbc1668b.patch | git apply -v --directory=OmniBLE
+
+          # Submodule OmniKit patches:
+          # OmniKit: Filename: OmniKit/Resources/zh-Hans.lproj/Localizable.strings
+          #                    OmniKitUI/Resources/zh-Hans.lproj/Localizable.strings
+          curl https://github.com/unpeng/OmniKit/commit/e06f47d636b92891d523823d610246ca1e89a09b.patch | git apply -v --directory=OmniKit
+
+          # Submodule rileylink_ios patches:
+          # rileylink_ios: Filename: RileyLinkKitUI/zh-Hans.lproj/Localizable.strings
+          curl https://github.com/unpeng/rileylink_ios/commit/b5d891e67334d9cf44ce771eec715bb73f71b3f9.patch | git apply -v --directory=rileylink_ios          
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
