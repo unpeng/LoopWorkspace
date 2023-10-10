@@ -51,6 +51,14 @@ jobs:
 
           # the final customization listed above CANNOT have a continuation character "\"
           # more customizations can be pasted after this line
+          
+          # For each patch, edit comment line (keep the #) then update curl (and remove the #)
+          
+          # Submodule Loop patches:
+          # Loop: Filename: Localizable.strings
+          curl https://github.com/unpeng/Loop/commit/c2dcf8cf1f7c1386c636770abeca0eaa75c14afe.patch | git apply -v --directory=Loop
+          # Loop: Filename: Main.strings
+          curl https://github.com/unpeng/Loop/commit/650ed502777302cf2b65fc36c1dbb3afb44cbd5d.patch | git apply -v --directory=Loop
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
