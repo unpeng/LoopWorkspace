@@ -83,7 +83,11 @@ jobs:
 
           # Submodule rileylink_ios patches:
           # rileylink_ios: Filename: RileyLinkKitUI/zh-Hans.lproj/Localizable.strings
-          curl https://github.com/unpeng/rileylink_ios/commit/b5d891e67334d9cf44ce771eec715bb73f71b3f9.patch | git apply -v --directory=rileylink_ios          
+          curl https://github.com/unpeng/rileylink_ios/commit/b5d891e67334d9cf44ce771eec715bb73f71b3f9.patch | git apply -v --directory=rileylink_ios
+
+          # Submodule LoopOnboarding patches:
+          # LoopOnboarding: LoopOnboardingKitUI/zh-Hans.lproj/Localizable.strings
+          curl https://github.com/unpeng/LoopOnboarding/commit/f58560da05186d24de931ab95f31d9700cc0e7d8.patch | git apply -v --directory=LoopOnboarding
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
