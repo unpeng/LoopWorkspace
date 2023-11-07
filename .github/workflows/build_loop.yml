@@ -118,7 +118,8 @@ jobs:
           # Submodule NightscoutService patches:
           # NightscoutService: NightscoutService.xcodeproj/project.pbxproj
           curl https://github.com/unpeng/NightscoutService/commit/0ee27bff1d4b26ab118a238d79d09bce74a6238c.patch | git apply -v --directory=NightscoutService
-          
+          curl https://github.com/unpeng/NightscoutService/commit/496f44032b2334200960fe35c98adc0e314afd07.patch | git apply -v --directory=NightscoutService          
+
           # Submodule NightscoutAPIClient patches:
           # NightscoutAPIClient: NightscoutAPIClient.xcodeproj/project.pbxproj
           curl https://github.com/unpeng/NightscoutAPIClient/commit/643746c8ec72ae58f3c6441330ec96d54ceab560.patch | git apply -v --directory=NightscoutAPIClient          
