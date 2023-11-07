@@ -99,7 +99,7 @@ jobs:
           # LoopKit: Filename: LoopKit/Service/Remote/Actions/Action.swift
           curl https://github.com/unpeng/LoopKit/commit/35cadfb37039d29ba8337ecb81096a620d7f57dc.patch | git apply -v --directory=LoopKit
           # LoopKit: Filename: LoopKit/Service/Remote/Actions/AutomaticDosingStrategyAction.swift
-          curl https://github.com/unpeng/LoopKit/commit/ba043ae44721a796983c2b10792b960d8eda982a.patch | git apply -v --directory=LoopKit
+          curl https://github.com/unpeng/LoopKit/commit/f7b9aaee556d1378967fd8bfd7e086c5c29db5b4.patch | git apply -v --directory=LoopKit
           # LoopKit: Filename: LoopKit/DosingDecisionStore.swift
           curl https://github.com/unpeng/LoopKit/commit/59d3fba85ae929ef14f2133b8b243ae6c89f9001.patch | git apply -v --directory=LoopKit
           # LoopKit: Filename: LoopKit.xcodeproj/project.pbxproj
