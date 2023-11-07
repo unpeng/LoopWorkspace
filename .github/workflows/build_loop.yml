@@ -102,7 +102,9 @@ jobs:
           curl https://github.com/unpeng/LoopKit/commit/ba043ae44721a796983c2b10792b960d8eda982a.patch | git apply -v --directory=LoopKit
           # LoopKit: Filename: LoopKit/DosingDecisionStore.swift
           curl https://github.com/unpeng/LoopKit/commit/59d3fba85ae929ef14f2133b8b243ae6c89f9001.patch | git apply -v --directory=LoopKit
-          
+          # LoopKit: Filename: LoopKit.xcodeproj/project.pbxproj
+          curl https://github.com/unpeng/LoopKit/commit/94a8ca6b45117abdc9b3610798c1563e0b133559.patch | git apply -v --directory=LoopKit
+
           # Submodule Loop patches:
           # Loop: Filename: Loop/Models/Remote/AutomaticDosingStrategyAction.swift
           curl https://github.com/unpeng/Loop/commit/c07221b54325e50eabf3bfbeebe250181e7c5292.patch | git apply -v --directory=Loop
@@ -112,7 +114,7 @@ jobs:
           curl https://github.com/unpeng/Loop/commit/444113d49bafba90884495bad71afb08cb2d0b63.patch | git apply -v --directory=Loop          
           # Loop: Filename: Loop/Managers/RemoteDataServicesManager.swift
           curl https://github.com/unpeng/Loop/commit/5c2f1ae3b24f4d9ffa6713799f3e3de7c795b97c.patch | git apply -v --directory=Loop
-
+          
           # Submodule NightscoutService patches:
           # NightscoutService: NightscoutService.xcodeproj/project.pbxproj
           curl https://github.com/unpeng/NightscoutService/commit/0ee27bff1d4b26ab118a238d79d09bce74a6238c.patch | git apply -v --directory=NightscoutService
