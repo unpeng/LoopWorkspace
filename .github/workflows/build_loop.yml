@@ -93,7 +93,7 @@ jobs:
           # NightscoutService: NightscoutServiceKit/NightscoutService.swift
           curl https://github.com/unpeng/NightscoutService/commit/c11b97a964ce09597c030d779a6fa71dfebec0b6.patch | git apply -v --directory=NightscoutService
           # NightscoutService: NightscoutServiceKit/Extensions/StoredDosingDecision.swift
-          curl https://github.com/unpeng/NightscoutService/commit/25130f0eb5aec30777e27d38fdd2fb380f9e91af.patch | git apply -v --directory=NightscoutService
+          curl https://github.com/unpeng/NightscoutService/commit/521f418f928a9a49a54ce924d5e998fcdd732608.patch | git apply -v --directory=NightscoutService
 
           # Submodule LoopKit patches:
           # LoopKit: Filename: LoopKit/Service/Remote/Actions/Action.swift
@@ -114,15 +114,6 @@ jobs:
           curl https://github.com/unpeng/Loop/commit/444113d49bafba90884495bad71afb08cb2d0b63.patch | git apply -v --directory=Loop          
           # Loop: Filename: Loop/Managers/RemoteDataServicesManager.swift
           curl https://github.com/unpeng/Loop/commit/5c2f1ae3b24f4d9ffa6713799f3e3de7c795b97c.patch | git apply -v --directory=Loop
-          
-          # Submodule NightscoutService patches:
-          # NightscoutService: NightscoutService.xcodeproj/project.pbxproj
-          curl https://github.com/unpeng/NightscoutService/commit/0ee27bff1d4b26ab118a238d79d09bce74a6238c.patch | git apply -v --directory=NightscoutService
-          curl https://github.com/unpeng/NightscoutService/commit/496f44032b2334200960fe35c98adc0e314afd07.patch | git apply -v --directory=NightscoutService          
-
-          # Submodule NightscoutAPIClient patches:
-          # NightscoutAPIClient: NightscoutAPIClient.xcodeproj/project.pbxproj
-          curl https://github.com/unpeng/NightscoutAPIClient/commit/643746c8ec72ae58f3c6441330ec96d54ceab560.patch | git apply -v --directory=NightscoutAPIClient          
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
