@@ -99,10 +99,8 @@ jobs:
 
           # Submodule LoopOnboarding patches:
           # LoopOnboarding: LoopOnboardingKitUI/zh-Hans.lproj/Localizable.strings
-          curl https://github.com/unpeng/LoopOnboarding/commit/f58560da05186d24de931ab95f31d9700cc0e7d8.patch | git apply -v --directory=LoopOnboarding
-
-          # Submodule NightscoutService patches:
-
+          #                 LoopOnboarding.xcodeproj/project.pbxproj
+          curl https://github.com/unpeng/LoopOnboarding/commit/8338fe6c6933340536f6daf81b62eb2be665f03c.patch | git apply -v --directory=LoopOnboarding
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
