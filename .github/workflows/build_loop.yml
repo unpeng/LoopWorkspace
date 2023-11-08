@@ -55,17 +55,10 @@ jobs:
           # For each patch, edit comment line (keep the #) then update curl (and remove the #)
 
           # Submodule LoopKit patches:
-          # LoopKit: Filename: LoopKitUI/Resources/zh-Hans.lproj/Localizable.strings
-          #                    LoopKitUI/Resources/zh-Hans.lproj/InsulinKit.strings
-          #                    LoopKit/Resources/zh-Hans.lproj/Localizable.strings
-          #                    LoopKit/DosingDecisionStore.swift
-          #                    LoopKit/Service/Remote/Actions/Action.swift
-          curl https://github.com/unpeng/LoopKit/commit/61dfc288a7df47685269f1b0d41a60abea592a70.patch | git apply -v --directory=LoopKit
-          # LoopKit: Filename: LoopKit/Service/Remote/Actions/AutomaticDosingStrategyAction.swift
-          curl https://github.com/unpeng/LoopKit/commit/f7b9aaee556d1378967fd8bfd7e086c5c29db5b4.patch | git apply -v --directory=LoopKit
-          # LoopKit: Filename: LoopKit.xcodeproj/project.pbxproj
           curl https://github.com/unpeng/LoopKit/commit/94a8ca6b45117abdc9b3610798c1563e0b133559.patch | git apply -v --directory=LoopKit
-          
+          curl https://github.com/unpeng/LoopKit/commit/f7b9aaee556d1378967fd8bfd7e086c5c29db5b4.patch | git apply -v --directory=LoopKit
+          curl https://github.com/unpeng/LoopKit/commit/61dfc288a7df47685269f1b0d41a60abea592a70.patch | git apply -v --directory=LoopKit
+
           # Submodule Loop patches:
           # Loop: Filename: Loop.xcodeproj/project.pbxproj Loop/Models/Remote/AutomaticDosingStrategyAction.swift
           curl https://github.com/unpeng/Loop/commit/f480440d8e2c484d4cee8ea50c512566c3ef6554.patch | git apply -v --directory=Loop
