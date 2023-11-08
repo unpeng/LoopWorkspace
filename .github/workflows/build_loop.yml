@@ -77,8 +77,12 @@ jobs:
           curl https://github.com/unpeng/LoopSupport/commit/99f09fac3a69fb48a06f0435e1bfcdd0c16ea391.patch | git apply -v --directory=LoopSupport
 
           # Submodule NightscoutService patches:
+          # NightscoutService: NightscoutServiceKit/NightscoutService.swift
+          curl https://github.com/unpeng/NightscoutService/commit/c11b97a964ce09597c030d779a6fa71dfebec0b6.patch | git apply -v --directory=NightscoutService
+          # NightscoutService: NightscoutServiceKit/Extensions/StoredDosingDecision.swift
+          curl https://github.com/unpeng/NightscoutService/commit/521f418f928a9a49a54ce924d5e998fcdd732608.patch | git apply -v --directory=NightscoutService          
           # NightscoutService: Filename: NightscoutServiceKitUI/zh-Hans.lproj/Localizable.strings
-          curl https://github.com/unpeng/NightscoutService/commit/b694359795d43ebee97be06358d441b316da82b1.patch | git apply -v --directory=NightscoutService
+          curl https://github.com/unpeng/NightscoutService/commit/38004c218c728698e8b6cf41b1154d142c75bc14.patch | git apply -v --directory=NightscoutService
 
           # Submodule OmniBLE patches:
           # OmniBLE: Filename: OmniBLE/zh-Hans.lproj/Localizable.strings
@@ -98,10 +102,7 @@ jobs:
           curl https://github.com/unpeng/LoopOnboarding/commit/f58560da05186d24de931ab95f31d9700cc0e7d8.patch | git apply -v --directory=LoopOnboarding
 
           # Submodule NightscoutService patches:
-          # NightscoutService: NightscoutServiceKit/NightscoutService.swift
-          curl https://github.com/unpeng/NightscoutService/commit/c11b97a964ce09597c030d779a6fa71dfebec0b6.patch | git apply -v --directory=NightscoutService
-          # NightscoutService: NightscoutServiceKit/Extensions/StoredDosingDecision.swift
-          curl https://github.com/unpeng/NightscoutService/commit/521f418f928a9a49a54ce924d5e998fcdd732608.patch | git apply -v --directory=NightscoutService
+
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
