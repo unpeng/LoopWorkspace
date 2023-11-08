@@ -55,15 +55,23 @@ jobs:
           # For each patch, edit comment line (keep the #) then update curl (and remove the #)
           
           # Submodule Loop patches:
-          # Loop: Filename: Localizable.strings Main.strings
-          curl https://github.com/unpeng/Loop/commit/d575d456dc33539eb14841dd213ec471ece5a8dc.patch | git apply -v --directory=Loop
+          # Loop: Filename: Loop.xcodeproj/project.pbxproj Loop/Models/Remote/AutomaticDosingStrategyAction.swift
+          curl https://github.com/unpeng/Loop/commit/f480440d8e2c484d4cee8ea50c512566c3ef6554.patch | git apply -v --directory=Loop
+          curl https://github.com/unpeng/Loop/commit/b55fe6dea3757cb6e2ce413860cb9fea9b777135.patch | git apply -v --directory=Loop
+          curl https://github.com/unpeng/Loop/commit/c2e4fb833e759c6b1488590d799a4869569cf9a5.patch | git apply -v --directory=Loop
           
           # Submodule LoopKit patches:
           # LoopKit: Filename: LoopKitUI/Resources/zh-Hans.lproj/Localizable.strings
           #                    LoopKitUI/Resources/zh-Hans.lproj/InsulinKit.strings
           #                    LoopKit/Resources/zh-Hans.lproj/Localizable.strings
-          curl https://github.com/unpeng/LoopKit/commit/c5978cb1a5739d473cfa2827239db338bb148c7c.patch | git apply -v --directory=LoopKit
-
+          #                    LoopKit/DosingDecisionStore.swift
+          #                    LoopKit/Service/Remote/Actions/Action.swift
+          curl https://github.com/unpeng/LoopKit/commit/61dfc288a7df47685269f1b0d41a60abea592a70.patch | git apply -v --directory=LoopKit
+          # LoopKit: Filename: LoopKit/Service/Remote/Actions/AutomaticDosingStrategyAction.swift
+          curl https://github.com/unpeng/LoopKit/commit/f7b9aaee556d1378967fd8bfd7e086c5c29db5b4.patch | git apply -v --directory=LoopKit
+          # LoopKit: Filename: LoopKit.xcodeproj/project.pbxproj
+          curl https://github.com/unpeng/LoopKit/commit/94a8ca6b45117abdc9b3610798c1563e0b133559.patch | git apply -v --directory=LoopKit
+          
           # Submodule LoopSupport patches:
           # LoopSupport: Filename: LoopSupportKitUI/zh-Hans.lproj/Localizable.strings
           curl https://github.com/unpeng/LoopSupport/commit/99f09fac3a69fb48a06f0435e1bfcdd0c16ea391.patch | git apply -v --directory=LoopSupport
@@ -98,22 +106,6 @@ jobs:
           # Submodule LoopKit patches:
           # LoopKit: Filename: LoopKit/Service/Remote/Actions/Action.swift
           curl https://github.com/unpeng/LoopKit/commit/35cadfb37039d29ba8337ecb81096a620d7f57dc.patch | git apply -v --directory=LoopKit
-          # LoopKit: Filename: LoopKit/Service/Remote/Actions/AutomaticDosingStrategyAction.swift
-          curl https://github.com/unpeng/LoopKit/commit/f7b9aaee556d1378967fd8bfd7e086c5c29db5b4.patch | git apply -v --directory=LoopKit
-          # LoopKit: Filename: LoopKit/DosingDecisionStore.swift
-          curl https://github.com/unpeng/LoopKit/commit/59d3fba85ae929ef14f2133b8b243ae6c89f9001.patch | git apply -v --directory=LoopKit
-          # LoopKit: Filename: LoopKit.xcodeproj/project.pbxproj
-          curl https://github.com/unpeng/LoopKit/commit/94a8ca6b45117abdc9b3610798c1563e0b133559.patch | git apply -v --directory=LoopKit
-
-          # Submodule Loop patches:
-          # Loop: Filename: Loop/Models/Remote/AutomaticDosingStrategyAction.swift
-          curl https://github.com/unpeng/Loop/commit/c07221b54325e50eabf3bfbeebe250181e7c5292.patch | git apply -v --directory=Loop
-          # Loop: Filename: Loop/Models/RemoteCommand.swift
-          curl https://github.com/unpeng/Loop/commit/bacf08cd7a2c38c9cdd11217bdd93b43185ce51a.patch | git apply -v --directory=Loop
-          # Loop: Filename: Loop/Managers/DeviceDataManager.swift
-          curl https://github.com/unpeng/Loop/commit/444113d49bafba90884495bad71afb08cb2d0b63.patch | git apply -v --directory=Loop          
-          # Loop: Filename: Loop/Managers/RemoteDataServicesManager.swift
-          curl https://github.com/unpeng/Loop/commit/5c2f1ae3b24f4d9ffa6713799f3e3de7c795b97c.patch | git apply -v --directory=Loop
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
