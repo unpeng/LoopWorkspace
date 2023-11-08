@@ -68,9 +68,9 @@ jobs:
           
           # Submodule Loop patches:
           # Loop: Filename: Loop.xcodeproj/project.pbxproj Loop/Models/Remote/AutomaticDosingStrategyAction.swift
-          curl https://github.com/unpeng/Loop/commit/c2e4fb833e759c6b1488590d799a4869569cf9a5.patch | git apply -v --directory=Loop
-          curl https://github.com/unpeng/Loop/commit/b55fe6dea3757cb6e2ce413860cb9fea9b777135.patch | git apply -v --directory=Loop          
-          curl https://github.com/unpeng/Loop/commit/f480440d8e2c484d4cee8ea50c512566c3ef6554.patch | git apply -v --directory=Loop
+          #curl https://github.com/unpeng/Loop/commit/c2e4fb833e759c6b1488590d799a4869569cf9a5.patch | git apply -v --directory=Loop
+          #curl https://github.com/unpeng/Loop/commit/b55fe6dea3757cb6e2ce413860cb9fea9b777135.patch | git apply -v --directory=Loop          
+          #curl https://github.com/unpeng/Loop/commit/f480440d8e2c484d4cee8ea50c512566c3ef6554.patch | git apply -v --directory=Loop
 
           # Submodule LoopSupport patches:
           # LoopSupport: Filename: LoopSupportKitUI/zh-Hans.lproj/Localizable.strings
