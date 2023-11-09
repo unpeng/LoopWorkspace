@@ -55,28 +55,26 @@ jobs:
           # For each patch, edit comment line (keep the #) then update curl (and remove the #)
 
           # Submodule LoopKit patches:
-          curl https://github.com/unpeng/LoopKit/commit/94a8ca6b45117abdc9b3610798c1563e0b133559.patch | git apply -v --directory=LoopKit
-          curl https://github.com/unpeng/LoopKit/commit/f7b9aaee556d1378967fd8bfd7e086c5c29db5b4.patch | git apply -v --directory=LoopKit
-          curl https://github.com/unpeng/LoopKit/commit/61dfc288a7df47685269f1b0d41a60abea592a70.patch | git apply -v --directory=LoopKit
+          # LoopKit: Filename: 
+          curl https://github.com/unpeng/LoopKit/commit/60b54543cc700e6285d9c64f66b7fd90fa244ed9.patch | git apply -v --directory=LoopKit
+          # LoopKit: Filename: 
+          curl https://github.com/unpeng/LoopKit/commit/4dc3ec52dae31bd4fdac3d491b412e4124e5b0b1.patch | git apply -v --directory=LoopKit
 
           # Submodule Loop patches:
-          # Loop: Filename: Loop.xcodeproj/project.pbxproj Loop/Models/Remote/AutomaticDosingStrategyAction.swift
-          curl https://github.com/unpeng/Loop/commit/f480440d8e2c484d4cee8ea50c512566c3ef6554.patch | git apply -v --directory=Loop
-          curl https://github.com/unpeng/Loop/commit/b55fe6dea3757cb6e2ce413860cb9fea9b777135.patch | git apply -v --directory=Loop          
-          curl https://github.com/unpeng/Loop/commit/c2e4fb833e759c6b1488590d799a4869569cf9a5.patch | git apply -v --directory=Loop
-          curl https://github.com/unpeng/Loop/commit/9022e7170b2ce72a7861caab4819918314ad842b.patch | git apply -v --directory=Loop
-
+          # Loop: Filename: 
+          curl https://github.com/unpeng/LoopKit/commit/60b54543cc700e6285d9c64f66b7fd90fa244ed9.patch | git apply -v --directory=Loop
+          # Loop: Filename: 
+          curl https://github.com/unpeng/LoopKit/commit/4dc3ec52dae31bd4fdac3d491b412e4124e5b0b1.patch | git apply -v --directory=Loop
+          
           # Submodule LoopSupport patches:
           # LoopSupport: Filename: LoopSupportKitUI/zh-Hans.lproj/Localizable.strings
           curl https://github.com/unpeng/LoopSupport/commit/99f09fac3a69fb48a06f0435e1bfcdd0c16ea391.patch | git apply -v --directory=LoopSupport
 
           # Submodule NightscoutService patches:
-          # NightscoutService: NightscoutServiceKit/NightscoutService.swift
-          curl https://github.com/unpeng/NightscoutService/commit/c11b97a964ce09597c030d779a6fa71dfebec0b6.patch | git apply -v --directory=NightscoutService
-          # NightscoutService: NightscoutServiceKit/Extensions/StoredDosingDecision.swift
-          curl https://github.com/unpeng/NightscoutService/commit/521f418f928a9a49a54ce924d5e998fcdd732608.patch | git apply -v --directory=NightscoutService          
-          # NightscoutService: Filename: NightscoutServiceKitUI/zh-Hans.lproj/Localizable.strings
-          curl https://github.com/unpeng/NightscoutService/commit/38004c218c728698e8b6cf41b1154d142c75bc14.patch | git apply -v --directory=NightscoutService
+          # NightscoutService: 
+          curl https://github.com/unpeng/NightscoutService/commit/df967870d3b59fda64b717955d95dd0c50dfdc9b.patch | git apply -v --directory=NightscoutService
+          # NightscoutService: 
+          curl https://github.com/unpeng/NightscoutService/commit/9d803d7a0f92d708a6448033d7c35686e8e34140.patch | git apply -v --directory=NightscoutService          
 
           # Submodule OmniBLE patches:
           # OmniBLE: Filename: OmniBLE/zh-Hans.lproj/Localizable.strings
