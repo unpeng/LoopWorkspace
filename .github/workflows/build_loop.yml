@@ -62,9 +62,9 @@ jobs:
 
           # Submodule Loop patches:
           # Loop: Filename: 
-          curl https://github.com/unpeng/LoopKit/commit/60b54543cc700e6285d9c64f66b7fd90fa244ed9.patch | git apply -v --directory=Loop
+          curl https://github.com/unpeng/Loop/commit/bb65227d171c0bc56656c28814d20b52362de23f.patch | git apply -v --directory=Loop
           # Loop: Filename: 
-          curl https://github.com/unpeng/LoopKit/commit/4dc3ec52dae31bd4fdac3d491b412e4124e5b0b1.patch | git apply -v --directory=Loop
+          curl https://github.com/unpeng/Loop/commit/9df82671285bd6e5032ece501d9de5011a932fee.patch | git apply -v --directory=Loop
           
           # Submodule LoopSupport patches:
           # LoopSupport: Filename: LoopSupportKitUI/zh-Hans.lproj/Localizable.strings
