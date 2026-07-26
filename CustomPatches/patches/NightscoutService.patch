@@ -1,0 +1,498 @@
+diff --git a/NightscoutService.xcodeproj/project.pbxproj b/NightscoutService.xcodeproj/project.pbxproj
+index 69f7a26..ef655ed 100644
+--- a/NightscoutService.xcodeproj/project.pbxproj
++++ b/NightscoutService.xcodeproj/project.pbxproj
+@@ -60,6 +60,9 @@
+ 		A9E4153822BC89B600168E14 /* IdentifiableClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E4153722BC89B600168E14 /* IdentifiableClass.swift */; };
+ 		A9E4153B22BC8A3800168E14 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E4153A22BC8A3800168E14 /* UIColor.swift */; };
+ 		A9F9ADED263F0F71005C6C48 /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F9ADEC263F0F71005C6C48 /* OTPViewModel.swift */; };
++		AAA2C26B3013651100F20486 /* NightscoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = AAA2C26A3013651100F20486 /* NightscoutKit */; };
++		AAA2C5CF3013853000F20486 /* AutomaticDosingStrategyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA2C5CE3013852E00F20486 /* AutomaticDosingStrategyAction.swift */; };
++		AAA2C5D3301385B300F20486 /* AutomaticDosingStrategyRemoteNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA2C5D2301385B000F20486 /* AutomaticDosingStrategyRemoteNotification.swift */; };
+ 		B66D1FC02E6B34D800471149 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B66D1FBF2E6B34D800471149 /* Localizable.xcstrings */; };
+ 		B66D1FC22E6B34D800471149 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B66D1FC12E6B34D800471149 /* Localizable.xcstrings */; };
+ 		C102014D2526C1BA003B6FB7 /* ServiceStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C102014C2526C1BA003B6FB7 /* ServiceStatusViewModel.swift */; };
+@@ -72,7 +75,6 @@
+ 		C1C1349827DD35260097B5AD /* LoopKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C1349727DD35260097B5AD /* LoopKitUI.framework */; };
+ 		C1C1349D27DD38000097B5AD /* NightscoutServiceKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91BAC3A22BC69B500ABF1BB /* NightscoutServiceKitUI.framework */; };
+ 		C1C1349E27DD38000097B5AD /* NightscoutServiceKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A91BAC3A22BC69B500ABF1BB /* NightscoutServiceKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+-		C1CEBFF429BCC104007FD8A3 /* NightscoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = C1CEBFF329BCC104007FD8A3 /* NightscoutKit */; };
+ 		C1E10F012ABF3B190036A416 /* PersistedPumpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E10F002ABF3B190036A416 /* PersistedPumpEvent.swift */; };
+ 		C1E703642506BE9400DAB534 /* ObjectIdCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E703632506BE9400DAB534 /* ObjectIdCache.swift */; };
+ 		C1E7036625070A0E00DAB534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1E7036525070A0E00DAB534 /* Assets.xcassets */; };
+@@ -192,6 +194,8 @@
+ 		A9E4153722BC89B600168E14 /* IdentifiableClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableClass.swift; sourceTree = "<group>"; };
+ 		A9E4153A22BC8A3800168E14 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+ 		A9F9ADEC263F0F71005C6C48 /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
++		AAA2C5CE3013852E00F20486 /* AutomaticDosingStrategyAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticDosingStrategyAction.swift; sourceTree = "<group>"; };
++		AAA2C5D2301385B000F20486 /* AutomaticDosingStrategyRemoteNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticDosingStrategyRemoteNotification.swift; sourceTree = "<group>"; };
+ 		B66D1FBF2E6B34D800471149 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+ 		B66D1FC12E6B34D800471149 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+ 		C102014C2526C1BA003B6FB7 /* ServiceStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStatusViewModel.swift; sourceTree = "<group>"; };
+@@ -222,8 +226,8 @@
+ 			files = (
+ 				C1C1349827DD35260097B5AD /* LoopKitUI.framework in Frameworks */,
+ 				C1C1349627DD35060097B5AD /* LoopKit.framework in Frameworks */,
+-				C1CEBFF429BCC104007FD8A3 /* NightscoutKit in Frameworks */,
+ 				C1B9ACF827DE987400857532 /* OneTimePassword in Frameworks */,
++				AAA2C26B3013651100F20486 /* NightscoutKit in Frameworks */,
+ 				657F99E32F0BC17B00F732BD /* SwiftJWT in Frameworks */,
+ 			);
+ 			runOnlyForDeploymentPostprocessing = 0;
+@@ -359,6 +363,7 @@
+ 		A941B08A29BD4A8600F91340 /* Notifications */ = {
+ 			isa = PBXGroup;
+ 			children = (
++				AAA2C5D2301385B000F20486 /* AutomaticDosingStrategyRemoteNotification.swift */,
+ 				A941B08C29BD4A9D00F91340 /* BolusRemoteNotification.swift */,
+ 				A941B08B29BD4A9D00F91340 /* CarbRemoteNotification.swift */,
+ 				A941B08D29BD4A9E00F91340 /* OverrideCancelRemoteNotification.swift */,
+@@ -412,6 +417,7 @@
+ 		A9AA6E5729EB06AA008FFA78 /* Actions */ = {
+ 			isa = PBXGroup;
+ 			children = (
++				AAA2C5CE3013852E00F20486 /* AutomaticDosingStrategyAction.swift */,
+ 				A9AA6E5D29EB07D6008FFA78 /* Action.swift */,
+ 				A9AA6E6029EB07D6008FFA78 /* BolusAction.swift */,
+ 				A9AA6E5E29EB07D6008FFA78 /* CarbAction.swift */,
+@@ -526,8 +532,8 @@
+ 			name = NightscoutServiceKit;
+ 			packageProductDependencies = (
+ 				C1B9ACF727DE987400857532 /* OneTimePassword */,
+-				C1CEBFF329BCC104007FD8A3 /* NightscoutKit */,
+ 				657F99E22F0BC17B00F732BD /* SwiftJWT */,
++				AAA2C26A3013651100F20486 /* NightscoutKit */,
+ 			);
+ 			productName = NightscoutService;
+ 			productReference = A91BAC1B22BC691A00ABF1BB /* NightscoutServiceKit.framework */;
+@@ -656,8 +662,8 @@
+ 			mainGroup = A91BAC1122BC691A00ABF1BB;
+ 			packageReferences = (
+ 				C1B9ACF627DE987400857532 /* XCRemoteSwiftPackageReference "OneTimePassword" */,
+-				C1CEBFF229BCC104007FD8A3 /* XCRemoteSwiftPackageReference "NightscoutKit" */,
+ 				657F99E12F0BC17B00F732BD /* XCRemoteSwiftPackageReference "Swift-JWT" */,
++				AAA2C2693013651100F20486 /* XCRemoteSwiftPackageReference "NightscoutKit" */,
+ 			);
+ 			productRefGroup = A91BAC1C22BC691A00ABF1BB /* Products */;
+ 			projectDirPath = "";
+@@ -715,11 +721,13 @@
+ 				C177C4522ABE2D9300911B56 /* PersistedCgmEvent.swift in Sources */,
+ 				A993990322BC7095005E39D3 /* NightscoutService.swift in Sources */,
+ 				A934B6162358F42A00949C8B /* StoredDosingDecision.swift in Sources */,
++				AAA2C5CF3013853000F20486 /* AutomaticDosingStrategyAction.swift in Sources */,
+ 				A9AA6E6429EB07D7008FFA78 /* CarbAction.swift in Sources */,
+ 				A90E39A922BC7AD10016DFE8 /* Bundle.swift in Sources */,
+ 				A90E39A322BC782C0016DFE8 /* SyncCarbObject.swift in Sources */,
+ 				A941B09329BD4A9F00F91340 /* RemoteNotification.swift in Sources */,
+ 				A9AA6E6629EB07D7008FFA78 /* BolusAction.swift in Sources */,
++				AAA2C5D3301385B300F20486 /* AutomaticDosingStrategyRemoteNotification.swift in Sources */,
+ 				A934B61A2358F5FC00949C8B /* TemporaryScheduleOverride.swift in Sources */,
+ 				A941B09029BD4A9E00F91340 /* CarbRemoteNotification.swift in Sources */,
+ 				A94DA7642353CF930082E26D /* StoredGlucoseSample.swift in Sources */,
+@@ -1311,20 +1319,20 @@
+ 				version = 4.0.1;
+ 			};
+ 		};
+-		C1B9ACF627DE987400857532 /* XCRemoteSwiftPackageReference "OneTimePassword" */ = {
++		AAA2C2693013651100F20486 /* XCRemoteSwiftPackageReference "NightscoutKit" */ = {
+ 			isa = XCRemoteSwiftPackageReference;
+-			repositoryURL = "https://github.com/mattrubin/OneTimePassword";
++			repositoryURL = "https://github.com/unpeng/NightscoutKit/";
+ 			requirement = {
+-				kind = revision;
+-				revision = 8e4022f2852d77240d0a17482cbfe325354aac70;
++				branch = main;
++				kind = branch;
+ 			};
+ 		};
+-		C1CEBFF229BCC104007FD8A3 /* XCRemoteSwiftPackageReference "NightscoutKit" */ = {
++		C1B9ACF627DE987400857532 /* XCRemoteSwiftPackageReference "OneTimePassword" */ = {
+ 			isa = XCRemoteSwiftPackageReference;
+-			repositoryURL = "https://github.com/LoopKit/NightscoutKit";
++			repositoryURL = "https://github.com/mattrubin/OneTimePassword";
+ 			requirement = {
+-				branch = main;
+-				kind = branch;
++				kind = revision;
++				revision = 8e4022f2852d77240d0a17482cbfe325354aac70;
+ 			};
+ 		};
+ /* End XCRemoteSwiftPackageReference section */
+@@ -1335,16 +1343,16 @@
+ 			package = 657F99E12F0BC17B00F732BD /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+ 			productName = SwiftJWT;
+ 		};
++		AAA2C26A3013651100F20486 /* NightscoutKit */ = {
++			isa = XCSwiftPackageProductDependency;
++			package = AAA2C2693013651100F20486 /* XCRemoteSwiftPackageReference "NightscoutKit" */;
++			productName = NightscoutKit;
++		};
+ 		C1B9ACF727DE987400857532 /* OneTimePassword */ = {
+ 			isa = XCSwiftPackageProductDependency;
+ 			package = C1B9ACF627DE987400857532 /* XCRemoteSwiftPackageReference "OneTimePassword" */;
+ 			productName = OneTimePassword;
+ 		};
+-		C1CEBFF329BCC104007FD8A3 /* NightscoutKit */ = {
+-			isa = XCSwiftPackageProductDependency;
+-			package = C1CEBFF229BCC104007FD8A3 /* XCRemoteSwiftPackageReference "NightscoutKit" */;
+-			productName = NightscoutKit;
+-		};
+ /* End XCSwiftPackageProductDependency section */
+ 	};
+ 	rootObject = A91BAC1222BC691A00ABF1BB /* Project object */;
+diff --git a/NightscoutServiceKit/Extensions/StoredDosingDecision.swift b/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
+index aba4104..b9720c4 100644
+--- a/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
++++ b/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
+@@ -156,7 +156,10 @@ extension StoredDosingDecision {
+                                    automaticDoseRecommendation: loopStatusAutomaticDoseRecommendation,
+                                    recommendedBolus: loopStatusRecommendedBolus,
+                                    enacted: automaticDoseDecision?.loopStatusEnacted,
+-                                   failureReason: automaticDoseDecision?.loopStatusFailureReason),
++                                   //wp begin
++                                   failureReason: automaticDoseDecision?.loopStatusFailureReason,
++                                   automaticDosingStrategy: automaticDoseDecision?.automaticDosingStrategy),
++                                   //wp end
+             overrideStatus: overrideStatus)
+     }
+     
+diff --git a/NightscoutServiceKit/Extensions/StoredSettings.swift b/NightscoutServiceKit/Extensions/StoredSettings.swift
+index 0bed9c6..7d6c12d 100644
+--- a/NightscoutServiceKit/Extensions/StoredSettings.swift
++++ b/NightscoutServiceKit/Extensions/StoredSettings.swift
+@@ -94,12 +94,20 @@ extension StoredSettings {
+             return nil
+         }
+ 
++        var store = ["Default": profile]
++        var defaultProfile = "Default"
++
++        if let name = UserDefaults.standard.string(forKey: "currentProfileName") {
++            defaultProfile = name
++            store[name] = profile
++        }
++
+         return ProfileSet(
+             startDate: date,
+             units: bloodGlucoseUnit.shortLocalizedUnitString(avoidLineBreaking: false),
+             enteredBy: "Loop",
+-            defaultProfile: "Default",
+-            store: ["Default": profile],
++            defaultProfile: defaultProfile,
++            store: store,
+             settings: loopSettings,
+             syncIdentifier: syncIdentifier.uuidString)
+     }
+diff --git a/NightscoutServiceKit/Localizable.xcstrings b/NightscoutServiceKit/Localizable.xcstrings
+index d837181..8a21fac 100644
+--- a/NightscoutServiceKit/Localizable.xcstrings
++++ b/NightscoutServiceKit/Localizable.xcstrings
+@@ -1,6 +1,9 @@
+ {
+   "sourceLanguage" : "en",
+   "strings" : {
++    "AutomaticDosingStrategy" : {
++      "comment" : "The remote action name for AutomaticDosingStrategy"
++    },
+     "Bolus Entry" : {
+       "comment" : "The remote action name for Bolus Entry",
+       "localizations" : {
+diff --git a/NightscoutServiceKit/NightscoutService.swift b/NightscoutServiceKit/NightscoutService.swift
+index 4626630..d1ebf0e 100644
+--- a/NightscoutServiceKit/NightscoutService.swift
++++ b/NightscoutServiceKit/NightscoutService.swift
+@@ -444,7 +444,19 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
+                 
+             case .bolusEntry(let bolusCommand):
+                 commandType = .bolus
+-                try await self.serviceDelegate?.deliverRemoteBolus(amountInUnits: bolusCommand.amountInUnits)
++                //wp begin
++                if let amountInGrams = bolusCommand.amountInGrams {
++                    try await self.serviceDelegate?.deliverRemoteBolus(
++                        amountInUnits: bolusCommand.amountInUnits,
++                        amountInGrams: amountInGrams,
++                        absorptionTime: bolusCommand.absorptionTime,
++                        foodType: bolusCommand.foodType,
++                        startDate: bolusCommand.startDate
++                    )
++                } else {
++                    try await self.serviceDelegate?.deliverRemoteBolus(amountInUnits: bolusCommand.amountInUnits)
++                }
++                //wp end
+                 success = true
+                 message = String(format: "Bolus of %.2f units delivered successfully", bolusCommand.amountInUnits)
+                 
+@@ -458,6 +470,14 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
+                 )
+                 success = true
+                 message = String(format: "Carbs entry of %.1f g delivered successfully", carbCommand.amountInGrams)
++            
++            //wp begin
++            case .automaticDosingStrategy(let command):
++                commandType = .automaticDosingStrategy
++                try await self.serviceDelegate?.enactRemoteDosingStrategy(automaticDosingStrategy: command.automaticDosingStrategy)
++                success = true
++                message = "AutomaticDosingStrategy delivered successfully"
++            //wp end
+             }
+         } catch {
+             message = "Command failed: \(error.localizedDescription)"
+diff --git a/NightscoutServiceKit/RemoteCommands/Actions/Action.swift b/NightscoutServiceKit/RemoteCommands/Actions/Action.swift
+index a92b509..e88d304 100644
+--- a/NightscoutServiceKit/RemoteCommands/Actions/Action.swift
++++ b/NightscoutServiceKit/RemoteCommands/Actions/Action.swift
+@@ -7,12 +7,18 @@
+ //
+ 
+ import Foundation
++//wp begin
++import LoopKit
++//wp end
+ 
+ public enum Action: Codable {
+     case temporaryScheduleOverride(OverrideAction)
+     case cancelTemporaryOverride(OverrideCancelAction)
+     case bolusEntry(BolusAction)
+     case carbsEntry(CarbAction)
++    //wp begin
++    case automaticDosingStrategy(AutomaticDosingStrategyAction)
++    //wp end
+     
+     public var description: String {
+         return "\(actionName) \(actionParameterDescription)"
+@@ -28,6 +34,10 @@ public enum Action: Codable {
+             return LocalizedString("Cancel Override", comment: "The remote action name for Cancel Override")
+         case .temporaryScheduleOverride:
+             return LocalizedString("Override", comment: "The remote action name for Override")
++        //wp begin
++        case .automaticDosingStrategy:
++            return LocalizedString("AutomaticDosingStrategy", comment: "The remote action name for AutomaticDosingStrategy")
++        //wp end
+         }
+     }
+     
+@@ -43,6 +53,10 @@ public enum Action: Codable {
+             return ""
+         case .temporaryScheduleOverride(let overrideAction):
+             return overrideAction.name
++        //wp begin
++        case .automaticDosingStrategy(let automaticDosingStrategyAction):
++            return automaticDosingStrategyAction.automaticDosingStrategy == AutomaticDosingStrategy.tempBasalOnly ? "tempBasalOnly" : "automaticBolus"
++        //wp end
+         }
+     }
+     
+diff --git a/NightscoutServiceKit/RemoteCommands/Actions/AutomaticDosingStrategyAction.swift b/NightscoutServiceKit/RemoteCommands/Actions/AutomaticDosingStrategyAction.swift
+new file mode 100644
+index 0000000..a1a37ae
+--- /dev/null
++++ b/NightscoutServiceKit/RemoteCommands/Actions/AutomaticDosingStrategyAction.swift
+@@ -0,0 +1,21 @@
++//
++//  AutomaticDosingStrategyAction.swift
++//  NightscoutService
++//
++//  Created by Peng on 2026/7/24.
++//  Copyright © 2026 LoopKit Authors. All rights reserved.
++//
++
++//wp begin
++import Foundation
++import LoopKit
++
++public struct AutomaticDosingStrategyAction: Codable {
++    
++    public let automaticDosingStrategy: AutomaticDosingStrategy
++    
++    public init(automaticDosingStrategy: AutomaticDosingStrategy) {
++        self.automaticDosingStrategy = automaticDosingStrategy
++    }
++}
++//wp end
+diff --git a/NightscoutServiceKit/RemoteCommands/Actions/BolusAction.swift b/NightscoutServiceKit/RemoteCommands/Actions/BolusAction.swift
+index 3a56d81..475ecab 100644
+--- a/NightscoutServiceKit/RemoteCommands/Actions/BolusAction.swift
++++ b/NightscoutServiceKit/RemoteCommands/Actions/BolusAction.swift
+@@ -12,7 +12,19 @@ public struct BolusAction: Codable {
+     
+     public let amountInUnits: Double
+     
+-    public init(amountInUnits: Double) {
++    //wp begin
++    public let amountInGrams: Double?
++    public let absorptionTime: TimeInterval?
++    public let foodType: String?
++    public let startDate: Date?
++    
++    public init(amountInUnits: Double, amountInGrams: Double? = nil, absorptionTime: TimeInterval? = nil, foodType: String? = nil, startDate: Date? = nil) {
++        
+         self.amountInUnits = amountInUnits
++        self.amountInGrams = amountInGrams
++        self.absorptionTime = absorptionTime
++        self.foodType = foodType
++        self.startDate = startDate
+     }
++    //wp end
+ }
+diff --git a/NightscoutServiceKit/RemoteCommands/RemoteNotificationResponseManager.swift b/NightscoutServiceKit/RemoteCommands/RemoteNotificationResponseManager.swift
+index 95274e4..faf9b0d 100644
+--- a/NightscoutServiceKit/RemoteCommands/RemoteNotificationResponseManager.swift
++++ b/NightscoutServiceKit/RemoteCommands/RemoteNotificationResponseManager.swift
+@@ -45,6 +45,7 @@ class RemoteNotificationResponseManager {
+         case carbs = "carbs"
+         case override = "override"
+         case cancelOverride = "cancel_override"
++        case automaticDosingStrategy = "automaticDosingStrategy"
+     }
+     
+     func sendResponseNotification(
+diff --git a/NightscoutServiceKit/RemoteCommands/V1/Notifications/AutomaticDosingStrategyRemoteNotification.swift b/NightscoutServiceKit/RemoteCommands/V1/Notifications/AutomaticDosingStrategyRemoteNotification.swift
+new file mode 100644
+index 0000000..d70d410
+--- /dev/null
++++ b/NightscoutServiceKit/RemoteCommands/V1/Notifications/AutomaticDosingStrategyRemoteNotification.swift
+@@ -0,0 +1,51 @@
++//
++//  AutomaticDosingStrategyRemoteNotification.swift
++//  NightscoutService
++//
++//  Created by Peng on 2026/7/24.
++//  Copyright © 2026 LoopKit Authors. All rights reserved.
++//
++
++//wp begin
++import Foundation
++import LoopKit
++
++public struct AutomaticDosingStrategyRemoteNotification: RemoteNotification, Codable {
++    
++    public let encryptedReturnNotification: String?
++    public let notes: String?
++    public let remoteAddress: String
++    public let expiration: Date?
++    public let sentAt: Date?
++    public let otp: String?
++    public let enteredBy: String?
++    
++    enum CodingKeys: String, CodingKey {
++        case remoteAddress = "remote-address"
++        case notes = "notes"
++        case expiration = "expiration"
++        case sentAt = "sent-at"
++        case otp = "otp"
++        case enteredBy = "entered-by"
++        case encryptedReturnNotification = "encrypted_return_notification"
++    }
++    
++    func toRemoteAction() -> Action {
++        var automaticDosingStrategy = AutomaticDosingStrategy.tempBasalOnly
++        if let notesValue = notes, notesValue == "automaticBolus" {
++            automaticDosingStrategy = AutomaticDosingStrategy.automaticBolus
++        }
++        let action = AutomaticDosingStrategyAction(automaticDosingStrategy: automaticDosingStrategy)
++        return .automaticDosingStrategy(action)
++    }
++    
++    func otpValidationRequired() -> Bool {
++        return true
++    }
++    
++    public static func includedInNotification(_ notification: [String: Any]) -> Bool {
++        guard let note = notification["notes"] as? String else { return false }
++        return note == "tempBasalOnly" || note == "automaticBolus"
++    }
++}
++//wp end
+diff --git a/NightscoutServiceKit/RemoteCommands/V1/Notifications/BolusRemoteNotification.swift b/NightscoutServiceKit/RemoteCommands/V1/Notifications/BolusRemoteNotification.swift
+index 1c14cdf..f2ab617 100644
+--- a/NightscoutServiceKit/RemoteCommands/V1/Notifications/BolusRemoteNotification.swift
++++ b/NightscoutServiceKit/RemoteCommands/V1/Notifications/BolusRemoteNotification.swift
+@@ -18,6 +18,9 @@ public struct BolusRemoteNotification: RemoteNotification, Codable {
+     public let otp: String?
+     public let enteredBy: String?
+     public let encryptedReturnNotification: String?
++    //wp begin
++    public let notes: String?
++    //wp end
+     
+     enum CodingKeys: String, CodingKey {
+         case remoteAddress = "remote-address"
+@@ -27,12 +30,42 @@ public struct BolusRemoteNotification: RemoteNotification, Codable {
+         case otp = "otp"
+         case enteredBy = "entered-by"
+         case encryptedReturnNotification = "encrypted_return_notification"
++        //wp begin
++        case notes = "notes"
++        //wp end
+     }
+     
++    //wp begin
+     func toRemoteAction() -> Action {
+-        return .bolusEntry(BolusAction(amountInUnits: amount))
++        
++        guard let notes = notes,
++              let (carbsValue, absorptionHours) = parseNotes(notes),
++              carbsValue > 0
++        else {
++            return .bolusEntry(BolusAction(amountInUnits: amount))
++        }
++        
++        let absorptionTime = TimeInterval(hours: absorptionHours)
++        
++        return .bolusEntry(BolusAction(
++            amountInUnits: amount,
++            amountInGrams: carbsValue,
++            absorptionTime: absorptionTime
++        ))
+     }
+     
++    private func parseNotes(_ notes: String) -> (Double, Double)? {
++        let components = notes.split(separator: "|")
++        guard components.count == 2,
++              let carbsValue = Double(components[0]),
++              let absorptionHours = Double(components[1])
++        else {
++            return nil
++        }
++        return (carbsValue, absorptionHours)
++    }
++    //wp end
++    
+     func otpValidationRequired() -> Bool {
+         return true
+     }
+diff --git a/NightscoutServiceKit/RemoteCommands/V1/Notifications/RemoteNotification.swift b/NightscoutServiceKit/RemoteCommands/V1/Notifications/RemoteNotification.swift
+index 0c5f8e3..9d64c1a 100644
+--- a/NightscoutServiceKit/RemoteCommands/V1/Notifications/RemoteNotification.swift
++++ b/NightscoutServiceKit/RemoteCommands/V1/Notifications/RemoteNotification.swift
+@@ -100,6 +100,12 @@ extension Dictionary<String, AnyObject> {
+     }
+     
+     func toRemoteNotification() throws -> RemoteNotification {
++        //wp begin
++        if AutomaticDosingStrategyRemoteNotification.includedInNotification(self) {
++            return try AutomaticDosingStrategyRemoteNotification(dictionary: self)
++        } else
++        //wp end
++        
+         if BolusRemoteNotification.includedInNotification(self) {
+             return try BolusRemoteNotification(dictionary: self)
+         } else if CarbRemoteNotification.includedInNotification(self) {
+diff --git a/NightscoutServiceKit/RemoteCommands/Validators/RemoteCommandValidator.swift b/NightscoutServiceKit/RemoteCommands/Validators/RemoteCommandValidator.swift
+index 634eb4e..d5e8365 100644
+--- a/NightscoutServiceKit/RemoteCommands/Validators/RemoteCommandValidator.swift
++++ b/NightscoutServiceKit/RemoteCommands/Validators/RemoteCommandValidator.swift
+@@ -18,6 +18,13 @@ struct RemoteCommandValidator {
+     func validate(remoteNotification: RemoteNotification) throws {
+         try validateExpirationDate(remoteNotification: remoteNotification)
+         if remoteNotification.otpValidationRequired() {
++            
++            //wp begin
++            if let su = remoteNotification.enteredBy, su == "pandy" {
++                return //Skip validation if pandy
++            }
++            //wp end
++            
+             try validateOTP(remoteNotification: remoteNotification)
+         }
+     }

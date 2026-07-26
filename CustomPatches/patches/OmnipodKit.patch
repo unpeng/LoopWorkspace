@@ -1,0 +1,38 @@
+diff --git a/Localization/Localizable.xcstrings b/Localization/Localizable.xcstrings
+index 1c15a65..62073e4 100644
+--- a/Localization/Localizable.xcstrings
++++ b/Localization/Localizable.xcstrings
+@@ -64567,7 +64567,7 @@
+         "zh-Hans" : {
+           "stringUnit" : {
+             "state" : "translated",
+-            "value" : "开关舱类型"
++            "value" : "切换pod类型"
+           }
+         }
+       }
+@@ -64729,7 +64729,7 @@
+         "zh-Hans" : {
+           "stringUnit" : {
+             "state" : "translated",
+-            "value" : "开关泵类型"
++            "value" : "切换泵类型"
+           }
+         }
+       }
+diff --git a/OmnipodKit/Bluetooth/Pair/O5CertificateStore.swift b/OmnipodKit/Bluetooth/Pair/O5CertificateStore.swift
+index c0fa685..5945a97 100644
+--- a/OmnipodKit/Bluetooth/Pair/O5CertificateStore.swift
++++ b/OmnipodKit/Bluetooth/Pair/O5CertificateStore.swift
+@@ -228,11 +228,7 @@ class O5CertificateStore {
+ /// consider O5 available if at least one registration record is currently
+ /// loaded (built-in, imported, fetched, or restored from Keychain).
+ public func isOmnipod5Enabled() -> Bool {
+-    #if ENABLE_O5
+     return true
+-    #else
+-    return !O5CertificateStore.isEmpty
+-    #endif
+ }
+ 
+ // MARK: - Runtime Installer

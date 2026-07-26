@@ -1,0 +1,71 @@
+diff --git a/NightscoutRemoteCGM.xcodeproj/project.pbxproj b/NightscoutRemoteCGM.xcodeproj/project.pbxproj
+index 2985da7..aaabde4 100644
+--- a/NightscoutRemoteCGM.xcodeproj/project.pbxproj
++++ b/NightscoutRemoteCGM.xcodeproj/project.pbxproj
+@@ -23,6 +23,7 @@
+ 		A9BAC74426CDBBB4001C9493 /* NightscoutRemoteCGMPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BAC74326CDBBB4001C9493 /* NightscoutRemoteCGMPlugin.swift */; };
+ 		A9BAC74626CDC3AA001C9493 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BAC74526CDC3AA001C9493 /* Bundle.swift */; };
+ 		A9BAC74A26CDC565001C9493 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BAC74726CDC3B3001C9493 /* OSLog.swift */; };
++		AAA2C268301364FA00F20486 /* NightscoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = AAA2C267301364FA00F20486 /* NightscoutKit */; };
+ 		B66D1F8B2E6A878100471149 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B66D1F8A2E6A878100471149 /* Localizable.xcstrings */; };
+ 		C118E85E2A0498B900BE15B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A901264E26D95DFB0081BAD1 /* Assets.xcassets */; };
+ 		C19C8BF52865216A0056D5E4 /* NightscoutRemoteCGM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F61399234F3066003FB95D /* NightscoutRemoteCGM.framework */; platformFilter = ios; };
+@@ -33,7 +34,6 @@
+ 		C1BCE5662A048C7E00F552AD /* NightscoutAPISetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3858984F235E027500919FD4 /* NightscoutAPISetupViewController.swift */; };
+ 		C1BCE5672A048C7E00F552AD /* NightscoutAPIService+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3858985D235E074600919FD4 /* NightscoutAPIService+UI.swift */; };
+ 		C1BCE5682A048C7E00F552AD /* NightscoutAPISettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38589851235E035D00919FD4 /* NightscoutAPISettingsViewController.swift */; };
+-		C1CEBFF729BCC2C8007FD8A3 /* NightscoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = C1CEBFF629BCC2C8007FD8A3 /* NightscoutKit */; };
+ /* End PBXBuildFile section */
+ 
+ /* Begin PBXContainerItemProxy section */
+@@ -118,7 +118,7 @@
+ 			buildActionMask = 2147483647;
+ 			files = (
+ 				3BFBDE992D80EAC200C04AF2 /* LoopKitUI.framework in Frameworks */,
+-				C1CEBFF729BCC2C8007FD8A3 /* NightscoutKit in Frameworks */,
++				AAA2C268301364FA00F20486 /* NightscoutKit in Frameworks */,
+ 				38FEB836236082B900F1E810 /* HealthKit.framework in Frameworks */,
+ 				38F613B7234F333C003FB95D /* LoopKit.framework in Frameworks */,
+ 			);
+@@ -268,7 +268,7 @@
+ 			);
+ 			name = NightscoutRemoteCGM;
+ 			packageProductDependencies = (
+-				C1CEBFF629BCC2C8007FD8A3 /* NightscoutKit */,
++				AAA2C267301364FA00F20486 /* NightscoutKit */,
+ 			);
+ 			productName = NightscoutAPIClient;
+ 			productReference = 38F61399234F3066003FB95D /* NightscoutRemoteCGM.framework */;
+@@ -350,7 +350,7 @@
+ 			);
+ 			mainGroup = 38F6138F234F3066003FB95D;
+ 			packageReferences = (
+-				C1CEBFF529BCC2C8007FD8A3 /* XCRemoteSwiftPackageReference "NightscoutKit" */,
++				AAA2C266301364FA00F20486 /* XCRemoteSwiftPackageReference "NightscoutKit" */,
+ 			);
+ 			productRefGroup = 38F6139A234F3066003FB95D /* Products */;
+ 			projectDirPath = "";
+@@ -727,9 +727,9 @@
+ /* End XCConfigurationList section */
+ 
+ /* Begin XCRemoteSwiftPackageReference section */
+-		C1CEBFF529BCC2C8007FD8A3 /* XCRemoteSwiftPackageReference "NightscoutKit" */ = {
++		AAA2C266301364FA00F20486 /* XCRemoteSwiftPackageReference "NightscoutKit" */ = {
+ 			isa = XCRemoteSwiftPackageReference;
+-			repositoryURL = "https://github.com/LoopKit/NightscoutKit";
++			repositoryURL = "https://github.com/unpeng/NightscoutKit/";
+ 			requirement = {
+ 				branch = main;
+ 				kind = branch;
+@@ -738,9 +738,9 @@
+ /* End XCRemoteSwiftPackageReference section */
+ 
+ /* Begin XCSwiftPackageProductDependency section */
+-		C1CEBFF629BCC2C8007FD8A3 /* NightscoutKit */ = {
++		AAA2C267301364FA00F20486 /* NightscoutKit */ = {
+ 			isa = XCSwiftPackageProductDependency;
+-			package = C1CEBFF529BCC2C8007FD8A3 /* XCRemoteSwiftPackageReference "NightscoutKit" */;
++			package = AAA2C266301364FA00F20486 /* XCRemoteSwiftPackageReference "NightscoutKit" */;
+ 			productName = NightscoutKit;
+ 		};
+ /* End XCSwiftPackageProductDependency section */
