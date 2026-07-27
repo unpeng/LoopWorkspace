@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# restore.sh - 把 CustomPatches/patches/ 里的补丁写回各个子模块
+# restore.sh - 校验并恢复 Workspace 依赖锁，再恢复各子模块补丁
 #
 # 用法:
-#   ./CustomPatches/restore.sh              # 在子模块当前版本上应用（三方合并）
+#   ./CustomPatches/restore.sh              # 在当前版本上恢复
 #   ./CustomPatches/restore.sh --checkout   # 先把子模块切回生成补丁时的版本，再应用（最保险）
 #
 set -euo pipefail
@@ -11,7 +11,9 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 PATCH_DIR="$SCRIPT_DIR/patches"
+LOCK_SNAPSHOT="$SCRIPT_DIR/locks/Package.resolved"
 MANIFEST="$SCRIPT_DIR/manifest.txt"
+DEPENDENCY_LOCK="LoopWorkspace.xcworkspace/xcshareddata/swiftpm/Package.resolved"
 
 DO_CHECKOUT=0
 [ "${1:-}" = "--checkout" ] && DO_CHECKOUT=1
@@ -23,6 +25,52 @@ ok=0
 skipped=0
 failed=0
 failed_list=""
+
+# Workspace 依赖锁属于主仓库，不受 --checkout 影响。
+echo "=== WorkspaceDependencies ==="
+expected_lock_sha="$(awk -F': ' '/^# Workspace依赖锁SHA256: / {print $2; exit}' "$MANIFEST")"
+
+if [ ! -f "$LOCK_SNAPSHOT" ]; then
+    echo "  失败: 找不到依赖锁快照 $LOCK_SNAPSHOT"
+    failed=$((failed + 1))
+    failed_list="$failed_list WorkspaceDependencies"
+elif [ -z "$expected_lock_sha" ]; then
+    echo "  失败: manifest.txt 未记录依赖锁 SHA256，请先运行 save.sh"
+    failed=$((failed + 1))
+    failed_list="$failed_list WorkspaceDependencies"
+else
+    actual_snapshot_sha="$(shasum -a 256 "$LOCK_SNAPSHOT" | awk '{print $1}')"
+    if [ "$actual_snapshot_sha" != "$expected_lock_sha" ]; then
+        echo "  失败: 依赖锁快照校验不通过，拒绝覆盖当前文件"
+        echo "  期望: $expected_lock_sha"
+        echo "  实际: $actual_snapshot_sha"
+        failed=$((failed + 1))
+        failed_list="$failed_list WorkspaceDependencies"
+    elif [ -f "$DEPENDENCY_LOCK" ] && cmp -s "$LOCK_SNAPSHOT" "$DEPENDENCY_LOCK"; then
+        echo "  跳过: 依赖锁与保存的快照一致"
+        skipped=$((skipped + 1))
+    else
+        echo "  检测到依赖锁漂移，准备恢复保存的快照"
+        backup_ready=1
+        if [ -f "$DEPENDENCY_LOCK" ]; then
+            if backup_path="$(mktemp "${TMPDIR:-/tmp}/LoopWorkspace-Package.resolved.bak.XXXXXX")" && cp "$DEPENDENCY_LOCK" "$backup_path"; then
+                echo "  当前依赖锁已备份到: $backup_path"
+            else
+                echo "  失败: 无法备份当前依赖锁，拒绝覆盖"
+                backup_ready=0
+            fi
+        fi
+
+        if [ "$backup_ready" = "1" ] && cp "$LOCK_SNAPSHOT" "$DEPENDENCY_LOCK" && cmp -s "$LOCK_SNAPSHOT" "$DEPENDENCY_LOCK"; then
+            echo "  恢复成功"
+            ok=$((ok + 1))
+        else
+            echo "  恢复失败: WorkspaceDependencies"
+            failed=$((failed + 1))
+            failed_list="$failed_list WorkspaceDependencies"
+        fi
+    fi
+fi
 
 while IFS=$'\t' read -r sm head_sha recorded_sha remote_url; do
     case "$sm" in \#*|"") continue ;; esac
@@ -78,6 +126,6 @@ done < "$MANIFEST"
 echo ""
 echo "结果: 成功 $ok / 跳过 $skipped / 失败 $failed"
 if [ -n "$failed_list" ]; then
-    echo "需要手工处理的子模块:$failed_list"
-    echo "冲突文件里会有 <<<<<<< 标记，用 git status 查看。"
+    echo "需要手工处理的项目:$failed_list"
+    echo "子模块冲突文件里会有 <<<<<<< 标记，用 git status 查看。"
 fi

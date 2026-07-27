@@ -1,9 +1,13 @@
-# 子模块改动清单 - 由 save.sh 自动生成，请勿手工编辑
-# 生成时间: 2026-07-26 02:37:46
+# 自定义改动清单 - 由 save.sh 自动生成，请勿手工编辑
+# 生成时间: 2026-07-27 14:32:35
+# 主仓库基线HEAD: e4d89b024ec2a7c1d01eed51061ce440bfefebe2
+# Workspace依赖锁: LoopWorkspace.xcworkspace/xcshareddata/swiftpm/Package.resolved
+# Workspace依赖锁快照: CustomPatches/locks/Package.resolved
+# Workspace依赖锁SHA256: bf24e69a60af630b3ffdc2d4ecda021e17e2592e7ca267fea447ccdcd7c94fbc
 # 字段: 子模块路径 <TAB> 生成补丁时的HEAD <TAB> 主仓库记录的commit <TAB> 远端地址
 Loop	1f71ec4fa94941abdbd72fd5bd914770faa2e90b	1f71ec4fa94941abdbd72fd5bd914770faa2e90b	https://github.com/LoopKit/Loop.git
 LoopKit	e7e2ee2b546c4d8122014838cb98a0e26dd91208	e7e2ee2b546c4d8122014838cb98a0e26dd91208	https://github.com/LoopKit/LoopKit.git
 NightscoutService	7721a8da0de4f69fbc6994bdaa5c860ba9a99ede	7721a8da0de4f69fbc6994bdaa5c860ba9a99ede	https://github.com/LoopKit/NightscoutService.git
 LoopOnboarding	64f978e143723765452957cef06a99db380b128c	64f978e143723765452957cef06a99db380b128c	https://github.com/LoopKit/LoopOnboarding.git
 NightscoutRemoteCGM	383d3c1e6b7c0c79def98a1633e4a5856bf221a4	383d3c1e6b7c0c79def98a1633e4a5856bf221a4	https://github.com/LoopKit/NightscoutRemoteCGM.git
-OmnipodKit	6b3b15c491d4bade01ced3875413397812ef5d7d	d68699c8cbaa2623375d4ae8576634101c6850b9	https://github.com/loopandlearn/OmnipodKit
+OmnipodKit	6b3b15c491d4bade01ced3875413397812ef5d7d	6b3b15c491d4bade01ced3875413397812ef5d7d	https://github.com/loopandlearn/OmnipodKit
