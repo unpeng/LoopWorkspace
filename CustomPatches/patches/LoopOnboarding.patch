@@ -1,0 +1,14 @@
+diff --git a/LoopOnboardingKitUI/View Controllers/OnboardingUICoordinator.swift b/LoopOnboardingKitUI/View Controllers/OnboardingUICoordinator.swift
+index cc61f2d..6462e2c 100644
+--- a/LoopOnboardingKitUI/View Controllers/OnboardingUICoordinator.swift	
++++ b/LoopOnboardingKitUI/View Controllers/OnboardingUICoordinator.swift	
+@@ -379,6 +379,9 @@ extension OnboardingUICoordinator: TherapySettingsViewModelDelegate {
+             maximumBasalScheduleEntryCount: maximumBasalScheduleEntryCount
+         )
+     }
++    
++    func updateCurrentProfileName() {
++    }
+ }
+ 
+ 
