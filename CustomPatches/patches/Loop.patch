@@ -1,0 +1,53 @@
+diff --git a/Loop/Managers/RemoteDataServicesManager.swift b/Loop/Managers/RemoteDataServicesManager.swift
+index 11712704..ea42d3de 100644
+--- a/Loop/Managers/RemoteDataServicesManager.swift
++++ b/Loop/Managers/RemoteDataServicesManager.swift
+@@ -392,6 +392,16 @@ extension RemoteDataServicesManager {
+                     self.log.error("Error querying dosing decision data: %{public}@", String(describing: error))
+                     semaphore.signal()
+                 case .success(let queryAnchor, let data):
++                    //wp begin
++                    // 给药决策本身不记录当时的给药策略，这里在上传前补上，
++                    // 让 Nightscout 的 loopStatus 能体现出用的是自动大剂量还是仅临时基础率
++                    let strategy = self.settingsProvider.settings.automaticDosingStrategy
++                    let data = data.map { decision -> StoredDosingDecision in
++                        var decision = decision
++                        decision.automaticDosingStrategy = strategy
++                        return decision
++                    }
++                    //wp end
+                     Task {
+                         do {
+                             try await remoteDataService.uploadDosingDecisionData(data)
+diff --git a/Loop/Managers/ServicesManager.swift b/Loop/Managers/ServicesManager.swift
+index c7252128..c01b5161 100644
+--- a/Loop/Managers/ServicesManager.swift
++++ b/Loop/Managers/ServicesManager.swift
+@@ -360,7 +360,26 @@ extension ServicesManager: ServiceDelegate {
+             throw error
+         }
+     }
+-    
++
++    //wp begin
++    /// 一条远程指令同时录入碳水并输注大剂量。
++    /// 先录碳水，成功后再输注；碳水失败则整条指令失败，不会只打了胰岛素而没记碳水。
++    func deliverRemoteBolus(amountInUnits: Double, amountInGrams: Double, absorptionTime: TimeInterval?, foodType: String?, startDate: Date?) async throws {
++        try await deliverRemoteCarbs(amountInGrams: amountInGrams, absorptionTime: absorptionTime, foodType: foodType, startDate: startDate)
++        try await deliverRemoteBolus(amountInUnits: amountInUnits, decisionId: nil)
++    }
++
++    /// 远程切换自动给药策略。
++    /// ServicesManager 本身持有 SettingsManager，所以直接在这里改设置，
++    /// 不必再经 ServicesManagerDelegate 绕一层到 LoopDataManager。
++    func enactRemoteDosingStrategy(automaticDosingStrategy: AutomaticDosingStrategy) async throws {
++        settingsManager.mutateLoopSettings { settings in
++            settings.automaticDosingStrategy = automaticDosingStrategy
++        }
++        await remoteDataServicesManager.performUpload(for: .settings)
++    }
++    //wp end
++
+     enum BolusActionError: LocalizedError {
+         
+         case invalidBolus

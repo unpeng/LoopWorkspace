@@ -1,0 +1,121 @@
+diff --git a/LoopKit/AutomaticDosingStrategy.swift b/LoopKit/AutomaticDosingStrategy.swift
+index 559af029..ebcedb39 100644
+--- a/LoopKit/AutomaticDosingStrategy.swift
++++ b/LoopKit/AutomaticDosingStrategy.swift
+@@ -15,3 +15,29 @@ public enum AutomaticDosingStrategy: Int, CaseIterable, Codable {
+     case automaticBolus = 1
+     case tempBasalOnly = 0
+ }
++
++//wp begin
++// 远程指令与 Nightscout 上传都需要给这个枚举一个字符串表示。
++// 枚举本身是 Int 承载的，所以在这里集中定义一次映射，
++// 避免在远程通知解析、动作描述、loopStatus 上传三处各写一遍字面量。
++extension AutomaticDosingStrategy {
++
++    /// 远程指令与 Nightscout loopStatus 中使用的字符串表示
++    public var remoteCommandValue: String {
++        switch self {
++        case .automaticBolus:
++            return "automaticBolus"
++        case .tempBasalOnly:
++            return "tempBasalOnly"
++        }
++    }
++
++    /// 从远程指令的字符串表示还原；无法识别时返回 nil，由调用方决定如何处理
++    public init?(remoteCommandValue: String) {
++        guard let match = Self.allCases.first(where: { $0.remoteCommandValue == remoteCommandValue }) else {
++            return nil
++        }
++        self = match
++    }
++}
++//wp end
+diff --git a/LoopKit/DosingDecisionStore.swift b/LoopKit/DosingDecisionStore.swift
+index c1059354..944bb00a 100644
+--- a/LoopKit/DosingDecisionStore.swift
++++ b/LoopKit/DosingDecisionStore.swift
+@@ -317,6 +317,10 @@ public struct StoredDosingDecision: DosingDecision {
+     public var warnings: [Issue]
+     public var errors: [Issue]
+     public var syncIdentifier: UUID
++    //wp begin
++    /// 做出这次给药决策时生效的自动给药策略，随 loopStatus 上传到 Nightscout
++    public var automaticDosingStrategy: AutomaticDosingStrategy
++    //wp end
+ 
+     public init(id: UUID = UUID(),
+                 date: Date = Date(),
+@@ -344,7 +348,10 @@ public struct StoredDosingDecision: DosingDecision {
+                 enactedBolusAmount: Double? = nil,
+                 warnings: [Issue] = [],
+                 errors: [Issue] = [],
+-                syncIdentifier: UUID = UUID()) {
++                syncIdentifier: UUID = UUID(),
++                //wp begin
++                automaticDosingStrategy: AutomaticDosingStrategy = .tempBasalOnly) {
++                //wp end
+         self.id = id
+         self.date = date
+         self.controllerTimeZone = controllerTimeZone
+@@ -372,6 +379,9 @@ public struct StoredDosingDecision: DosingDecision {
+         self.warnings = warnings
+         self.errors = errors
+         self.syncIdentifier = syncIdentifier
++        //wp begin
++        self.automaticDosingStrategy = automaticDosingStrategy
++        //wp end
+     }
+ 
+     public struct Settings: Codable, Equatable {
+@@ -471,7 +481,11 @@ extension StoredDosingDecision: Codable {
+                   enactedBolusAmount: try container.decodeIfPresent(Double.self, forKey: .enactedBolusAmount),
+                   warnings: try container.decodeIfPresent([Issue].self, forKey: .warnings) ?? [],
+                   errors: try container.decodeIfPresent([Issue].self, forKey: .errors) ?? [],
+-                  syncIdentifier: try container.decode(UUID.self, forKey: .syncIdentifier))
++                  syncIdentifier: try container.decode(UUID.self, forKey: .syncIdentifier),
++                  //wp begin
++                  // 用 decodeIfPresent 兜底，保证能读取本字段出现之前持久化的历史记录
++                  automaticDosingStrategy: try container.decodeIfPresent(AutomaticDosingStrategy.self, forKey: .automaticDosingStrategy) ?? .tempBasalOnly)
++                  //wp end
+     }
+ 
+     public func encode(to encoder: Encoder) throws {
+@@ -503,6 +517,9 @@ extension StoredDosingDecision: Codable {
+         try container.encodeIfPresent(!warnings.isEmpty ? warnings : nil, forKey: .warnings)
+         try container.encodeIfPresent(!errors.isEmpty ? errors : nil, forKey: .errors)
+         try container.encode(syncIdentifier, forKey: .syncIdentifier)
++        //wp begin
++        try container.encode(automaticDosingStrategy, forKey: .automaticDosingStrategy)
++        //wp end
+     }
+ 
+     private enum CodingKeys: String, CodingKey {
+@@ -533,6 +550,9 @@ extension StoredDosingDecision: Codable {
+         case warnings
+         case errors
+         case syncIdentifier
++        //wp begin
++        case automaticDosingStrategy
++        //wp end
+     }
+ }
+ 
+diff --git a/LoopKit/Service/Remote/RemoteActionDelegate.swift b/LoopKit/Service/Remote/RemoteActionDelegate.swift
+index 8f824906..2042d544 100644
+--- a/LoopKit/Service/Remote/RemoteActionDelegate.swift
++++ b/LoopKit/Service/Remote/RemoteActionDelegate.swift
+@@ -13,4 +13,12 @@ public protocol RemoteActionDelegate: AnyObject {
+     func cancelRemoteOverride() async throws
+     func deliverRemoteCarbs(amountInGrams: Double, absorptionTime: TimeInterval?, foodType: String?, startDate: Date?) async throws
+     func deliverRemoteBolus(amountInUnits: Double, decisionId: UUID?) async throws
++
++    //wp begin
++    /// 一条远程指令同时录入碳水并输注大剂量
++    func deliverRemoteBolus(amountInUnits: Double, amountInGrams: Double, absorptionTime: TimeInterval?, foodType: String?, startDate: Date?) async throws
++
++    /// 远程切换自动给药策略
++    func enactRemoteDosingStrategy(automaticDosingStrategy: AutomaticDosingStrategy) async throws
++    //wp end
+ }

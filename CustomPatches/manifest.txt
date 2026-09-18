@@ -1,0 +1,11 @@
+# 自定义改动清单 - 由 save.sh 自动生成，请勿手工编辑
+# 生成时间: 2026-09-18 19:03:19
+# 主仓库基线HEAD: f0c0f55b59c9e00f33a263b29cb4ea0f0bf80785
+# Workspace依赖锁: LoopWorkspace.xcworkspace/xcshareddata/swiftpm/Package.resolved
+# Workspace依赖锁快照: CustomPatches/locks/Package.resolved
+# Workspace依赖锁SHA256: ed5c2ebbb1cf925749066985d9bd4ad38017c1ce2f4f10a177b8c2176f32f4dc
+# 字段: 子模块路径 <TAB> 生成补丁时的HEAD <TAB> 主仓库记录的commit <TAB> 远端地址
+Loop	35f992f0b4ffa85764da79a9e043b3b991634aed	35f992f0b4ffa85764da79a9e043b3b991634aed	https://github.com/LoopKit/Loop.git
+LoopKit	6083d81b4372d7ed9de0c464cc6b8007896bf01f	6083d81b4372d7ed9de0c464cc6b8007896bf01f	https://github.com/LoopKit/LoopKit.git
+NightscoutService	5379bba546b5e681969d0997b571414ce89a0c71	5379bba546b5e681969d0997b571414ce89a0c71	https://github.com/LoopKit/NightscoutService.git
+NightscoutRemoteCGM	fc78feccc7d9404b6b4212125f84f99b31ec518c	fc78feccc7d9404b6b4212125f84f99b31ec518c	https://github.com/LoopKit/NightscoutRemoteCGM.git
