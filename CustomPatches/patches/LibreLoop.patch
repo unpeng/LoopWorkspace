@@ -1,0 +1,2551 @@
+diff --git a/LibreLoop/Localizable.xcstrings b/LibreLoop/Localizable.xcstrings
+index 91fe2ae..8ab3116 100644
+--- a/LibreLoop/Localizable.xcstrings
++++ b/LibreLoop/Localizable.xcstrings
+@@ -3,122 +3,370 @@
+   "strings" : {
+     "%1$@ can't reconnect to your FreeStyle Libre 3. Scan the sensor again to resume CGM readings. If it was recently inserted and keeps failing, the sensor may be defective — replace it." : {
+       "comment" : "Reconnect-failed alert body (1: appName)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%1$@ 无法重新连接到你的 FreeStyle Libre 3。请重新扫描传感器以恢复 CGM 读数。如果传感器是最近植入的却持续失败，它可能有缺陷——请更换。"
++          }
++        }
++      }
+     },
+     "Active" : {
+       "comment" : "Sensor lifecycle: active",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已激活"
++          }
++        }
++      }
+     },
+     "Authenticating" : {
+       "comment" : "Pairing stage: handshaking",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在认证"
++          }
++        }
++      }
+     },
+     "Can't reconnect after %d tries — re-scan the sensor to reconnect (or replace it if it was recently inserted)." : {
+       "comment" : "Reconnect-failed status after many attempts",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "尝试 %d 次后仍无法重新连接——请重新扫描传感器以连接（如果是最近植入的，请更换）。"
++          }
++        }
++      }
+     },
+     "Check sensor" : {
+-      "comment" : "Sensor check alert title"
++      "comment" : "Sensor check alert title",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "检查传感器"
++          }
++        }
++      }
+     },
+     "Connecting" : {
+       "comment" : "Pairing stage: connecting",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在连接"
++          }
++        }
++      }
+     },
+     "Expired" : {
+       "comment" : "Sensor lifecycle: expired",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已过期"
++          }
++        }
++      }
+     },
+     "Initializing" : {
+       "comment" : "Sensor lifecycle: initializing",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在初始化"
++          }
++        }
++      }
+     },
+     "Loop is having trouble communicating with your FreeStyle Libre 3 sensor. CGM readings may pause briefly and should resume automatically. No action is needed unless this keeps happening." : {
+-      "comment" : "Sensor check alert body (transient transmission error)"
++      "comment" : "Sensor check alert body (transient transmission error)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "Loop 与你的 FreeStyle Libre 3 传感器通信出现问题。CGM 读数可能会短暂暂停，通常会自动恢复。除非此情况持续发生，否则无需处理。"
++          }
++        }
++      }
+     },
+     "No sensor" : {
+       "comment" : "Sensor lifecycle: no sensor paired",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "无传感器"
++          }
++        }
++      }
+     },
+     "OK" : {
+       "comment" : "Alert acknowledge button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "好"
++          }
++        }
++      }
+     },
+     "Re-scan sensor" : {
+       "comment" : "Reconnect-failed alert title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "重新扫描传感器"
++          }
++        }
++      }
+     },
+     "Replace sensor" : {
+       "comment" : "Sensor failure alert title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更换传感器"
++          }
++        }
++      }
+     },
+     "Scanning sensor" : {
+       "comment" : "Pairing stage: NFC scanning",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在扫描传感器"
++          }
++        }
++      }
+     },
+     "Searching for sensor" : {
+       "comment" : "Pairing stage: BLE searching",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在搜索传感器"
++          }
++        }
++      }
+     },
+     "Sensor ended" : {
+       "comment" : "Sensor ended alert title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器已结束"
++          }
++        }
++      }
+     },
+     "Sensor ends in 2 hours" : {
+       "comment" : "2h sensor-expiry alert title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器将在 2 小时后结束"
++          }
++        }
++      }
+     },
+     "Sensor ends tomorrow" : {
+       "comment" : "24h sensor-expiry alert title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器将于明天结束"
++          }
++        }
++      }
+     },
+     "Sensor failed" : {
+       "comment" : "Sensor lifecycle title: sensor failed (detail says replace)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器故障"
++          }
++        }
++      }
+     },
+     "Sensor session ended" : {
+       "comment" : "Sensor expired alert title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器会话已结束"
++          }
++        }
++      }
+     },
+     "Signal loss" : {
+       "comment" : "Sensor lifecycle: signal loss",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "信号丢失"
++          }
++        }
++      }
+     },
+     "Stabilizing" : {
+       "comment" : "Sensor lifecycle: stabilizing after pairing",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在稳定"
++          }
++        }
++      }
+     },
+     "Warming up" : {
+       "comment" : "Sensor lifecycle: warming up",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在预热"
++          }
++        }
++      }
+     },
+     "Your FreeStyle Libre 3 sensor ends %@. When you replace it, the new sensor warms up for about an hour before readings resume — a short CGM gap is normal." : {
+-      "comment" : "24h sensor-expiry alert body (expiry date/time)"
++      "comment" : "24h sensor-expiry alert body (expiry date/time)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的 FreeStyle Libre 3 传感器将于 %@ 结束。更换后，新传感器需预热约一小时才能恢复读数——短暂的 CGM 中断属正常现象。"
++          }
++        }
++      }
+     },
+     "Your FreeStyle Libre 3 sensor ends at %@. Have a new sensor ready — it warms up for about an hour before readings resume, so expect a short CGM gap." : {
+-      "comment" : "2h sensor-expiry alert body (expiry time)"
++      "comment" : "2h sensor-expiry alert body (expiry time)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的 FreeStyle Libre 3 传感器将于 %@ 结束。请备好新传感器——它需预热约一小时才能恢复读数，因此会有短暂的 CGM 中断。"
++          }
++        }
++      }
+     },
+     "Your FreeStyle Libre 3 sensor expires %@. Replace it before then to avoid a CGM interruption." : {
+       "comment" : "24h sensor-expiry alert body (expiry date/time)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的 FreeStyle Libre 3 传感器将于 %@ 过期。请在此之前更换，以避免 CGM 中断。"
++          }
++        }
++      }
+     },
+     "Your FreeStyle Libre 3 sensor expires at %@. Replace it now to avoid a CGM interruption." : {
+       "comment" : "2h sensor-expiry alert body (expiry time)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的 FreeStyle Libre 3 传感器将于 %@ 过期。请立即更换，以避免 CGM 中断。"
++          }
++        }
++      }
+     },
+     "Your FreeStyle Libre 3 sensor has ended. Apply a new sensor to resume CGM — it warms up for about an hour before the first reading." : {
+-      "comment" : "Sensor expired alert body"
++      "comment" : "Sensor expired alert body",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的 FreeStyle Libre 3 传感器已结束。请贴上新传感器以恢复 CGM——它需预热约一小时才能得到第一个读数。"
++          }
++        }
++      }
+     },
+     "Your FreeStyle Libre 3 sensor has expired. Replace it to resume CGM readings." : {
+       "comment" : "Sensor expired alert body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的 FreeStyle Libre 3 传感器已过期。请更换以恢复 CGM 读数。"
++          }
++        }
++      }
+     },
+     "Your FreeStyle Libre 3 sensor has stopped working and needs to be replaced to resume CGM readings." : {
+       "comment" : "Sensor failure alert body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的 FreeStyle Libre 3 传感器已停止工作，需要更换才能恢复 CGM 读数。"
++          }
++        }
++      }
+     },
+     "Your FreeStyle Libre 3 sensor session has ended. Replace it to resume CGM readings." : {
+       "comment" : "Sensor ended alert body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的 FreeStyle Libre 3 传感器会话已结束。请更换以恢复 CGM 读数。"
++          }
++        }
++      }
+     }
+   },
+   "version" : "1.0"
+diff --git a/LibreLoopUI/Localizable.xcstrings b/LibreLoopUI/Localizable.xcstrings
+index 4e0073b..4ba4b5f 100644
+--- a/LibreLoopUI/Localizable.xcstrings
++++ b/LibreLoopUI/Localizable.xcstrings
+@@ -3,658 +3,1975 @@
+   "strings" : {
+     "—" : {
+       "comment" : "A placeholder string.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "—"
++          }
++        }
++      }
+     },
+     "(%@)" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "(%@)"
++          }
++        }
++      }
+     },
+     "(%lld)" : {
+       "comment" : "A count of the number of points in a LibreLoopStreamDebugViewModel.Point array.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "(%lld)"
++          }
++        }
++      }
+     },
+     "%@ remaining" : {
+       "comment" : "Lifecycle bar detail: active time remaining",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "剩余 %@"
++          }
++        }
++      }
+     },
+     "%@ until ready" : {
+       "comment" : "Lifecycle bar detail: warmup time remaining",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%@后就绪"
++          }
++        }
++      }
+     },
+     "%@/min" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%@/分钟"
++          }
++        }
++      }
+     },
+     "%1$@'s algorithm was designed and tuned against CGMs that emit a new reading every 5 minutes. With this setting on, %1$@ receives a new reading from the FreeStyle Libre 3 every minute instead." : {
+       "comment" : "Minute-by-minute warning paragraph 1 (1: appName)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%1$@ 的算法是针对每 5 分钟产生一个新读数的 CGM 设计和调校的。开启此设置后，%1$@ 会改为每分钟从 FreeStyle Libre 3 接收一个新读数。"
++          }
++        }
++      }
+     },
+     "• Dosing decisions may shift sooner or further than what %1$@'s review and tuning guidance assumes." : {
+       "comment" : "Minute-by-minute warning bullet 1 (1: appName)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "• 给药决策可能比 %1$@ 的评审和调校指南所假设的更早或更大幅度地变化。"
++          }
++        }
++      }
+     },
+     "• Trend math, retrospective correction, and momentum effects were validated at the 5-minute cadence." : {
+       "comment" : "Minute-by-minute warning bullet 2",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "• 趋势计算、回顾性校正和动量效应是在 5 分钟节奏下验证的。"
++          }
++        }
++      }
+     },
+     "• You're accepting responsibility for monitoring outcomes more closely while this is on." : {
+       "comment" : "Minute-by-minute warning bullet 3",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "• 开启此项期间，你需自行承担更密切监测结果的责任。"
++          }
++        }
++      }
+     },
+     "8-character hex (little-endian)" : {
+       "comment" : "Receiver ID field placeholder",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "8 位十六进制（小端序）"
++          }
++        }
++      }
+     },
+     "Activated" : {
+       "comment" : "Sensor activation date row label",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "激活于"
++          }
++        }
++      }
+     },
+     "Apply a new Sensor" : {
+       "comment" : "Apply-sensor screen title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "贴敷新传感器"
++          }
++        }
++      }
+     },
+     "Authenticating with sensor…" : {
+       "comment" : "Pairing status: handshaking",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在与传感器认证……"
++          }
++        }
++      }
+     },
+     "Avoid scars, moles, stretch marks, lumps, and insulin injection sites. Rotate sites between applications." : {
+       "comment" : "Apply-sensor help step 1 note",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "避开疤痕、痣、妊娠纹、肿块和胰岛素注射部位。每次贴敷更换部位。"
++          }
++        }
++      }
+     },
+     "Awaiting first reading" : {
+       "comment" : "Lifecycle bar detail: awaiting first reading after pairing",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "等待首个读数"
++          }
++        }
++      }
+     },
+     "BLE PIN" : {
+       "comment" : "BLE PIN row label",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "BLE PIN"
++          }
++        }
++      }
+     },
+     "Bluetooth" : {
+       "comment" : "Bluetooth address row label\n   Bluetooth connection row label",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "蓝牙"
++          }
++        }
++      }
+     },
+     "Cancel" : {
+       "comment" : "Cancel button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "取消"
++          }
++        }
++      }
+     },
+     "Clinical backfill" : {
+       "comment" : "Sample source: clinical backfill",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "临床回填"
++          }
++        }
++      }
+     },
+     "Connected" : {
+       "comment" : "Connection status: connected",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已连接"
++          }
++        }
++      }
+     },
+     "Connecting…" : {
+       "comment" : "Connection status: connecting\n   Pairing status: connecting",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在连接……"
++          }
++        }
++      }
+     },
+     "Continue" : {
+       "comment" : "Continue button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "继续"
++          }
++        }
++      }
+     },
+     "Continuous clinical stream" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "持续临床数据流"
++          }
++        }
++      }
+     },
+     "Copied %d lines" : {
+       "comment" : "Activity log copied confirmation",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已复制 %d 行"
++          }
++        }
++      }
+     },
+     "Copy log" : {
+       "comment" : "Copy activity log button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "复制日志"
++          }
++        }
++      }
+     },
+     "Couldn't parse hex." : {
+       "comment" : "Receiver ID validation error: parse failure",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "无法解析十六进制。"
++          }
++        }
++      }
+     },
+     "Debug Info" : {
+       "comment" : "Settings section: debug info",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "调试信息"
++          }
++        }
++      }
+     },
+     "Decoded fields" : {
+       "comment" : "A section title for the decoded fields of a read.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "解码字段"
++          }
++        }
++      }
+     },
+     "Delete" : {
+       "comment" : "Delete button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "删除"
++          }
++        }
++      }
+     },
+     "Delete CGM" : {
+       "comment" : "Delete CGM button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "删除 CGM"
++          }
++        }
++      }
+     },
+     "Delete CGM?" : {
+       "comment" : "Delete CGM confirmation title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "删除 CGM？"
++          }
++        }
++      }
+     },
+     "Developer" : {
+       "comment" : "Settings section: developer tools",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开发者"
++          }
++        }
++      }
+     },
+     "Disconnected" : {
+       "comment" : "Connection status: disconnected",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已断开"
++          }
++        }
++      }
+     },
+     "Display only" : {
+       "comment" : "Reading is display-only, not used for dosing",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "仅显示"
++          }
++        }
++      }
+     },
+     "Do not remove the cap from the sensor applicator until you're ready to apply the sensor." : {
+       "comment" : "Apply-sensor cap instruction",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在准备好贴敷传感器之前，请勿取下传感器贴敷器的盖子。"
++          }
++        }
++      }
+     },
+     "Do not reuse the cap. The sterile barrier is broken once removed." : {
+       "comment" : "Apply-sensor help step 3 note",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "请勿重复使用盖子。一旦取下，无菌屏障即被破坏。"
++          }
++        }
++      }
+     },
+     "Done" : {
+       "comment" : "Done button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "完成"
++          }
++        }
++      }
+     },
+     "Each entry is one decoded packet. Tap to see when it arrived and every decoded field — including the realtime frame's historical lag, which is why the embedded 5-min value is always ~17 min behind." : {
+       "comment" : "A footer for the LibreLoopStreamDebugView.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每一条目是一个解码数据包。点按可查看它到达的时间和每个解码字段——包括实时帧的历史延迟，这就是内嵌的 5 分钟值总是滞后约 17 分钟的原因。"
++          }
++        }
++      }
+     },
+     "Each series is plotted by lifeCount (minutes since sensor start). Realtime current and Clinical word[5] are identical by spec — clinical dots should land on the realtime line except across reconnect gaps." : {
+       "comment" : "A description of the Libre 3 glucose streams.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每条曲线按 lifeCount（自传感器启动以来的分钟数）绘制。按规范，实时当前值与临床 word[5] 相同——除跨重连间隙外，临床点应落在实时线上。"
++          }
++        }
++      }
+     },
+     "Enable" : {
+       "comment" : "Enable button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "启用"
++          }
++        }
++      }
+     },
+     "Enter exactly 8 hex characters." : {
+       "comment" : "Receiver ID validation error: wrong length",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "请输入正好 8 位十六进制字符。"
++          }
++        }
++      }
+     },
+     "Enter the receiver ID this sensor was originally paired under. The sensor only accepts a switch-receiver command from the same ID it remembers — there's no way to recover without it." : {
+       "comment" : "Recovery screen explanation",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "请输入此传感器最初配对时使用的接收器 ID。传感器只接受来自它所记住的同一 ID 的切换接收器命令——没有它就无法恢复。"
++          }
++        }
++      }
+     },
+     "Every realtime reading (~1/min) is sent to %1$@." : {
+       "comment" : "Forwarding footer: minute-by-minute on (1: appName)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每个实时读数（约每分钟 1 个）都会发送给 %1$@。"
++          }
++        }
++      }
+     },
+     "Example: `78563412`. If this sensor was paired with this app before, the value is shown as \"Receiver ID\" in the Debug Info section of the Libre 3 CGM settings page." : {
+       "comment" : "Receiver ID field help text",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "示例：`78563412`。如果此传感器之前与本应用配对过，该值会在 Libre 3 CGM 设置页的“调试信息”部分显示为“接收器 ID”。"
++          }
++        }
++      }
+     },
+     "Experimental setting" : {
+       "comment" : "Minute-by-minute warning header",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "实验性设置"
++          }
++        }
++      }
+     },
+     "Falling ↘" : {
+       "comment" : "Trend: falling",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "下降 ↘"
++          }
++        }
++      }
+     },
+     "Falling quickly ⇊" : {
+       "comment" : "Trend: falling quickly",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "快速下降 ⇊"
++          }
++        }
++      }
+     },
+     "Filter" : {
+       "comment" : "Activity log filter picker label",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "筛选"
++          }
++        }
++      }
+     },
+     "Forwarding to %1$@" : {
+       "comment" : "Sample detail section: forwarding (1: appName)\n   Settings section: forwarding (1: appName)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在转发给 %1$@"
++          }
++        }
++      }
+     },
+     "FreeStyle Libre 3" : {
+       "comment" : "The title of the LibreLoop apply sensor view.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "FreeStyle Libre 3"
++          }
++        }
++      }
+     },
+     "Glucose (mg/dL)" : {
+       "comment" : "A section for glucose values.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "血糖 (mg/dL)"
++          }
++        }
++      }
+     },
+     "Glucose Streams" : {
+       "comment" : "Developer: glucose streams debug view",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "血糖数据流"
++          }
++        }
++      }
+     },
+     "Historical backfill" : {
+       "comment" : "Sample source: historical backfill",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "历史回填"
++          }
++        }
++      }
+     },
+     "Hold steady for a moment so the sensor seats fully against the skin." : {
+       "comment" : "Apply-sensor help step 4 note",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "保持稳定片刻，让传感器完全贴合皮肤。"
++          }
++        }
++      }
+     },
+     "Hold the top of your phone against the sensor." : {
+       "comment" : "Scan-sensor instruction",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "将手机顶部贴住传感器。"
++          }
++        }
++      }
+     },
+     "Hold the TOP of your phone against the sensor." : {
+-      "comment" : "Scan-sensor help step 1 body"
++      "comment" : "Scan-sensor help step 1 body",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "将手机顶部贴住传感器。"
++          }
++        }
++      }
+     },
+     "Hold your phone to the sensor" : {
+       "comment" : "Pairing status: NFC scanning",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "将手机贴近传感器"
++          }
++        }
++      }
+     },
+     "How to apply a Sensor" : {
+       "comment" : "Apply-sensor help screen title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "如何贴敷传感器"
++          }
++        }
++      }
+     },
+     "HOW TO APPLY A SENSOR" : {
+       "comment" : "Apply-sensor help button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "如何贴敷传感器"
++          }
++        }
++      }
+     },
+     "How to scan a Sensor" : {
+       "comment" : "Scan-sensor help screen title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "如何扫描传感器"
++          }
++        }
++      }
+     },
+     "HOW TO SCAN A SENSOR" : {
+       "comment" : "Scan-sensor help button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "如何扫描传感器"
++          }
++        }
++      }
+     },
+     "If your phone moves away, the scan will fail and you'll need to try again." : {
+       "comment" : "Scan-sensor help step 2 note",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "如果手机移开，扫描将失败，你需要重试。"
++          }
++        }
++      }
+     },
+     "Initializing" : {
+       "comment" : "CGM status highlight: waiting for first reading",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在初始化"
++          }
++        }
++      }
+     },
+     "Issue" : {
+       "comment" : "Sample detail: quality issue",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "问题"
++          }
++        }
++      }
+     },
+     "Keep it still — your phone will vibrate once the sensor is paired." : {
+       "comment" : "Scan-sensor stillness instruction",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "保持静止——传感器配对成功后手机会振动一次。"
++          }
++        }
++      }
+     },
+     "Keep the phone still. Pairing takes a few seconds." : {
+       "comment" : "Scan-sensor help step 2 body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "保持手机静止。配对需要几秒钟。"
++          }
++        }
++      }
+     },
+     "Keeps the clinical channel subscribed so the clinical/raw charts update every minute. Off by default — only needed for stream inspection, and it adds per-reconnect clinical traffic. Takes effect on the next reconnect." : {
+       "comment" : "A description of the effect of the \"Continuous clinical stream\" toggle.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "保持临床通道订阅，使临床/原始图表每分钟更新。默认关闭——仅在检查数据流时需要，且会在每次重连时增加临床流量。将在下次重连时生效。"
++          }
++        }
++      }
+     },
+     "Last attempt %@" : {
+       "comment" : "Reconnect error: time of last attempt",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "上次尝试 %@"
++          }
++        }
++      }
+     },
+     "Last Reading" : {
+       "comment" : "Settings section: last reading",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "最后读数"
++          }
++        }
++      }
+     },
+     "Last reading %@" : {
+       "comment" : "Lifecycle bar detail: time since last reading",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "最后读数 %@"
++          }
++        }
++      }
+     },
+     "Leave this off unless you understand the implications. You can turn it off again at any time." : {
+       "comment" : "Minute-by-minute warning footer",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "除非你了解其影响，否则请保持关闭。你可以随时再次关闭它。"
++          }
++        }
++      }
+     },
+     "Let the area air-dry completely before applying." : {
+       "comment" : "Apply-sensor help step 2 note",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "贴敷前让该区域完全自然晾干。"
++          }
++        }
++      }
+     },
+     "lifeCount" : {
+       "comment" : "A dot on a line graph.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "lifeCount"
++          }
++        }
++      }
+     },
+     "LifeCount" : {
+       "comment" : "A label for the number of times a sample has been logged.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "LifeCount"
++          }
++        }
++      }
+     },
+     "lifeCount (min)" : {
+       "comment" : "X-axis label for glucose stream plot.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "lifeCount（分钟）"
++          }
++        }
++      }
+     },
+     "Lift the applicator straight away from your arm." : {
+       "comment" : "Apply-sensor help step 5 body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "将贴敷器径直从手臂上提起。"
++          }
++        }
++      }
+     },
+     "Lower = smoother. Realtime and Clinical word[5] should match; Embedded 5-min should be lowest." : {
+       "comment" : "A description of the meaning of the noise values.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "值越低越平滑。实时值与临床 word[5] 应一致；内嵌 5 分钟值应最低。"
++          }
++        }
++      }
+     },
+     "mg/dL" : {
+       "comment" : "\"lifeCount\" is a custom label for the X-axis, representing the number of minutes since the sensor was powered on.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "mg/dL"
++          }
++        }
++      }
+     },
+     "Next" : {
+       "comment" : "Next button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "下一步"
++          }
++        }
++      }
+     },
+     "No" : {
+       "comment" : "Sample detail: not sent to Loop",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "否"
++          }
++        }
++      }
+     },
+     "No activity logged yet." : {
+       "comment" : "Empty activity log",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "尚无活动记录。"
++          }
++        }
++      }
+     },
+     "No activity matching this filter." : {
+       "comment" : "Empty filtered activity log",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "没有符合此筛选条件的活动。"
++          }
++        }
++      }
+     },
+     "No clinical raw data yet." : {
+       "comment" : "A placeholder text displayed when a user has not yet",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "尚无临床原始数据。"
++          }
++        }
++      }
+     },
+     "No readings — replace the sensor." : {
+       "comment" : "Last reading placeholder when the sensor has failed",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "无读数——请更换传感器。"
++          }
++        }
++      }
+     },
+     "No reads captured yet." : {
+       "comment" : "A message displayed when a user has not yet captured any reads.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "尚未捕获读数。"
++          }
++        }
++      }
+     },
+     "Noise (mean |Δ| between consecutive points)" : {
+       "comment" : "A label displayed above a section of a view that shows",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "噪声（相邻点之间 |Δ| 的均值）"
++          }
++        }
++      }
+     },
+     "Not paired" : {
+       "comment" : "Connection status: not paired",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "未配对"
++          }
++        }
++      }
+     },
+     "Only one reading every ~5 minutes is sent to %1$@, matching the cadence other CGMs use." : {
+       "comment" : "Forwarding footer: minute-by-minute off (1: appName)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每约 5 分钟只向 %1$@ 发送一个读数，与其他 CGM 使用的节奏一致。"
++          }
++        }
++      }
+     },
+     "Pair a new sensor?" : {
+       "comment" : "Replace sensor confirmation title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "配对新传感器？"
++          }
++        }
++      }
+     },
+     "Pair new sensor" : {
+       "comment" : "Pair new sensor button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "配对新传感器"
++          }
++        }
++      }
+     },
+     "Pair New Sensor" : {
+-      "comment" : "Prominent action to pair a new sensor when the current one needs replacement"
++      "comment" : "Prominent action to pair a new sensor when the current one needs replacement",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "配对新传感器"
++          }
++        }
++      }
+     },
+     "Pairing" : {
+       "comment" : "Pairing progress screen title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在配对"
++          }
++        }
++      }
+     },
+     "Path" : {
+       "comment" : "Sample detail: source path",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "路径"
++          }
++        }
++      }
+     },
+     "Preparing…" : {
+       "comment" : "Pairing status: preparing",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在准备……"
++          }
++        }
++      }
+     },
+     "Press the applicator firmly against the prepared site." : {
+       "comment" : "Apply-sensor help step 4 body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "将贴敷器用力压在准备好的部位上。"
++          }
++        }
++      }
+     },
+     "Quality" : {
+       "comment" : "Sample detail section: quality",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "质量"
++          }
++        }
++      }
+     },
+     "Rate of change" : {
+       "comment" : "Sample detail: rate of change",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "变化率"
++          }
++        }
++      }
+     },
+     "raw" : {
+       "comment" : "Series name for the clinical word1 channel in the raw sensor channel plot.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "原始"
++          }
++        }
++      }
+     },
+     "Raw Reads (newest first)" : {
+       "comment" : "A label displayed above a list of raw reads.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "原始读数（最新在前）"
++          }
++        }
++      }
+     },
+     "Raw sensor channels (clinical word1-3)" : {
+       "comment" : "A section for the raw sensor channels.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "原始传感器通道（临床 word1-3）"
++          }
++        }
++      }
+     },
+     "Reading" : {
+       "comment" : "Sample detail section: reading",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "读数"
++          }
++        }
++      }
+     },
+     "Realtime (live BLE)" : {
+       "comment" : "Sample source: realtime",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "实时（BLE 直连）"
++          }
++        }
++      }
+     },
+     "Reason" : {
+       "comment" : "Sample detail: not-forwarded reason",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "原因"
++          }
++        }
++      }
+     },
+     "Received" : {
+       "comment" : "A label for the date and time when a read was received.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已接收"
++          }
++        }
++      }
+     },
+     "Receiver ID" : {
+       "comment" : "Receiver ID field label\n   Receiver ID row label",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "接收器 ID"
++          }
++        }
++      }
+     },
+     "Recent Activity" : {
+       "comment" : "Settings section: recent activity log",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "近期活动"
++          }
++        }
++      }
+     },
+     "Recent Readings" : {
+       "comment" : "Settings section: recent readings",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "近期读数"
++          }
++        }
++      }
+     },
+     "Reconnecting…" : {
+       "comment" : "Connection status: reconnecting",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在重新连接……"
++          }
++        }
++      }
+     },
+     "Recover existing sensor" : {
+       "comment" : "Recover existing sensor button\n   Recovery screen title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "恢复现有传感器"
++          }
++        }
++      }
+     },
+     "Recovery" : {
+       "comment" : "Recovery screen title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "恢复"
++          }
++        }
++      }
+     },
+     "Replace\nSensor" : {
+       "comment" : "CGM status highlight: sensor failed, replace it",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更换\n传感器"
++          }
++        }
++      }
+     },
+     "Replace sensor" : {
+       "comment" : "Lifecycle bar detail: replace sensor",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更换传感器"
++          }
++        }
++      }
+     },
+     "Rising ↗" : {
+       "comment" : "Trend: rising",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "上升 ↗"
++          }
++        }
++      }
+     },
+     "Rising quickly ⇈" : {
+       "comment" : "Trend: rising quickly",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "快速上升 ⇈"
++          }
++        }
++      }
+     },
+     "Run a finger around the adhesive edge to make sure the sensor is secure." : {
+       "comment" : "Apply-sensor help step 6 body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "用手指沿粘胶边缘按压一圈，确保传感器牢固。"
++          }
++        }
++      }
+     },
+     "Sample detail" : {
+       "comment" : "Sample detail screen title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "样本详情"
++          }
++        }
++      }
+     },
+     "Scan new Sensor" : {
+       "comment" : "Scan-sensor screen title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "扫描新传感器"
++          }
++        }
++      }
+     },
+     "Searching for sensor over Bluetooth…" : {
+       "comment" : "Pairing status: BLE searching",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "正在通过蓝牙搜索传感器……"
++          }
++        }
++      }
+     },
+     "Select a site on the back of your upper arm." : {
+       "comment" : "Apply-sensor help step 1 body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在上臂背面选择一个部位。"
++          }
++        }
++      }
+     },
+     "Send every reading" : {
+       "comment" : "Minute-by-minute warning screen title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "发送每个读数"
++          }
++        }
++      }
+     },
+     "Send every reading (experimental)" : {
+       "comment" : "Experimental minute-by-minute forwarding toggle",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "发送每个读数（实验性）"
++          }
++        }
++      }
+     },
+     "Sensor" : {
+       "comment" : "Sensor model row label\n   Settings section: sensor",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器"
++          }
++        }
++      }
+     },
+     "Sensor\nExpired" : {
+       "comment" : "CGM status highlight: sensor expired",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器\n已过期"
++          }
++        }
++      }
+     },
+     "Sensor\nStabilizing" : {
+       "comment" : "CGM status highlight: sensor stabilizing after pairing",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器\n稳定中"
++          }
++        }
++      }
+     },
+     "Sensor\nWarmup" : {
+       "comment" : "CGM status highlight: sensor warming up",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器\n预热中"
++          }
++        }
++      }
+     },
+     "Sensor %@ paired" : {
+       "comment" : "Pairing status: success with serial",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器 %@ 已配对"
++          }
++        }
++      }
+     },
+     "Sensor diagnostics" : {
+       "comment" : "Sample detail section: diagnostics",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器诊断"
++          }
++        }
++      }
+     },
+     "Sent" : {
+       "comment" : "Sample detail: sent to Loop",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已发送"
++          }
++        }
++      }
+     },
+     "Serial" : {
+       "comment" : "Sensor serial row label",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "序列号"
++          }
++        }
++      }
+     },
+     "Series" : {
+       "comment" : "Series name for the realtime glucose line.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "曲线"
++          }
++        }
++      }
+     },
+     "Show all %d" : {
+       "comment" : "Expand activity log to N lines\n   Expand recent readings list to N",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "显示全部 %d"
++          }
++        }
++      }
+     },
+     "Show fewer" : {
+       "comment" : "Collapse activity log\n   Collapse recent readings list",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "显示更少"
++          }
++        }
++      }
+     },
+     "Signal\nLoss" : {
+       "comment" : "CGM status highlight: signal loss",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "信号\n丢失"
++          }
++        }
++      }
+     },
+     "Source" : {
+       "comment" : "Sample detail section: source",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "来源"
++          }
++        }
++      }
+     },
+     "Stable →" : {
+       "comment" : "Trend: stable",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "平稳 →"
++          }
++        }
++      }
+     },
+     "Start pairing" : {
+       "comment" : "Start pairing button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开始配对"
++          }
++        }
++      }
+     },
+     "STEP 1" : {
+       "comment" : "Apply-sensor help step 1 title\n   Scan-sensor help step 1 title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "步骤 1"
++          }
++        }
++      }
+     },
+     "STEP 2" : {
+       "comment" : "Apply-sensor help step 2 title\n   Scan-sensor help step 2 title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "步骤 2"
++          }
++        }
++      }
+     },
+     "STEP 3" : {
+       "comment" : "Apply-sensor help step 3 title\n   Scan-sensor help step 3 title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "步骤 3"
++          }
++        }
++      }
+     },
+     "STEP 4" : {
+       "comment" : "Apply-sensor help step 4 title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "步骤 4"
++          }
++        }
++      }
+     },
+     "STEP 5" : {
+       "comment" : "Apply-sensor help step 5 title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "步骤 5"
++          }
++        }
++      }
+     },
+     "STEP 6" : {
+       "comment" : "Apply-sensor help step 6 title",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "步骤 6"
++          }
++        }
++      }
+     },
+     "Stream" : {
+       "comment" : "A label for the stream of a read.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "数据流"
++          }
++        }
++      }
+     },
+     "Summary" : {
+       "comment" : "A label for the summary of a read.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "摘要"
++          }
++        }
++      }
+     },
+     "Temperature (raw)" : {
+       "comment" : "Sample detail: raw sensor temperature",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "温度（原始）"
++          }
++        }
++      }
+     },
+     "The receiver ID is assigned by %1$@ when it first pairs a sensor. It's saved in this app and shown on the Libre 3 settings page — write it down if you want to re-pair this sensor after reinstalling %1$@." : {
+       "comment" : "Recovery screen footnote (1: appName)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "接收器 ID 由 %1$@ 在首次配对传感器时分配。它保存在本应用中，并显示在 Libre 3 设置页上——如果你想在重装 %1$@ 后重新配对此传感器，请把它记下来。"
++          }
++        }
++      }
+     },
+     "The sensor should only be applied to the back of your upper arm." : {
+       "comment" : "Apply-sensor instruction",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器只应贴敷在上臂背面。"
++          }
++        }
++      }
+     },
+     "The sensor stays on your arm; the applicator comes off empty." : {
+       "comment" : "Apply-sensor help step 5 note",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "传感器留在你的手臂上；贴敷器取下时是空的。"
++          }
++        }
++      }
+     },
+     "This can change how %1$@ reacts to glucose movement compared to default behavior:" : {
+       "comment" : "Minute-by-minute warning paragraph 2 (1: appName)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "与默认行为相比，这会改变 %1$@ 对血糖变化的反应方式："
++          }
++        }
++      }
+     },
+     "This removes the FreeStyle Libre 3 CGM from %1$@. You'll need to re-pair to resume readings." : {
+       "comment" : "Delete CGM confirmation message (1: appName)",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "这会从 %1$@ 中移除 FreeStyle Libre 3 CGM。你需要重新配对才能恢复读数。"
++          }
++        }
++      }
+     },
+     "This stops monitoring the current sensor and starts pairing for a new one. The CGM stays configured with Loop." : {
+       "comment" : "Replace sensor confirmation message",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "这会停止监测当前传感器并开始配对新传感器。该 CGM 仍保留在 Loop 中的配置。"
++          }
++        }
++      }
+     },
+     "Time" : {
+       "comment" : "Recent readings column header: time\n   Sample detail: time",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "时间"
++          }
++        }
++      }
+     },
+     "Time (relative)" : {
+       "comment" : "Sample detail: relative time",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "时间（相对）"
++          }
++        }
++      }
+     },
+     "Trend" : {
+       "comment" : "Recent readings column header: trend\n   Sample detail: trend",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "趋势"
++          }
++        }
++      }
+     },
+     "Try again" : {
+       "comment" : "Retry button",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "重试"
++          }
++        }
++      }
+     },
+     "Twist off the cap from the sensor applicator." : {
+       "comment" : "Apply-sensor help step 3 body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "拧下传感器贴敷器的盖子。"
++          }
++        }
++      }
+     },
+     "Value" : {
+       "comment" : "Sample detail: glucose value",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "值"
++          }
++        }
++      }
+     },
+     "Waiting for first reading" : {
+       "comment" : "Lifecycle bar detail: waiting for first reading",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "等待首个读数"
++          }
++        }
++      }
+     },
+     "Waiting for first reading…" : {
+       "comment" : "Last reading placeholder before the first reading",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "等待首个读数……"
++          }
++        }
++      }
+     },
+     "Waiting for stream data…" : {
+       "comment" : "A placeholder text displayed when no glucose data is",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "等待数据流……"
++          }
++        }
++      }
+     },
+     "Wash the site with plain soap, dry, then clean with an alcohol wipe." : {
+       "comment" : "Apply-sensor help step 2 body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "用普通肥皂清洗该部位，擦干，再用酒精棉片清洁。"
++          }
++        }
++      }
+     },
+     "Yes" : {
+       "comment" : "Sample detail: sent to Loop",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "是"
++          }
++        }
++      }
+     },
+     "Yes (display only)" : {
+       "comment" : "Sample detail: sent display-only",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "是（仅显示）"
++          }
++        }
++      }
+     },
+     "Your phone will vibrate when pairing succeeds." : {
+       "comment" : "Scan-sensor help step 3 body",
+-      "extractionState" : "manual"
++      "extractionState" : "manual",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "配对成功后手机会振动。"
++          }
++        }
++      }
+     }
+   },
+   "version" : "1.1"
