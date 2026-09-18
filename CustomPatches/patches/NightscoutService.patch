@@ -141,10 +141,10 @@ index 69f7a26..ef655ed 100644
  	};
  	rootObject = A91BAC1222BC691A00ABF1BB /* Project object */;
 diff --git a/NightscoutServiceKit/Extensions/StoredDosingDecision.swift b/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
-index aba4104..b9720c4 100644
+index 4e1d49e..b8fc74d 100644
 --- a/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
 +++ b/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
-@@ -156,7 +156,10 @@ extension StoredDosingDecision {
+@@ -159,7 +159,10 @@ extension StoredDosingDecision {
                                     automaticDoseRecommendation: loopStatusAutomaticDoseRecommendation,
                                     recommendedBolus: loopStatusRecommendedBolus,
                                     enacted: automaticDoseDecision?.loopStatusEnacted,
@@ -157,7 +157,7 @@ index aba4104..b9720c4 100644
      }
      
 diff --git a/NightscoutServiceKit/Extensions/StoredSettings.swift b/NightscoutServiceKit/Extensions/StoredSettings.swift
-index 0bed9c6..7d6c12d 100644
+index 2adadb9..a1769d8 100644
 --- a/NightscoutServiceKit/Extensions/StoredSettings.swift
 +++ b/NightscoutServiceKit/Extensions/StoredSettings.swift
 @@ -94,12 +94,20 @@ extension StoredSettings {
@@ -181,10 +181,10 @@ index 0bed9c6..7d6c12d 100644
 +            defaultProfile: defaultProfile,
 +            store: store,
              settings: loopSettings,
-             syncIdentifier: syncIdentifier.uuidString)
-     }
+             syncIdentifier: syncIdentifier.uuidString,
+             isAPNSProduction: Bundle.main.isAPNSProductionEnvironment)
 diff --git a/NightscoutServiceKit/Localizable.xcstrings b/NightscoutServiceKit/Localizable.xcstrings
-index d837181..8a21fac 100644
+index 5877d3d..63061b4 100644
 --- a/NightscoutServiceKit/Localizable.xcstrings
 +++ b/NightscoutServiceKit/Localizable.xcstrings
 @@ -1,6 +1,9 @@
