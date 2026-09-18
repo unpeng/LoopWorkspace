@@ -102,6 +102,688 @@ index c1059354..944bb00a 100644
      }
  }
  
+diff --git a/LoopKit/Resources/Localizable.xcstrings b/LoopKit/Resources/Localizable.xcstrings
+index cbd583ae..261587b2 100644
+--- a/LoopKit/Resources/Localizable.xcstrings
++++ b/LoopKit/Resources/Localizable.xcstrings
+@@ -2,10 +2,25 @@
+   "sourceLanguage" : "en",
+   "strings" : {
+     ", " : {
+-      "comment" : "Separator for multiple days"
++      "comment" : "Separator for multiple days",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "、"
++          }
++        }
++      }
+     },
+     "%.0f - %.0f %3$@" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%.0f - %.0f %3$@"
++          }
++        }
++      }
+     },
+     "%@ and %@" : {
+       "comment" : "Format for two days",
+@@ -15,11 +30,25 @@
+             "state" : "new",
+             "value" : "%1$@ and %2$@"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%@和%@"
++          }
+         }
+       }
+     },
+     "%@ Preset" : {
+-      "comment" : "Format for correction range override therapy setting card"
++      "comment" : "Format for correction range override therapy setting card",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%@预设"
++          }
++        }
++      }
+     },
+     "%@ Range" : {
+       "comment" : "Format for correction range override therapy setting card",
+@@ -173,6 +202,12 @@
+             "state" : "new",
+             "value" : "%1$@, and %2$@"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%@和%@"
++          }
+         }
+       }
+     },
+@@ -609,7 +644,15 @@
+       }
+     },
+     "%1$@ will only increase your insulin delivery if your glucose is predicted to stay above this limit for the next three hours. If you bolus, the amount it recommends will be lower. " : {
+-      "comment" : "Descriptive format string for glucose safety limit (1: app name)"
++      "comment" : "Descriptive format string for glucose safety limit (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "仅当预测你的血糖在未来三小时内持续高于此限值时，%1$@ 才会增加胰岛素输注。如果你手动输注大剂量，其推荐量会相应降低。 "
++          }
++        }
++      }
+     },
+     "%1$@%2$@%3$@" : {
+       "comment" : "String format for value with units (1: value, 2: separator, 3: units)",
+@@ -761,7 +804,15 @@
+       }
+     },
+     "A rapid-acting insulin" : {
+-      "comment" : "Description for rapid acting insulin types"
++      "comment" : "Description for rapid acting insulin types",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "一种速效胰岛素"
++          }
++        }
++      }
+     },
+     "A value you have entered is higher than what is typically recommended for most people." : {
+       "comment" : "Descriptive text for guardrail high value warning for schedule interface",
+@@ -1050,10 +1101,26 @@
+       }
+     },
+     "Active until carbs are added" : {
+-      "comment" : "Presets card pre-meal duration accessibility label"
++      "comment" : "Presets card pre-meal duration accessibility label",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在添加碳水前持续有效"
++          }
++        }
++      }
+     },
+     "Active until turned off" : {
+-      "comment" : "Presets card indefinite duration accessibility label"
++      "comment" : "Presets card indefinite duration accessibility label",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在关闭前持续有效"
++          }
++        }
++      }
+     },
+     "Afrezza" : {
+       "comment" : "Brand name for afrezza insulin type\nTitle for Afrezza insulin type",
+@@ -1343,10 +1410,26 @@
+       }
+     },
+     "An ultra-rapid-acting insulin" : {
+-      "comment" : "Description for ultra rapid acting insulin types"
++      "comment" : "Description for ultra rapid acting insulin types",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "一种超速效胰岛素"
++          }
++        }
++      }
+     },
+     "An ultra-rapid-acting mealtime insulin that is inhaled" : {
+-      "comment" : "Description for afrezza insulin type"
++      "comment" : "Description for afrezza insulin type",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "一种吸入式超速效餐时胰岛素"
++          }
++        }
++      }
+     },
+     "Apidra" : {
+       "comment" : "Brand name for apidra insulin type",
+@@ -1779,7 +1862,15 @@
+       }
+     },
+     "Apidra (insulin glulisine) is a rapid-acting insulin made by Sanofi-aventis " : {
+-      "comment" : "Description for apidra insulin type"
++      "comment" : "Description for apidra insulin type",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "Apidra（谷赖胰岛素）是由赛诺菲-安万特生产的速效胰岛素 "
++          }
++        }
++      }
+     },
+     "Authorization Denied" : {
+       "comment" : "The error description describing when Health sharing was denied",
+@@ -2218,7 +2309,15 @@
+       }
+     },
+     "Biking" : {
+-      "comment" : "biking activity preset name"
++      "comment" : "biking activity preset name",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "骑行"
++          }
++        }
++      }
+     },
+     "Bolus" : {
+       "comment" : "Title for bolus dose type",
+@@ -2963,7 +3062,14 @@
+       }
+     },
+     "Common Uses of Presets" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "预设的常见用途"
++          }
++        }
++      }
+     },
+     "Communication Failure" : {
+       "comment" : "Generic pump error description",
+@@ -3557,7 +3663,15 @@
+       }
+     },
+     "Correction Range is the glucose range (or range of values) that you want %1$@ to aim for in adjusting your insulin delivery and helping you calculate your boluses." : {
+-      "comment" : "Descriptive text for glucose target range (1: app name)"
++      "comment" : "Descriptive text for glucose target range (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "校正范围是你希望 %1$@ 在调整胰岛素输注、帮助你计算大剂量时所瞄准的血糖范围（或数值区间）。"
++          }
++        }
++      }
+     },
+     "Correction Range is the glucose value (or range of values) that you want %1$@ to aim for in adjusting your basal insulin and helping you calculate your boluses." : {
+       "comment" : "Descriptive text for glucose target range (1: app name)",
+@@ -3847,7 +3961,14 @@
+       }
+     },
+     "Customizing Presets" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "自定义预设"
++          }
++        }
++      }
+     },
+     "Delivery Limits" : {
+       "comment" : "Title text for delivery limits",
+@@ -4583,7 +4704,14 @@
+       }
+     },
+     "Duration" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "持续时间"
++          }
++        }
++      }
+     },
+     "Ensure carb data exists for the specified date" : {
+       "comment" : "Recovery suggestion for a no data error",
+@@ -4735,7 +4863,14 @@
+       }
+     },
+     "Exercise and Your Glucose Levels" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "运动与你的血糖水平"
++          }
++        }
++      }
+     },
+     "Falling" : {
+       "comment" : "Glucose trend down",
+@@ -6063,7 +6198,14 @@
+       }
+     },
+     "High-Intensity Exercise" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "高强度运动"
++          }
++        }
++      }
+     },
+     "Hour" : {
+       "comment" : "The long unit display string for a singular hour",
+@@ -6782,7 +6924,14 @@
+       }
+     },
+     "Impact on Bolusing" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "对大剂量输注的影响"
++          }
++        }
++      }
+     },
+     "Insulin Model" : {
+       "comment" : "Title text for fast acting insulin model",
+@@ -7377,10 +7526,25 @@
+       }
+     },
+     "Jogging" : {
+-      "comment" : "jogging activity preset name"
++      "comment" : "jogging activity preset name",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "慢跑"
++          }
++        }
++      }
+     },
+     "Light-to-Moderate Intensity Exercise" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "轻到中等强度运动"
++          }
++        }
++      }
+     },
+     "Lyumjev" : {
+       "comment" : "Brand name for lyumjev insulin type\nTitle for Lyumjev insulin type",
+@@ -7962,7 +8126,15 @@
+       }
+     },
+     "Maximum Basal Rate is the automatically adjusted basal rate that %1$@ is allowed to enact to help reach your Correction Range." : {
+-      "comment" : "Descriptive text for maximum basal rate (1: app name)"
++      "comment" : "Descriptive text for maximum basal rate (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "最大基础率是 %1$@ 为帮助达到校正范围而被允许自动调整并执行的最高基础率。"
++          }
++        }
++      }
+     },
+     "Maximum Basal Rate is the highest temporary basal rate %1$@ is allowed to set." : {
+       "comment" : "Descriptive text for maximum basal rate (1: app name)",
+@@ -8258,7 +8430,15 @@
+       }
+     },
+     "Maximum Bolus is the highest bolus amount that you will allow %1$@ to recommend at one time to cover carbs or bring down high glucose." : {
+-      "comment" : "Descriptive text for maximum bolus (1: app name)"
++      "comment" : "Descriptive text for maximum bolus (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "最大剂量是你允许 %1$@ 一次性推荐、用于补充碳水或降低高血糖的最高大剂量。"
++          }
++        }
++      }
+     },
+     "Maximum Bolus is the highest bolus amount you can deliver at one time to cover carbs or bring down high glucose." : {
+       "comment" : "Descriptive text for maximum bolus",
+@@ -8697,7 +8877,14 @@
+       }
+     },
+     "Mixed-Intensity Exercise" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "混合强度运动"
++          }
++        }
++      }
+     },
+     "mmol/L" : {
+       "comment" : "The short unit display string for millimoles per liter",
+@@ -9141,10 +9328,26 @@
+       }
+     },
+     "Multiple" : {
+-      "comment" : "Preset schedule repeat option multiple days"
++      "comment" : "Preset schedule repeat option multiple days",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "多天"
++          }
++        }
++      }
+     },
+     "multiple days" : {
+-      "comment" : "Preset schedule repeat option multiple days"
++      "comment" : "Preset schedule repeat option multiple days",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "多天"
++          }
++        }
++      }
+     },
+     "Needs Attention" : {
+       "comment" : "Sensor state description for the non-valid state",
+@@ -10174,10 +10377,26 @@
+       }
+     },
+     "on until carbs added" : {
+-      "comment" : "Preset card pre-meal expected end time\nPresets card pre-meal expected end time accessibility label"
++      "comment" : "Preset card pre-meal expected end time\nPresets card pre-meal expected end time accessibility label",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "持续至添加碳水"
++          }
++        }
++      }
+     },
+     "on until turned off" : {
+-      "comment" : "Preset card indefinite scheduled end time\nPresets card indefinite duration accessibility label"
++      "comment" : "Preset card indefinite scheduled end time\nPresets card indefinite duration accessibility label",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "持续至关闭"
++          }
++        }
++      }
+     },
+     "One or more of the values you have entered is outside of what is typically recommended for most people." : {
+       "comment" : "Descriptive text for saving settings outside the recommended range",
+@@ -10323,10 +10542,24 @@
+       }
+     },
+     "Overall Insulin" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "总体胰岛素"
++          }
++        }
++      }
+     },
+     "Perceived Intensity" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "感知强度"
++          }
++        }
++      }
+     },
+     "Please re-enable sharing in Health" : {
+       "comment" : "The error recovery suggestion when Health sharing was denied",
+@@ -10622,19 +10855,54 @@
+       }
+     },
+     "Presets for Daily Activities" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "日常活动预设"
++          }
++        }
++      }
+     },
+     "Presets for Daily Activity" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "日常活动预设"
++          }
++        }
++      }
+     },
+     "Presets for Exercise" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "运动预设"
++          }
++        }
++      }
+     },
+     "Presets for Illness" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "疾病预设"
++          }
++        }
++      }
+     },
+     "Preventing Lows" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "预防低血糖"
++          }
++        }
++      }
+     },
+     "Recommended Update" : {
+       "comment" : "Description of supported software update needed",
+@@ -10787,6 +11055,12 @@
+             "state" : "new",
+             "value" : "Repeats weekly on %1$@ at %2$@"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每周%@ %@重复"
++          }
+         }
+       }
+     },
+@@ -11381,10 +11655,25 @@
+       }
+     },
+     "Saved Presets" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已保存的预设"
++          }
++        }
++      }
+     },
+     "Single Use Preset" : {
+-      "comment" : "The title shown for a single use preset"
++      "comment" : "The title shown for a single use preset",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "单次使用预设"
++          }
++        }
++      }
+     },
+     "Some of the values you have entered are outside of what is typically recommended for most people." : {
+       "comment" : "Descriptive text for guardrail high value warning for schedule interface",
+@@ -11530,7 +11819,15 @@
+       }
+     },
+     "Strength Training" : {
+-      "comment" : "strength training activity preset name"
++      "comment" : "strength training activity preset name",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "力量训练"
++          }
++        }
++      }
+     },
+     "Suspended" : {
+       "comment" : "Title for suspend dose type",
+@@ -12542,7 +12839,14 @@
+       }
+     },
+     "Training Complete" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "训练完成"
++          }
++        }
++      }
+     },
+     "U" : {
+       "comment" : "The short unit display string for international units of insulin",
+@@ -13559,13 +13863,36 @@
+       }
+     },
+     "Unplanned Activity" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "计划外活动"
++          }
++        }
++      }
+     },
+     "until carbs added" : {
+-      "comment" : "Preset card pre-meal duration"
++      "comment" : "Preset card pre-meal duration",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "至添加碳水"
++          }
++        }
++      }
+     },
+     "until turned off" : {
+-      "comment" : "Preset card indefinite duration"
++      "comment" : "Preset card indefinite duration",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "至关闭"
++          }
++        }
++      }
+     },
+     "Update Available" : {
+       "comment" : "Description of informational software update needed",
+@@ -13711,7 +14038,15 @@
+       }
+     },
+     "Walking" : {
+-      "comment" : "walking activity preset name"
++      "comment" : "walking activity preset name",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "步行"
++          }
++        }
++      }
+     },
+     "Workout" : {
+       "comment" : "Title for workout mode",
+@@ -14294,7 +14629,15 @@
+       }
+     },
+     "Your Insulin Sensitivity Factor (ISF) is the mg/dL drop in glucose expected from one unit of insulin." : {
+-      "comment" : "Descriptive text for insulin sensitivity"
++      "comment" : "Descriptive text for insulin sensitivity",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的胰岛素敏感系数（ISF）是每单位胰岛素预计能使血糖下降的 mg/dL 数值。"
++          }
++        }
++      }
+     }
+   },
+   "version" : "1.0"
 diff --git a/LoopKit/Service/Remote/RemoteActionDelegate.swift b/LoopKit/Service/Remote/RemoteActionDelegate.swift
 index 8f824906..2042d544 100644
 --- a/LoopKit/Service/Remote/RemoteActionDelegate.swift
@@ -119,3 +801,1671 @@ index 8f824906..2042d544 100644
 +    func enactRemoteDosingStrategy(automaticDosingStrategy: AutomaticDosingStrategy) async throws
 +    //wp end
  }
+diff --git a/LoopKitUI/Resources/Localizable.xcstrings b/LoopKitUI/Resources/Localizable.xcstrings
+index 2c7f71b9..bb7d0d9d 100644
+--- a/LoopKitUI/Resources/Localizable.xcstrings
++++ b/LoopKitUI/Resources/Localizable.xcstrings
+@@ -132,16 +132,44 @@
+       }
+     },
+     " " : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " "
++          }
++        }
++      }
+     },
+     " - " : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " - "
++          }
++        }
++      }
+     },
+     " %@" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " %@"
++          }
++        }
++      }
+     },
+     " Extra Training Needed" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 需要额外训练"
++          }
++        }
++      }
+     },
+     " higher " : {
+       "comment" : "Information about workout range relative to correction range",
+@@ -288,10 +316,24 @@
+       }
+     },
+     " indicates you need more insulin" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 表示你需要更多胰岛素"
++          }
++        }
++      }
+     },
+     " less " : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更少"
++          }
++        }
++      }
+     },
+     " lower " : {
+       "comment" : "Information about pre-meal range relative to correction range",
+@@ -437,22 +479,65 @@
+       }
+     },
+     " more " : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更多"
++          }
++        }
++      }
+     },
+     " of scheduled" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "（相对计划值）"
++          }
++        }
++      }
+     },
+     " Overall insulin cannot be adjusted for this preset" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 此预设无法调整总体胰岛素"
++          }
++        }
++      }
+     },
+     " setting. For this range, choose the specific glucose value (or range of values) that you want %1$@ to aim for in adjusting your insulin delivery. This will be a narrower range." : {
+-      "comment" : "Information about correction range format (1: app name)"
++      "comment" : "Information about correction range format (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 设置。对于此范围，请选择你希望 %1$@ 在调整胰岛素输注时瞄准的具体血糖值（或数值区间）。这将是一个更窄的范围。"
++          }
++        }
++      }
+     },
+     " tells the system you need less insulin" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 告诉系统你需要更少的胰岛素"
++          }
++        }
++      }
+     },
+     " than your typical correction range." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 比你通常的校正范围。"
++          }
++        }
++      }
+     },
+     "-" : {
+       "comment" : "Separator between min and max glucose values",
+@@ -901,7 +986,14 @@
+       }
+     },
+     ": " : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "："
++          }
++        }
++      }
+     },
+     "···" : {
+       "extractionState" : "stale",
+@@ -2784,10 +2876,26 @@
+       }
+     },
+     "%1$@ will always ask you to confirm before turning on a scheduled preset." : {
+-      "comment" : "Scheduled preset confirmation note (1: app name)"
++      "comment" : "Scheduled preset confirmation note (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%1$@ 在开启计划预设前总会要求你确认。"
++          }
++        }
++      }
+     },
+     "%1$@ will set your correction range to 110 mg/dL or higher when this preset is enabled." : {
+-      "comment" : "The format string for the high insulin needs preset warning text on the preset preview screen. (1: app name)"
++      "comment" : "The format string for the high insulin needs preset warning text on the preset preview screen. (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "启用此预设时，%1$@ 会将你的校正范围设为 110 mg/dL 或更高。"
++          }
++        }
++      }
+     },
+     "%1$@: <b>%2$@</b> %3$@" : {
+       "comment" : "Description of a basal temp basal dose entry (1: title for dose type, 2: value (? if no value) in bold, 3: unit)\nDescription of a bolus dose entry (1: title for dose type, 2: value (? if no value) in bold, 3: unit)",
+@@ -3083,7 +3191,15 @@
+       }
+     },
+     "%1$@%2$@" : {
+-      "comment" : "The format for a preset symbol and name (1: symbol)(2: name)"
++      "comment" : "The format for a preset symbol and name (1: symbol)(2: name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%1$@%2$@"
++          }
++        }
++      }
+     },
+     "%1$@%2$@%3$@" : {
+       "comment" : "String format for value with units (1: value, 2: separator, 3: units)",
+@@ -3668,7 +3784,14 @@
+       }
+     },
+     "%lld%%" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "%lld%%"
++          }
++        }
++      }
+     },
+     "🍽" : {
+       "localizations" : {
+@@ -4243,7 +4366,14 @@
+       }
+     },
+     "A Correction Range is different. The Correction Range is a " : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "校正范围则不同。校正范围是一个 "
++          }
++        }
++      }
+     },
+     "A Correction Range is different. This will be a narrower range." : {
+       "comment" : "Information about differences between target range and correction range",
+@@ -4390,7 +4520,14 @@
+       }
+     },
+     "A percentage " : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "一个百分比 "
++          }
++        }
++      }
+     },
+     "A value of 0 U/hr means you will be scheduled to receive no basal insulin." : {
+       "comment" : "Warning text for basal rate of 0 U/hr",
+@@ -4536,7 +4673,14 @@
+       }
+     },
+     "above 100%" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "高于 100%"
++          }
++        }
++      }
+     },
+     "Absorption Time" : {
+       "comment" : "Title of the carb entry absorption time cell",
+@@ -5428,10 +5572,24 @@
+       }
+     },
+     "Adjust Overall Insulin Needs" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "调整总体胰岛素需求"
++          }
++        }
++      }
+     },
+     "Adjusted Range" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "调整后的范围"
++          }
++        }
++      }
+     },
+     "Afrezza" : {
+       "comment" : "Title of insulin model preset - afrezza",
+@@ -5577,18 +5735,48 @@
+       }
+     },
+     "All App Sounds Muted" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已静音所有应用声音"
++          }
++        }
++      }
+     },
+     "All app sounds will be muted" : {
+       "comment" : "A warning message displayed in the \"Mute All App Sounds\" sheet, explaining that all app sounds will be muted.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "将静音所有应用声音"
++          }
++        }
++      }
+     },
+     "All app sounds, including sounds for all critical alerts such as Urgent Low, Sensor Fail, Pump Expiration, and others will NOT sound for your selected time duration." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在你选定的时间段内，所有应用声音都将不会响起，包括紧急低血糖、传感器故障、泵到期等所有关键警报的声音。"
++          }
++        }
++      }
+     },
+     "All sounds from the app, including alerts such as Urgent Low, Sensor Fail, Pump Expiration, and others will NOT sound for your selected time duration." : {
+       "comment" : "A message within a callout that explains that all app sounds, including critical alerts, will be muted for a selected duration.",
+-      "isCommentAutoGenerated" : true
++      "isCommentAutoGenerated" : true,
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在你选定的时间段内，来自应用的所有声音都将不会响起，包括紧急低血糖、传感器故障、泵到期等警报。"
++          }
++        }
++      }
+     },
+     "Are you sure you want to delete all history entries?" : {
+       "comment" : "Action sheet confirmation message for pump history deletion",
+@@ -5891,13 +6079,34 @@
+       }
+     },
+     "Are you sure you want to delete this preset?" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "确定要删除此预设吗？"
++          }
++        }
++      }
+     },
+     "ask yourself, does my body need more or less than usual?" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "问问自己：我的身体比平时需要更多还是更少？"
++          }
++        }
++      }
+     },
+     "At 100%, your settings remain unchanged from your scheduled settings." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在 100% 时，你的设置与计划设置保持一致。"
++          }
++        }
++      }
+     },
+     "Authenticate to save therapy setting" : {
+       "comment" : "Authentication hint string for therapy settings",
+@@ -6794,10 +7003,24 @@
+       }
+     },
+     "Before deciding to adjust your overall insulin," : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在决定调整总体胰岛素之前，"
++          }
++        }
++      }
+     },
+     "below 100%" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "低于 100%"
++          }
++        }
++      }
+     },
+     "Cancel" : {
+       "comment" : "Button text to cancel adding a new schedule item\nCancel editing settings button title\nThe text for the scheduled custom preset cancel button",
+@@ -7403,7 +7626,14 @@
+       }
+     },
+     "Caution" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "注意"
++          }
++        }
++      }
+     },
+     "Changes will only apply this time you enable the override. The default settings of %@ will not be affected." : {
+       "comment" : "Footer text for customizing an override from a preset (1: preset name)",
+@@ -7699,7 +7929,14 @@
+       }
+     },
+     "Changing the percentage will affect:" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更改百分比将影响："
++          }
++        }
++      }
+     },
+     "Choose a longer absorption time for larger meals, or those containing fats and proteins. This is only guidance to the algorithm and need not be exact." : {
+       "comment" : "Carb entry section footer text explaining absorption time",
+@@ -8769,10 +9006,24 @@
+       }
+     },
+     "Complete the training to change this preset’s settings." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "完成训练以更改此预设的设置。"
++          }
++        }
++      }
+     },
+     "Complete the training to change this preset’s settings. You can still update the details." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "完成训练以更改此预设的设置。你仍可更新详细信息。"
++          }
++        }
++      }
+     },
+     "Completed." : {
+       "comment" : "Accessibility label for ProgressIndicatorView when showIndeterminantProgress",
+@@ -9067,7 +9318,14 @@
+       }
+     },
+     "Confirm Preset" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "确认预设"
++          }
++        }
++      }
+     },
+     "Confirm Setting" : {
+       "comment" : "The button text for confirming the setting",
+@@ -9350,10 +9608,26 @@
+       }
+     },
+     "Continue with adjusted range" : {
+-      "comment" : "Continue button for new preset range edit when range edited"
++      "comment" : "Continue button for new preset range edit when range edited",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用调整后的范围继续"
++          }
++        }
++      }
+     },
+     "Continue with scheduled range" : {
+-      "comment" : "Continue button for new preset range edit when range is not edited"
++      "comment" : "Continue button for new preset range edit when range is not edited",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用计划范围继续"
++          }
++        }
++      }
+     },
+     "Correct the highlighted unsupported value(s)." : {
+       "comment" : "Instruction to correct unsupported value",
+@@ -9499,10 +9773,24 @@
+       }
+     },
+     "Correction Range" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "校正范围"
++          }
++        }
++      }
+     },
+     "Correction range adjustment when preset is enabled" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "启用预设时的校正范围调整"
++          }
++        }
++      }
+     },
+     "Correction range is the blood glucose range that you would like Loop to correct to." : {
+       "comment" : "The section footer of correction range schedule",
+@@ -9797,13 +10085,34 @@
+       }
+     },
+     "Create a Preset" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "创建预设"
++          }
++        }
++      }
+     },
+     "Critical alerts will be muted" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "关键警报将被静音"
++          }
++        }
++      }
+     },
+     "Currently Scheduled Correction Range" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "当前计划的校正范围"
++          }
++        }
++      }
+     },
+     "Custom" : {
+       "comment" : "The text for a custom preset\nTitle for custom override history cell",
+@@ -10848,7 +11157,14 @@
+       }
+     },
+     "Delete Preset" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "删除预设"
++          }
++        }
++      }
+     },
+     "Delivery Limits" : {
+       "comment" : "Title text for crossed thresholds guardrail warning",
+@@ -12021,7 +12337,14 @@
+       }
+     },
+     "Edit Preset" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "编辑预设"
++          }
++        }
++      }
+     },
+     "Editing affects only the active override. The default settings of %@ will not be affected." : {
+       "comment" : "Footer text for editing an active override (1: preset name)",
+@@ -14078,10 +14401,26 @@
+       }
+     },
+     "For presets with insulin needs of 170%% or greater, %1$@ will set your correction range to 110 mg/dL or higher when this is preset enabled." : {
+-      "comment" : "The format string for the high insulin needs preset warning text. (1: app name)"
++      "comment" : "The format string for the high insulin needs preset warning text. (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "对于胰岛素需求为 170%% 或更高的预设，启用时 %1$@ 会将你的校正范围设为 110 mg/dL 或更高。"
++          }
++        }
++      }
+     },
+     "For presets with insulin needs of 170%% or greater, %1$@ will set your correction range to 110 mg/dL or higher when this preset is enabled." : {
+-      "comment" : "The format string for the high insulin needs preset warning text. (1: app name)"
++      "comment" : "The format string for the high insulin needs preset warning text. (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "对于胰岛素需求为 170%% 或更高的预设，启用此预设时 %1$@ 会将你的校正范围设为 110 mg/dL 或更高。"
++          }
++        }
++      }
+     },
+     "For this range, choose the specific glucose value (or range of values) that you want %1$@ to aim for in adjusting your basal insulin." : {
+       "comment" : "Information about correction range format (1: app name)",
+@@ -15803,7 +16142,14 @@
+       }
+     },
+     "higher" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更高"
++          }
++        }
++      }
+     },
+     "History" : {
+       "comment" : "The text for the override history",
+@@ -15950,10 +16296,24 @@
+       }
+     },
+     "hour" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "小时"
++          }
++        }
++      }
+     },
+     "Hours" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "小时"
++          }
++        }
++      }
+     },
+     "If these settings look good to you, tap Save Settings to continue." : {
+       "comment" : "Description of how to interact with summary screen",
+@@ -16099,7 +16459,14 @@
+       }
+     },
+     "If vibration is enabled on your device, all alerts will still vibrate. Your insulin pump and CGM hardware may still sound." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "如果你的设备启用了振动，所有警报仍会振动。你的胰岛素泵和 CGM 硬件仍可能发出声音。"
++          }
++        }
++      }
+     },
+     "If you've used a CGM before, you're likely familiar with target range as a wide range of values you'd like for your glucose notification alerts, such as 70-180 mg/dL or 90-200 mg/dL." : {
+       "comment" : "Information about target range",
+@@ -16246,7 +16613,15 @@
+       }
+     },
+     "If you’ve used CGM before, you’re likely familiar with target range as a wide range of values you’d like for your glucose notification alerts, such as 70-180 mg/dL or 90-200 mg/dL, etc." : {
+-      "comment" : "Information about target range"
++      "comment" : "Information about target range",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "如果你以前用过 CGM，你可能熟悉目标范围——即你希望用于血糖通知警报的较宽数值区间，例如 70-180 mg/dL 或 90-200 mg/dL 等。"
++          }
++        }
++      }
+     },
+     "info" : {
+       "localizations" : {
+@@ -16391,10 +16766,24 @@
+       }
+     },
+     "Insulin adjustment is above the safety threshold" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "胰岛素调整高于安全阈值"
++          }
++        }
++      }
+     },
+     "Insulin adjustment is below the safety threshold" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "胰岛素调整低于安全阈值"
++          }
++        }
++      }
+     },
+     "Insulin Model" : {
+       "comment" : "Title text for insulin model",
+@@ -16845,7 +17234,14 @@
+       }
+     },
+     "insulin than usual." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "胰岛素（相比平时）。"
++          }
++        }
++      }
+     },
+     "Interrupted %1$@: <b>%2$@</b> of %3$@ %4$@" : {
+       "comment" : "Description of an interrupted bolus dose entry (1: title for dose type, 2: value (? if no value) in bold, 3: programmed value (? if no value), 4: unit)",
+@@ -16992,7 +17388,14 @@
+       }
+     },
+     "Invalid Start Time" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开始时间无效"
++          }
++        }
++      }
+     },
+     "It can be set as low as %1$@. It can be set as high as %2$@." : {
+       "comment" : "Guardrail info text format",
+@@ -18427,7 +18830,14 @@
+       }
+     },
+     "lower" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更低"
++          }
++        }
++      }
+     },
+     "Lyumjev" : {
+       "comment" : "Title of insulin model preset - lyumjev",
+@@ -18872,7 +19282,15 @@
+       }
+     },
+     "Maximum Basal Rate is the automatically adjusted basal rate that %1$@ is allowed to enact to help reach your Correction Range." : {
+-      "comment" : "Information about maximum basal rate (1: app name)"
++      "comment" : "Information about maximum basal rate (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "最大基础率是 %1$@ 为帮助达到校正范围而被允许自动调整并执行的最高基础率。"
++          }
++        }
++      }
+     },
+     "Maximum Basal Rate is the maximum automatically adjusted basal rate that %1$@ is allowed to enact to help reach your correction range." : {
+       "comment" : "Information about maximum basal rate (1: app name)",
+@@ -19622,7 +20040,14 @@
+       }
+     },
+     "Minutes" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "分钟"
++          }
++        }
++      }
+     },
+     "More Info" : {
+       "comment" : "Alert action title to open error help",
+@@ -19774,7 +20199,14 @@
+       }
+     },
+     "Mute All App Sounds" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "静音所有应用声音"
++          }
++        }
++      }
+     },
+     "Name" : {
+       "comment" : "The text for the custom preset name setting",
+@@ -19932,7 +20364,15 @@
+       }
+     },
+     "Never" : {
+-      "comment" : "Repeat option never for a preset schedule"
++      "comment" : "Repeat option never for a preset schedule",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "从不"
++          }
++        }
++      }
+     },
+     "New Entry" : {
+       "comment" : "Title for mini-modal to add a new schedule entry",
+@@ -20227,7 +20667,14 @@
+       }
+     },
+     "Next Date" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "下一个日期"
++          }
++        }
++      }
+     },
+     "No Basal Insulin" : {
+       "comment" : "Title text for the zero basal rate warning",
+@@ -20373,13 +20820,34 @@
+       }
+     },
+     "No change to insulin settings." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "胰岛素设置无变化。"
++          }
++        }
++      }
+     },
+     "Note" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "注意"
++          }
++        }
++      }
+     },
+     "Note: These example values are based on your current settings. Values may be different when you enable the preset." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "注意：这些示例值基于你当前的设置。启用预设时数值可能不同。"
++          }
++        }
++      }
+     },
+     "Nothing to See Here!" : {
+       "localizations" : {
+@@ -20524,10 +20992,24 @@
+       }
+     },
+     "of scheduled" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "（相对计划值）"
++          }
++        }
++      }
+     },
+     "or" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "或"
++          }
++        }
++      }
+     },
+     "Other" : {
+       "comment" : "Section title for no-carb food\nThe title for custom preset emoji miscellaneous section",
+@@ -20679,7 +21161,14 @@
+       }
+     },
+     "Overall Insulin" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "总体胰岛素"
++          }
++        }
++      }
+     },
+     "Overall Insulin Needs" : {
+       "comment" : "The title text for the insulin sensitivity scaling setting",
+@@ -20831,7 +21320,14 @@
+       }
+     },
+     "Overall insulin should be adjusted when your body needs more or less insulin than usual." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "当你的身体比平时需要更多或更少的胰岛素时，应调整总体胰岛素。"
++          }
++        }
++      }
+     },
+     "Override History" : {
+       "comment" : "Title for override history view",
+@@ -22747,16 +23243,45 @@
+       }
+     },
+     "Recommended starting values" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "推荐的起始值"
++          }
++        }
++      }
+     },
+     "Repeat" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "重复"
++          }
++        }
++      }
+     },
+     "Repeat weekly on" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每周重复于"
++          }
++        }
++      }
+     },
+     "Repeats weekly on %1$@ at %2$@" : {
+-      "comment" : "preset weekly repeat footer (1: repeat day(s)) (2: repeat time)"
++      "comment" : "preset weekly repeat footer (1: repeat day(s)) (2: repeat time)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每周%1$@ %2$@重复"
++          }
++        }
++      }
+     },
+     "Required" : {
+       "comment" : "The default placeholder string for a credential",
+@@ -23362,7 +23887,14 @@
+       }
+     },
+     "Revert to recommended values" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "恢复为推荐值"
++          }
++        }
++      }
+     },
+     "Review and Save Settings" : {
+       "comment" : "title for summary description section",
+@@ -23508,10 +24040,24 @@
+       }
+     },
+     "Review Settings" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "检查设置"
++          }
++        }
++      }
+     },
+     "Review your preset settings below. To make any changes, navigate back to the setting you’d like to edit. You can edit these settings after saving your preset as well." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "请在下方检查你的预设设置。如需更改，请返回你想编辑的设置项。保存预设后你仍可编辑这些设置。"
++          }
++        }
++      }
+     },
+     "Review your therapy settings below. If you’d like to edit any of these settings, tap Back to go back to that screen." : {
+       "comment" : "Description of how to interact with summary screen",
+@@ -23806,7 +24352,14 @@
+       }
+     },
+     "safety" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "安全"
++          }
++        }
++      }
+     },
+     "Save" : {
+       "comment" : "Button text for saving glucose correction range schedule\nButton text for saving insulin sensitivity schedule\nThe button text for saving on a configuration page",
+@@ -23946,7 +24499,14 @@
+       }
+     },
+     "Save and Schedule for Later" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "保存并计划稍后启用"
++          }
++        }
++      }
+     },
+     "Save Basal Rates?" : {
+       "comment" : "Alert title for confirming basal rates outside the recommended range",
+@@ -24521,7 +25081,14 @@
+       }
+     },
+     "Save for Later" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "保存以备稍后使用"
++          }
++        }
++      }
+     },
+     "Save Glucose Safety Limit?" : {
+       "comment" : "Alert title for confirming a glucose safety limit outside the recommended range",
+@@ -24954,7 +25521,14 @@
+       }
+     },
+     "Save Preset" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "保存预设"
++          }
++        }
++      }
+     },
+     "Save Workout Range?" : {
+       "comment" : "Alert title for confirming workout range overrides outside the recommended range",
+@@ -25250,7 +25824,14 @@
+       }
+     },
+     "Schedule" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "计划"
++          }
++        }
++      }
+     },
+     "SCHEDULED OVERRIDE" : {
+       "comment" : "The section header text for a scheduled override",
+@@ -25547,16 +26128,44 @@
+       }
+     },
+     "Scheduled Range" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "计划范围"
++          }
++        }
++      }
+     },
+     "Scheduled reminder" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "计划提醒"
++          }
++        }
++      }
+     },
+     "Select" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "选择"
++          }
++        }
++      }
+     },
+     "Select Days" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "选择日期"
++          }
++        }
++      }
+     },
+     "Selected" : {
+       "localizations" : {
+@@ -25701,19 +26310,54 @@
+       }
+     },
+     "Selected days" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已选日期"
++          }
++        }
++      }
+     },
+     "Set an Adjusted Correction Range" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "设置调整后的校正范围"
++          }
++        }
++      }
+     },
+     "Set your correction range" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "设置你的校正范围"
++          }
++        }
++      }
+     },
+     "Set your overall insulin needs" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "设置你的总体胰岛素需求"
++          }
++        }
++      }
+     },
+     "Settings Impact" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "设置影响"
++          }
++        }
++      }
+     },
+     "Slow" : {
+       "comment" : "Section title for slow absorbing food",
+@@ -26008,13 +26652,34 @@
+       }
+     },
+     "Start at" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开始于"
++          }
++        }
++      }
+     },
+     "Start Date" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开始日期"
++          }
++        }
++      }
+     },
+     "Start Preset" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "启用预设"
++          }
++        }
++      }
+     },
+     "Start Time" : {
+       "comment" : "The text for the custom preset start time",
+@@ -26166,10 +26831,24 @@
+       }
+     },
+     "Start time must be at least 1 minute in the future." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开始时间必须至少在 1 分钟之后。"
++          }
++        }
++      }
+     },
+     "Start Training" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开始训练"
++          }
++        }
++      }
+     },
+     "Starting Temp Basal" : {
+       "comment" : "Title text for suspend resume button when temp basal starting",
+@@ -28074,7 +28753,15 @@
+       }
+     },
+     "Temporarily silence all sounds from the %1$@ app." : {
+-      "comment" : "Silence all app sounds description (1: appName)"
++      "comment" : "Silence all app sounds description (1: appName)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "临时静音来自 %1$@ 应用的所有声音。"
++          }
++        }
++      }
+     },
+     "Temporary Override" : {
+       "comment" : "The title for the override selection screen",
+@@ -29536,10 +30223,26 @@
+       }
+     },
+     "The schedule starts at midnight and cannot equal 0 U/day." : {
+-      "comment" : "Information about basal rate scheduling"
++      "comment" : "Information about basal rate scheduling",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "计划从午夜开始，且不能等于 0 U/天。"
++          }
++        }
++      }
+     },
+     "The sum of your basal rates cannot equal 0 U/day. Please adjust your schedule to a value above zero." : {
+-      "comment" : "Instruction to correct zero schedule"
++      "comment" : "Instruction to correct zero schedule",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的基础率总和不能等于 0 U/天。请将计划调整为大于零的值。"
++          }
++        }
++      }
+     },
+     "Therapy Settings" : {
+       "comment" : "Therapy Settings screen title",
+@@ -29685,10 +30388,24 @@
+       }
+     },
+     "This adjustment will make your settings stronger." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "此调整会使你的设置更强。"
++          }
++        }
++      }
+     },
+     "This adjustment will make your settings weaker." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "此调整会使你的设置更弱。"
++          }
++        }
++      }
+     },
+     "This model assumes peak insulin activity at 19 minutes." : {
+       "comment" : "Subtitle of afrezza preset",
+@@ -30405,7 +31122,15 @@
+       }
+     },
+     "This setting will also determine a safety limit for automatic delivery to keep the amount of active insulin below twice your maximum bolus." : {
+-      "comment" : "Information about maximum bolus part 2"
++      "comment" : "Information about maximum bolus part 2",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "此设置还将决定自动输注的安全上限，使活性胰岛素量保持在最大剂量的两倍以下。"
++          }
++        }
++      }
+     },
+     "This setting will also determine a safety limit for automatic dosing. %1$@ will limit automatic delivery to keep the amount of active insulin below twice your maximum bolus." : {
+       "comment" : "Information about maximum automated insulin on board (1: app name)",
+@@ -30987,7 +31712,14 @@
+       }
+     },
+     "Tip" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "提示"
++          }
++        }
++      }
+     },
+     "To be implemented" : {
+       "localizations" : {
+@@ -31132,16 +31864,44 @@
+       }
+     },
+     "To help avoid lows, set a range " : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "为帮助避免低血糖，请设置一个范围 "
++          }
++        }
++      }
+     },
+     "To help avoid post-meal highs, set a range " : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "为帮助避免餐后高血糖，请设置一个范围 "
++          }
++        }
++      }
+     },
+     "To reduce the risk of highs or lows, you may want to set an adjusted range if you think your glucose will vary more than usual." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "为降低高血糖或低血糖的风险，如果你认为血糖波动会比平时大，可以设置一个调整后的范围。"
++          }
++        }
++      }
+     },
+     "Toggle off for a single use preset" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "关闭以设为单次使用预设"
++          }
++        }
++      }
+     },
+     "Total" : {
+       "comment" : "The text indicating Total for Daily Schedule Basal",
+@@ -32437,25 +33197,74 @@
+       }
+     },
+     "until " : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "直到 "
++          }
++        }
++      }
+     },
+     "Until I turn off" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "直到我关闭"
++          }
++        }
++      }
+     },
+     "Use Scheduled Range" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用计划范围"
++          }
++        }
++      }
+     },
+     "Use the + and - buttons to set whether you need" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用 + 和 - 按钮来设置你需要"
++          }
++        }
++      }
+     },
+     "Using this adjustment may lead to an over delivery of insulin and result in serious injury. Monitor your glucose while this preset is in use." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用此调整可能导致胰岛素过量输注并造成严重伤害。使用此预设期间请监测你的血糖。"
++          }
++        }
++      }
+     },
+     "Using this adjustment may lead to an over delivery of insulin. Monitor your glucose while this preset is in use." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用此调整可能导致胰岛素过量输注。使用此预设期间请监测你的血糖。"
++          }
++        }
++      }
+     },
+     "Using this adjustment may lead to an under delivery of insulin. Monitor your glucose while this preset is in use." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用此调整可能导致胰岛素输注不足。使用此预设期间请监测你的血糖。"
++          }
++        }
++      }
+     },
+     "Value" : {
+       "comment" : "Placeholder text until value is entered",
+@@ -33192,13 +34001,35 @@
+       }
+     },
+     "Weekly" : {
+-      "comment" : "Repeat option weekly for a preset schedule"
++      "comment" : "Repeat option weekly for a preset schedule",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每周"
++          }
++        }
++      }
+     },
+     "With correction range set to using your scheduled range, overall insulin needs adjustment is required." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "当校正范围设为使用你的计划范围时，需要调整总体胰岛素需求。"
++          }
++        }
++      }
+     },
+     "With overall insulin needs at 100%, an adjusted correction range is required." : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "当总体胰岛素需求为 100% 时，需要一个调整后的校正范围。"
++          }
++        }
++      }
+     },
+     "Work with your healthcare provider to choose a value that is higher than your highest scheduled basal rate, but as conservative or aggressive as you feel comfortable." : {
+       "comment" : "Disclaimer",
+@@ -33782,10 +34613,25 @@
+       }
+     },
+     "Yes, Delete" : {
+-
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "是的，删除"
++          }
++        }
++      }
+     },
+     "You can add different Basal Rates for different times of day by using the ➕." : {
+-      "comment" : "Information about adding basal rates for different times of day"
++      "comment" : "Information about adding basal rates for different times of day",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你可以使用 ➕ 为一天中的不同时段添加不同的基础率。"
++          }
++        }
++      }
+     },
+     "You can add different carb ratios for different times of day by using the ➕." : {
+       "comment" : "Description of how to add a ratio",
+@@ -35226,7 +36072,15 @@
+       }
+     },
+     "Your healthcare provider can help you choose a Correction Range that’s right for you." : {
+-      "comment" : "Disclaimer"
++      "comment" : "Disclaimer",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的医疗保健提供者可以帮你选择适合你的校正范围。"
++          }
++        }
++      }
+     },
+     "Your Insulin Sensitivity Factor (ISF) is the drop in glucose expected from one unit of insulin." : {
+       "comment" : "Description of insulin sensitivity factor",
+@@ -35372,7 +36226,15 @@
+       }
+     },
+     "Your Pre-Meal Preset should be the glucose value (or range of values) you want %1$@ to target by the time you take your first bite of your meal. This correction range will be in effect when you activate the Pre-Meal preset." : {
+-      "comment" : "Information about pre-meal range format (1: app name)"
++      "comment" : "Information about pre-meal range format (1: app name)",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "你的餐前预设应为你希望在吃第一口饭时 %1$@ 所瞄准的血糖值（或数值区间）。激活餐前预设时此校正范围将生效。"
++          }
++        }
++      }
+     },
+     "Your Pre-Meal Range should be the glucose value (or range of values) you want %1$@ to target by the time you take your first bite of your meal. This range will be in effect when you activate the Pre-Meal Preset button." : {
+       "comment" : "Information about pre-meal range format (1: app name)",

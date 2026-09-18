@@ -71,19 +71,91 @@ index 50c53c5..04d5b75 100644
      }
      
 diff --git a/NightscoutServiceKit/Localizable.xcstrings b/NightscoutServiceKit/Localizable.xcstrings
-index 8132f96..3804904 100644
+index 8132f96..d4dc846 100644
 --- a/NightscoutServiceKit/Localizable.xcstrings
 +++ b/NightscoutServiceKit/Localizable.xcstrings
-@@ -4,6 +4,9 @@
+@@ -2,7 +2,15 @@
+   "sourceLanguage" : "en",
+   "strings" : {
      "Activity" : {
-       "comment" : "Suffix added to the name of an activity override"
+-      "comment" : "Suffix added to the name of an activity override"
++      "comment" : "Suffix added to the name of an activity override",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "活动"
++          }
++        }
++      }
      },
-+    "AutomaticDosingStrategy" : {
-+      "comment" : "The remote action name for AutomaticDosingStrategy"
-+    },
      "Bolus Entry" : {
        "comment" : "The remote action name for Bolus Entry",
-       "localizations" : {
+@@ -60,6 +68,12 @@
+             "state" : "translated",
+             "value" : "Ввод болюса"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "大剂量录入"
++          }
+         }
+       }
+     },
+@@ -458,6 +472,12 @@
+             "state" : "translated",
+             "value" : "Истек срок действия команды"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已过期"
++          }
+         }
+       }
+     },
+@@ -636,6 +656,12 @@
+             "state" : "translated",
+             "value" : "Отсутствует одноразовый пароль"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "缺少一次性验证码 (OTP)"
++          }
+         }
+       }
+     },
+@@ -1064,6 +1090,12 @@
+             "state" : "translated",
+             "value" : "Ед"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "U"
++          }
+         }
+       }
+     },
+@@ -1123,6 +1155,12 @@
+             "state" : "translated",
+             "value" : "Необработанное уведомление: %1$@"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "未处理通知：%1$@"
++          }
+         }
+       }
+     },
 diff --git a/NightscoutServiceKit/NightscoutService.swift b/NightscoutServiceKit/NightscoutService.swift
 index 3fccce4..fecf4df 100644
 --- a/NightscoutServiceKit/NightscoutService.swift
@@ -422,4 +494,73 @@ index 634eb4e..a3c477e 100644
 +            //wp end
              try validateOTP(remoteNotification: remoteNotification)
          }
+     }
+diff --git a/NightscoutServiceKitUI/Localizable.xcstrings b/NightscoutServiceKitUI/Localizable.xcstrings
+index a25e264..51156dd 100644
+--- a/NightscoutServiceKitUI/Localizable.xcstrings
++++ b/NightscoutServiceKitUI/Localizable.xcstrings
+@@ -696,6 +696,12 @@
+             "state" : "translated",
+             "value" : "Tamamlandı"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "完成"
++          }
+         }
+       }
+     },
+@@ -1147,6 +1153,12 @@
+             "state" : "translated",
+             "value" : "Nightscout"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "Nightscout"
++          }
+         }
+       }
+     },
+@@ -1236,6 +1248,12 @@
+             "state" : "translated",
+             "value" : "Nightscout Oturum Açma"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "Nightscout 登录"
++          }
+         }
+       }
+     },
+@@ -1752,6 +1770,12 @@
+             "state" : "translated",
+             "value" : "Gizli Anahtarı Sıfırla"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "重置密钥"
++          }
+         }
+       }
+     },
+@@ -2101,6 +2125,12 @@
+             "state" : "translated",
+             "value" : "URL"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "URL"
++          }
+         }
+       }
      }

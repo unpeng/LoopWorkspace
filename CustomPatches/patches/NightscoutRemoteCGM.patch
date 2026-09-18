@@ -11,3 +11,155 @@ index c7fd49e..5348e68 100644
  			requirement = {
  				branch = main;
  				kind = branch;
+diff --git a/NightscoutRemoteCGM/Localizable.xcstrings b/NightscoutRemoteCGM/Localizable.xcstrings
+index cf7bec8..19171a3 100644
+--- a/NightscoutRemoteCGM/Localizable.xcstrings
++++ b/NightscoutRemoteCGM/Localizable.xcstrings
+@@ -2,7 +2,15 @@
+   "sourceLanguage" : "en",
+   "strings" : {
+     "An API Secret is only needed for Nightscout sites that require authentication to read. Leave it blank for sites that are open for reading." : {
+-      "comment" : "Helper message explaining that the Nightscout API secret is optional for sites open for reading"
++      "comment" : "Helper message explaining that the Nightscout API secret is optional for sites open for reading",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "只有需要身份验证才能读取的 Nightscout 站点才需要 API 密钥。对于开放读取的站点，请留空。"
++          }
++        }
++      }
+     },
+     "API Secret" : {
+       "comment" : "The title of the Nightscout API secret credential",
+@@ -588,6 +596,12 @@
+             "state" : "translated",
+             "value" : "Kapat"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "关闭"
++          }
+         }
+       }
+     },
+@@ -835,6 +849,12 @@
+             "state" : "translated",
+             "value" : "Готово"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "完成"
++          }
+         }
+       }
+     },
+@@ -924,11 +944,25 @@
+             "state" : "translated",
+             "value" : "Nightscout Uzak CGM"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "Nightscout 远程 CGM"
++          }
+         }
+       }
+     },
+     "Optional" : {
+-      "comment" : "Placeholder indicating the Nightscout API secret is optional"
++      "comment" : "Placeholder indicating the Nightscout API secret is optional",
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "可选"
++          }
++        }
++      }
+     },
+     "Select Upload option if you are using a source other than a remote service." : {
+       "extractionState" : "manual",
+@@ -986,6 +1020,12 @@
+             "state" : "translated",
+             "value" : "Выберите параметр «Загрузить», если вы используете источник, отличный от удаленной службы."
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "如果你使用的是远程服务以外的数据源，请选择上传选项。"
++          }
+         }
+       }
+     },
+@@ -1044,6 +1084,12 @@
+             "state" : "translated",
+             "value" : "Источник Nightscout Remote CGM будет использовать ваши данные CGM из Nightscout и сделает их доступными в Loop. Это полезно, если вы не можете добавить ваше CGM-устройство в Loop, но ваши CGM-данные доступны в Nightscout.\n\nНе рекомендуется использовать его для терапии из-за риска перебоев в сети и отсутствия фоновой поддержки приложения."
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "服务说明"
++          }
+         }
+       }
+     },
+@@ -1239,6 +1285,12 @@
+             "state" : "translated",
+             "value" : "Загружать в удаленный сервис (Nightscout)"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "上传到远程服务"
++          }
+         }
+       }
+     },
+@@ -1298,6 +1350,12 @@
+             "state" : "translated",
+             "value" : "URL"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "URL"
++          }
+         }
+       }
+     },
+@@ -1363,6 +1421,12 @@
+             "state" : "translated",
+             "value" : "Использовать фильтр глюкозы"
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用血糖滤波"
++          }
+         }
+       }
+     },
+@@ -1428,6 +1492,12 @@
+             "state" : "translated",
+             "value" : "Использовать фильтр Калмана, чтобы сгладить шумы сенсора."
+           }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用卡尔曼滤波平滑传感器噪声。"
++          }
+         }
+       }
+     }
