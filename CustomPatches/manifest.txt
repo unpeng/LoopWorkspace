@@ -1,13 +1,12 @@
 # 自定义改动清单 - 由 save.sh 自动生成，请勿手工编辑
-# 生成时间: 2026-09-18 13:18:28
-# 主仓库基线HEAD: cba9efcd73fd8245fcadd7c266f361fd39cc7c5d
+# 生成时间: 2026-09-18 17:28:15
+# 主仓库基线HEAD: 1a7997c765fedd93df6aeef8617980c9d98727db
 # Workspace依赖锁: LoopWorkspace.xcworkspace/xcshareddata/swiftpm/Package.resolved
 # Workspace依赖锁快照: CustomPatches/locks/Package.resolved
-# Workspace依赖锁SHA256: bf24e69a60af630b3ffdc2d4ecda021e17e2592e7ca267fea447ccdcd7c94fbc
+# Workspace依赖锁SHA256: ed5c2ebbb1cf925749066985d9bd4ad38017c1ce2f4f10a177b8c2176f32f4dc
 # 字段: 子模块路径 <TAB> 生成补丁时的HEAD <TAB> 主仓库记录的commit <TAB> 远端地址
-Loop	2b4cd9a2feaeccf2c5c527a730d406b4d4ceb0c0	2b4cd9a2feaeccf2c5c527a730d406b4d4ceb0c0	https://github.com/LoopKit/Loop.git
-LoopKit	421c1a256e76a7166ab2848cedba53162d34fda1	421c1a256e76a7166ab2848cedba53162d34fda1	https://github.com/LoopKit/LoopKit.git
-NightscoutService	8cd05a386dd83b62647a0ed2bfa7aff17aa8013e	8cd05a386dd83b62647a0ed2bfa7aff17aa8013e	https://github.com/LoopKit/NightscoutService.git
-LoopOnboarding	4aca97d2e8267cf61b64bd1273380f5fcbb27cb6	4aca97d2e8267cf61b64bd1273380f5fcbb27cb6	https://github.com/LoopKit/LoopOnboarding.git
-NightscoutRemoteCGM	e2230e33c9da61ffa1d9c507231a3e815703a23e	e2230e33c9da61ffa1d9c507231a3e815703a23e	https://github.com/LoopKit/NightscoutRemoteCGM.git
-OmnipodKit	3b20e3bcd9ffe077a9e090e8ba512ce4592a5bbd	3b20e3bcd9ffe077a9e090e8ba512ce4592a5bbd	https://github.com/loopandlearn/OmnipodKit
+Loop	35f992f0b4ffa85764da79a9e043b3b991634aed	35f992f0b4ffa85764da79a9e043b3b991634aed	https://github.com/LoopKit/Loop.git
+LoopKit	6083d81b4372d7ed9de0c464cc6b8007896bf01f	6083d81b4372d7ed9de0c464cc6b8007896bf01f	https://github.com/LoopKit/LoopKit.git
+NightscoutService	5379bba546b5e681969d0997b571414ce89a0c71	5379bba546b5e681969d0997b571414ce89a0c71	https://github.com/LoopKit/NightscoutService.git
+NightscoutRemoteCGM	fc78feccc7d9404b6b4212125f84f99b31ec518c	fc78feccc7d9404b6b4212125f84f99b31ec518c	https://github.com/LoopKit/NightscoutRemoteCGM.git
+OmnipodKit	d9b596630275685031de0f1c2fa77bfaf485f423	d9b596630275685031de0f1c2fa77bfaf485f423	https://github.com/loopandlearn/OmnipodKit.git

@@ -1,8 +1,8 @@
 diff --git a/Localization/Localizable.xcstrings b/Localization/Localizable.xcstrings
-index 8056830..93abfc2 100644
+index e820777..8f85e18 100644
 --- a/Localization/Localizable.xcstrings
 +++ b/Localization/Localizable.xcstrings
-@@ -66007,7 +66007,7 @@
+@@ -64780,7 +64780,7 @@
          "zh-Hans" : {
            "stringUnit" : {
              "state" : "translated",

@@ -1,8 +1,8 @@
 diff --git a/NightscoutService.xcodeproj/project.pbxproj b/NightscoutService.xcodeproj/project.pbxproj
-index 69f7a26..ef655ed 100644
+index c97bbcb..d88a20b 100644
 --- a/NightscoutService.xcodeproj/project.pbxproj
 +++ b/NightscoutService.xcodeproj/project.pbxproj
-@@ -60,6 +60,9 @@
+@@ -59,6 +59,9 @@
  		A9E4153822BC89B600168E14 /* IdentifiableClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E4153722BC89B600168E14 /* IdentifiableClass.swift */; };
  		A9E4153B22BC8A3800168E14 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E4153A22BC8A3800168E14 /* UIColor.swift */; };
  		A9F9ADED263F0F71005C6C48 /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F9ADEC263F0F71005C6C48 /* OTPViewModel.swift */; };
@@ -12,7 +12,7 @@ index 69f7a26..ef655ed 100644
  		B66D1FC02E6B34D800471149 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B66D1FBF2E6B34D800471149 /* Localizable.xcstrings */; };
  		B66D1FC22E6B34D800471149 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B66D1FC12E6B34D800471149 /* Localizable.xcstrings */; };
  		C102014D2526C1BA003B6FB7 /* ServiceStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C102014C2526C1BA003B6FB7 /* ServiceStatusViewModel.swift */; };
-@@ -72,7 +75,6 @@
+@@ -71,7 +74,6 @@
  		C1C1349827DD35260097B5AD /* LoopKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C1349727DD35260097B5AD /* LoopKitUI.framework */; };
  		C1C1349D27DD38000097B5AD /* NightscoutServiceKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91BAC3A22BC69B500ABF1BB /* NightscoutServiceKitUI.framework */; };
  		C1C1349E27DD38000097B5AD /* NightscoutServiceKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A91BAC3A22BC69B500ABF1BB /* NightscoutServiceKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -20,7 +20,7 @@ index 69f7a26..ef655ed 100644
  		C1E10F012ABF3B190036A416 /* PersistedPumpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E10F002ABF3B190036A416 /* PersistedPumpEvent.swift */; };
  		C1E703642506BE9400DAB534 /* ObjectIdCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E703632506BE9400DAB534 /* ObjectIdCache.swift */; };
  		C1E7036625070A0E00DAB534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1E7036525070A0E00DAB534 /* Assets.xcassets */; };
-@@ -192,6 +194,8 @@
+@@ -190,6 +192,8 @@
  		A9E4153722BC89B600168E14 /* IdentifiableClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableClass.swift; sourceTree = "<group>"; };
  		A9E4153A22BC8A3800168E14 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
  		A9F9ADEC263F0F71005C6C48 /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
@@ -29,7 +29,7 @@ index 69f7a26..ef655ed 100644
  		B66D1FBF2E6B34D800471149 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
  		B66D1FC12E6B34D800471149 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
  		C102014C2526C1BA003B6FB7 /* ServiceStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStatusViewModel.swift; sourceTree = "<group>"; };
-@@ -222,8 +226,8 @@
+@@ -220,8 +224,8 @@
  			files = (
  				C1C1349827DD35260097B5AD /* LoopKitUI.framework in Frameworks */,
  				C1C1349627DD35060097B5AD /* LoopKit.framework in Frameworks */,
@@ -39,7 +39,7 @@ index 69f7a26..ef655ed 100644
  				657F99E32F0BC17B00F732BD /* SwiftJWT in Frameworks */,
  			);
  			runOnlyForDeploymentPostprocessing = 0;
-@@ -359,6 +363,7 @@
+@@ -356,6 +360,7 @@
  		A941B08A29BD4A8600F91340 /* Notifications */ = {
  			isa = PBXGroup;
  			children = (
@@ -47,7 +47,7 @@ index 69f7a26..ef655ed 100644
  				A941B08C29BD4A9D00F91340 /* BolusRemoteNotification.swift */,
  				A941B08B29BD4A9D00F91340 /* CarbRemoteNotification.swift */,
  				A941B08D29BD4A9E00F91340 /* OverrideCancelRemoteNotification.swift */,
-@@ -412,6 +417,7 @@
+@@ -409,6 +414,7 @@
  		A9AA6E5729EB06AA008FFA78 /* Actions */ = {
  			isa = PBXGroup;
  			children = (
@@ -55,7 +55,7 @@ index 69f7a26..ef655ed 100644
  				A9AA6E5D29EB07D6008FFA78 /* Action.swift */,
  				A9AA6E6029EB07D6008FFA78 /* BolusAction.swift */,
  				A9AA6E5E29EB07D6008FFA78 /* CarbAction.swift */,
-@@ -526,8 +532,8 @@
+@@ -523,8 +529,8 @@
  			name = NightscoutServiceKit;
  			packageProductDependencies = (
  				C1B9ACF727DE987400857532 /* OneTimePassword */,
@@ -65,7 +65,7 @@ index 69f7a26..ef655ed 100644
  			);
  			productName = NightscoutService;
  			productReference = A91BAC1B22BC691A00ABF1BB /* NightscoutServiceKit.framework */;
-@@ -656,8 +662,8 @@
+@@ -654,8 +660,8 @@
  			mainGroup = A91BAC1122BC691A00ABF1BB;
  			packageReferences = (
  				C1B9ACF627DE987400857532 /* XCRemoteSwiftPackageReference "OneTimePassword" */,
@@ -75,7 +75,7 @@ index 69f7a26..ef655ed 100644
  			);
  			productRefGroup = A91BAC1C22BC691A00ABF1BB /* Products */;
  			projectDirPath = "";
-@@ -715,11 +721,13 @@
+@@ -713,11 +719,13 @@
  				C177C4522ABE2D9300911B56 /* PersistedCgmEvent.swift in Sources */,
  				A993990322BC7095005E39D3 /* NightscoutService.swift in Sources */,
  				A934B6162358F42A00949C8B /* StoredDosingDecision.swift in Sources */,
@@ -89,7 +89,7 @@ index 69f7a26..ef655ed 100644
  				A934B61A2358F5FC00949C8B /* TemporaryScheduleOverride.swift in Sources */,
  				A941B09029BD4A9E00F91340 /* CarbRemoteNotification.swift in Sources */,
  				A94DA7642353CF930082E26D /* StoredGlucoseSample.swift in Sources */,
-@@ -1311,20 +1319,20 @@
+@@ -1308,20 +1316,20 @@
  				version = 4.0.1;
  			};
  		};
@@ -118,7 +118,7 @@ index 69f7a26..ef655ed 100644
  			};
  		};
  /* End XCRemoteSwiftPackageReference section */
-@@ -1335,16 +1343,16 @@
+@@ -1332,16 +1340,16 @@
  			package = 657F99E12F0BC17B00F732BD /* XCRemoteSwiftPackageReference "Swift-JWT" */;
  			productName = SwiftJWT;
  		};
@@ -141,10 +141,10 @@ index 69f7a26..ef655ed 100644
  	};
  	rootObject = A91BAC1222BC691A00ABF1BB /* Project object */;
 diff --git a/NightscoutServiceKit/Extensions/StoredDosingDecision.swift b/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
-index 4e1d49e..b8fc74d 100644
+index 50c53c5..f6a4747 100644
 --- a/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
 +++ b/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
-@@ -159,7 +159,10 @@ extension StoredDosingDecision {
+@@ -158,7 +158,10 @@ extension StoredDosingDecision {
                                     automaticDoseRecommendation: loopStatusAutomaticDoseRecommendation,
                                     recommendedBolus: loopStatusRecommendedBolus,
                                     enacted: automaticDoseDecision?.loopStatusEnacted,
@@ -157,10 +157,10 @@ index 4e1d49e..b8fc74d 100644
      }
      
 diff --git a/NightscoutServiceKit/Extensions/StoredSettings.swift b/NightscoutServiceKit/Extensions/StoredSettings.swift
-index 2adadb9..a1769d8 100644
+index 2524534..556cb34 100644
 --- a/NightscoutServiceKit/Extensions/StoredSettings.swift
 +++ b/NightscoutServiceKit/Extensions/StoredSettings.swift
-@@ -94,12 +94,20 @@ extension StoredSettings {
+@@ -93,12 +93,20 @@ extension StoredSettings {
              return nil
          }
  
@@ -181,31 +181,286 @@ index 2adadb9..a1769d8 100644
 +            defaultProfile: defaultProfile,
 +            store: store,
              settings: loopSettings,
-             syncIdentifier: syncIdentifier.uuidString,
-             isAPNSProduction: Bundle.main.isAPNSProductionEnvironment)
+             syncIdentifier: syncIdentifier.uuidString)
+     }
 diff --git a/NightscoutServiceKit/Localizable.xcstrings b/NightscoutServiceKit/Localizable.xcstrings
-index 5877d3d..63061b4 100644
+index 8132f96..53248d4 100644
 --- a/NightscoutServiceKit/Localizable.xcstrings
 +++ b/NightscoutServiceKit/Localizable.xcstrings
-@@ -1,6 +1,9 @@
- {
-   "sourceLanguage" : "en",
-   "strings" : {
+@@ -4,6 +4,9 @@
+     "Activity" : {
+       "comment" : "Suffix added to the name of an activity override"
+     },
 +    "AutomaticDosingStrategy" : {
 +      "comment" : "The remote action name for AutomaticDosingStrategy"
 +    },
      "Bolus Entry" : {
        "comment" : "The remote action name for Bolus Entry",
        "localizations" : {
+@@ -461,125 +464,6 @@
+         }
+       }
+     },
+-    "g" : {
+-      "comment" : "The remote action abbreviation for gram units",
+-      "localizations" : {
+-        "ar" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "ج"
+-          }
+-        },
+-        "da" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "de" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "es" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "fi" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "fr" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "he" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "it" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "nb" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "nl" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "pl" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "pt-BR" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "ro" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "ru" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "г"
+-          }
+-        },
+-        "sk" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "sv" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "tr" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "gr"
+-          }
+-        },
+-        "vi" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "g"
+-          }
+-        },
+-        "zh-Hans" : {
+-          "stringUnit" : {
+-            "state" : "translated",
+-            "value" : "克"
+-          }
+-        }
+-      }
+-    },
+     "Missing OTP" : {
+       "comment" : "Remote command error description: Missing OTP.",
+       "localizations" : {
+@@ -1245,7 +1129,126 @@
+           }
+         }
+       }
++    },
++    "g" : {
++      "comment" : "The remote action abbreviation for gram units",
++      "localizations" : {
++        "ar" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "ج"
++          }
++        },
++        "da" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "de" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "es" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "fi" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "fr" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "he" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "it" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "nb" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "nl" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "pl" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "pt-BR" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "ro" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "ru" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "г"
++          }
++        },
++        "sk" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "sv" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "tr" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "gr"
++          }
++        },
++        "vi" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "g"
++          }
++        },
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "克"
++          }
++        }
++      }
+     }
+   },
+   "version" : "1.0"
+-}
+\ No newline at end of file
++}
 diff --git a/NightscoutServiceKit/NightscoutService.swift b/NightscoutServiceKit/NightscoutService.swift
-index 4626630..d1ebf0e 100644
+index 3fccce4..e3e2b19 100644
 --- a/NightscoutServiceKit/NightscoutService.swift
 +++ b/NightscoutServiceKit/NightscoutService.swift
-@@ -444,7 +444,19 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
+@@ -469,7 +469,19 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
                  
              case .bolusEntry(let bolusCommand):
                  commandType = .bolus
--                try await self.serviceDelegate?.deliverRemoteBolus(amountInUnits: bolusCommand.amountInUnits)
+-                try await self.serviceDelegate?.deliverRemoteBolus(amountInUnits: bolusCommand.amountInUnits, decisionId: nil)
 +                //wp begin
 +                if let amountInGrams = bolusCommand.amountInGrams {
 +                    try await self.serviceDelegate?.deliverRemoteBolus(
@@ -216,13 +471,13 @@ index 4626630..d1ebf0e 100644
 +                        startDate: bolusCommand.startDate
 +                    )
 +                } else {
-+                    try await self.serviceDelegate?.deliverRemoteBolus(amountInUnits: bolusCommand.amountInUnits)
++                    try await self.serviceDelegate?.deliverRemoteBolus(amountInUnits: bolusCommand.amountInUnits, decisionId: nil)
 +                }
 +                //wp end
                  success = true
                  message = String(format: "Bolus of %.2f units delivered successfully", bolusCommand.amountInUnits)
                  
-@@ -458,6 +470,14 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
+@@ -483,6 +495,14 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
                  )
                  success = true
                  message = String(format: "Carbs entry of %.1f g delivered successfully", carbCommand.amountInGrams)
