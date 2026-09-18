@@ -327,7 +327,7 @@ index 96e0c398..6b987365 100644
        }
      }
 diff --git a/Loop/Localizable.xcstrings b/Loop/Localizable.xcstrings
-index c7150a85..2fa783bf 100644
+index c7150a85..91c29ef7 100644
 --- a/Loop/Localizable.xcstrings
 +++ b/Loop/Localizable.xcstrings
 @@ -5,16 +5,44 @@
@@ -379,7 +379,7 @@ index c7150a85..2fa783bf 100644
      },
      " (pending: %@)" : {
        "comment" : "The string format appended to active insulin that describes pending insulin. (1: pending insulin)",
-@@ -143,34 +171,104 @@
+@@ -143,34 +171,164 @@
        }
      },
      " **Tip** Use your %@ **Jogging** preset" : {
@@ -469,6 +469,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    " Extra Training Needed" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 需要额外训练"
++          }
++        }
++      }
      },
      " grams" : {
 -
@@ -477,6 +487,36 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : " 克"
++          }
++        }
++      }
++    },
++    " indicates you need more insulin" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 表示你需要更多胰岛素"
++          }
++        }
++      }
++    },
++    " less " : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更少"
++          }
++        }
++      }
++    },
++    " more " : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更多"
 +          }
 +        }
 +      }
@@ -491,10 +531,30 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    " of scheduled" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "（相对计划值）"
++          }
++        }
++      }
++    },
++    " Overall insulin cannot be adjusted for this preset" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 此预设无法调整总体胰岛素"
++          }
++        }
++      }
      },
      " Pre-meal Preset" : {
        "comment" : "Status row title for premeal override enabled (leading space is to separate from symbol)",
-@@ -454,7 +552,14 @@
+@@ -454,7 +612,34 @@
        }
      },
      " setting. Adjusting it can help reduce the risk of low glucose if you expect unusual fluctuations." : {
@@ -507,10 +567,30 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    " tells the system you need less insulin" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 告诉系统你需要更少的胰岛素"
++          }
++        }
++      }
++    },
++    " than your typical correction range." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : " 比你通常的校正范围。"
++          }
++        }
++      }
      },
      " Workout Preset" : {
        "comment" : "Status row title for workout override enabled (leading space is to separate from symbol)",
-@@ -554,13 +659,36 @@
+@@ -554,13 +739,36 @@
      },
      "-" : {
        "comment" : "A hyphen.",
@@ -550,7 +630,7 @@ index c7150a85..2fa783bf 100644
      },
      "." : {
        "comment" : "Full stop character",
-@@ -636,30 +764,86 @@
+@@ -636,30 +844,86 @@
              "state" : "translated",
              "value" : "."
            }
@@ -644,7 +724,7 @@ index c7150a85..2fa783bf 100644
      },
      "%@ %@" : {
        "comment" : "The format for an active custom preset. (1: preset symbol)(2: preset name)",
-@@ -918,13 +1102,34 @@
+@@ -918,13 +1182,34 @@
        }
      },
      "%@ of insulin" : {
@@ -682,7 +762,7 @@ index c7150a85..2fa783bf 100644
      },
      "%@ remaining" : {
        "comment" : "Estimated remaining duration with more than a minute",
-@@ -1154,6 +1359,12 @@
+@@ -1154,6 +1439,12 @@
              "state" : "new",
              "value" : "%1$@-%2$@"
            }
@@ -695,7 +775,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -1410,6 +1621,12 @@
+@@ -1410,6 +1701,12 @@
              "state" : "translated",
              "value" : "%1$1@%2$2@"
            }
@@ -708,7 +788,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -1661,6 +1878,12 @@
+@@ -1661,6 +1958,12 @@
              "state" : "translated",
              "value" : "%1$@ %2$@"
            }
@@ -721,7 +801,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -1922,7 +2145,15 @@
+@@ -1922,7 +2225,15 @@
        }
      },
      "%1$@ also reads insulin data from other apps in Apple Health. Apple Health does not report whether an app may read data, so read access can't be shown here." : {
@@ -738,7 +818,7 @@ index c7150a85..2fa783bf 100644
      },
      "%1$@ APP SOUNDS" : {
        "comment" : "App sounds title text (1: app name)",
-@@ -1957,20 +2188,58 @@
+@@ -1957,20 +2268,58 @@
              "state" : "translated",
              "value" : "%1$@ ЗВУКИ ПРИЛОЖЕНИЯ"
            }
@@ -801,7 +881,7 @@ index c7150a85..2fa783bf 100644
      },
      "%1$@ is operating with Closed Loop in the OFF position. Your pump and CGM will continue operating, but the app will not adjust dosing automatically." : {
        "comment" : "Alert message for closed loop off informational modal. (1: app name)",
-@@ -2222,7 +2491,15 @@
+@@ -2222,7 +2571,15 @@
        }
      },
      "%1$@ Still Active" : {
@@ -818,7 +898,7 @@ index c7150a85..2fa783bf 100644
      },
      "%1$@ Time Settings Need Attention" : {
        "comment" : "Time change alert title",
-@@ -2298,6 +2575,12 @@
+@@ -2298,6 +2655,12 @@
              "state" : "translated",
              "value" : "%1$@ Zaman Ayarlarına Dikkat Edilmesi Gerekiyor"
            }
@@ -831,7 +911,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -2924,16 +3207,48 @@
+@@ -2924,16 +3287,48 @@
        }
      },
      "%1$@ will actively adjust your insulin dosing in response to your glucose as often as every 5 minutes." : {
@@ -884,7 +964,7 @@ index c7150a85..2fa783bf 100644
      },
      "%1$@ will stop working in %2$@. You will need to rebuild before that." : {
        "comment" : "Format string for body for notification of upcoming expiration. (1: app name) (2: amount of time until expiration",
-@@ -3062,6 +3377,12 @@
+@@ -3062,6 +3457,12 @@
              "state" : "translated",
              "value" : "%1$@ %2$@ içinde çalışmayı durduracaktır. Bundan önce yeni bir provizyon profili ile güncelleme yapmanız gerekecektir."
            }
@@ -897,7 +977,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -3270,39 +3591,112 @@
+@@ -3270,39 +3671,112 @@
              "state" : "translated",
              "value" : "%1$@: <b>%2$@</b> %3$@"
            }
@@ -1019,7 +1099,7 @@ index c7150a85..2fa783bf 100644
      },
      "⚠️" : {
        "localizations" : {
-@@ -3359,47 +3753,136 @@
+@@ -3359,47 +3833,136 @@
              "state" : "translated",
              "value" : "⚠️"
            }
@@ -1167,7 +1247,7 @@ index c7150a85..2fa783bf 100644
      },
      "15 min glucose regression coefficient (b₁), continued with decay over 30 min" : {
        "comment" : "Description of the prediction input effect for glucose momentum",
-@@ -3527,7 +4010,14 @@
+@@ -3527,7 +4090,14 @@
        }
      },
      "25-33%" : {
@@ -1183,7 +1263,7 @@ index c7150a85..2fa783bf 100644
      },
      "30 min comparison of glucose prediction vs actual, continued with decay over 60 min" : {
        "comment" : "Description of the prediction input effect for retrospective correction",
-@@ -3649,13 +4139,36 @@
+@@ -3649,13 +4219,36 @@
        }
      },
      "100m sprint" : {
@@ -1223,7 +1303,7 @@ index c7150a85..2fa783bf 100644
      },
      "A few seconds remaining" : {
        "comment" : "Estimated remaining duration with a few seconds",
-@@ -4256,6 +4769,12 @@
+@@ -4256,6 +4849,12 @@
              "state" : "translated",
              "value" : "%@ 'ın yeni bir sürümü mevcut ve uygulamayı kullanmaya devam etmeniz önerilir."
            }
@@ -1236,9 +1316,20 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -4337,19 +4856,54 @@
+@@ -4336,20 +4935,65 @@
+         }
        }
      },
++    "A percentage " : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "一个百分比 "
++          }
++        }
++      }
++    },
      "A percentage **above 100%** tells the system you need **more** insulin" : {
 -
 +      "localizations" : {
@@ -1296,9 +1387,30 @@ index c7150a85..2fa783bf 100644
      },
      "A pump must be configured before a bolus can be delivered." : {
        "comment" : "Alert message for a missing pump error",
-@@ -4441,7 +4995,15 @@
+@@ -4440,8 +5084,36 @@
+         }
        }
      },
++    "Abort" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "中止"
++          }
++        }
++      }
++    },
++    "above 100%" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "高于 100%"
++          }
++        }
++      }
++    },
      "Above range (>180): %d%% · goal <25%%" : {
 -      "comment" : "TIR above-range summary"
 +      "comment" : "TIR above-range summary",
@@ -1313,7 +1425,24 @@ index c7150a85..2fa783bf 100644
      },
      "Absorption Time" : {
        "comment" : "Label for food absorption entry on add favorite food screen",
-@@ -5322,7 +5884,15 @@
+@@ -4616,6 +5288,16 @@
+         }
+       }
+     },
++    "Activation" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "激活"
++          }
++        }
++      }
++    },
+     "Active Carbohydrates" : {
+       "comment" : "The title of the Carbs On-Board graph",
+       "localizations" : {
+@@ -5322,7 +6004,15 @@
      },
      "Add Alert Profile" : {
        "comment" : "The text of a button that allows a user to add a new alert profile.",
@@ -1330,7 +1459,7 @@ index c7150a85..2fa783bf 100644
      },
      "Add Carb Entry" : {
        "comment" : "Title of the user activity for adding carbs",
-@@ -5595,6 +6165,12 @@
+@@ -5595,6 +6285,12 @@
              "state" : "translated",
              "value" : "Adăugați elementul pe rândul de jos"
            }
@@ -1343,7 +1472,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -5606,6 +6182,12 @@
+@@ -5606,6 +6302,12 @@
              "state" : "translated",
              "value" : "Adăugați element la ecranul de blocare / afișajul CarPlay"
            }
@@ -1356,7 +1485,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -5756,6 +6338,12 @@
+@@ -5756,6 +6458,12 @@
              "state" : "translated",
              "value" : "Adăugați linie predictivă"
            }
@@ -1369,9 +1498,20 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -5980,7 +6568,14 @@
+@@ -5979,8 +6687,25 @@
+         }
        }
      },
++    "Adjust Overall Insulin Needs" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "调整总体胰岛素需求"
++          }
++        }
++      }
++    },
      "Adjust Preset Duration" : {
 -
 +      "localizations" : {
@@ -1385,7 +1525,7 @@ index c7150a85..2fa783bf 100644
      },
      "Adjusted for" : {
        "localizations" : {
-@@ -6061,17 +6656,44 @@
+@@ -6061,17 +6786,54 @@
              "state" : "translated",
              "value" : "için düzeltilmiş"
            }
@@ -1394,6 +1534,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "已调整"
++          }
++        }
++      }
++    },
++    "Adjusted Range" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "调整后的范围"
 +          }
          }
        }
@@ -1433,7 +1583,7 @@ index c7150a85..2fa783bf 100644
      },
      "Alert Management" : {
        "comment" : "Alert Permissions button text\nTitle of alert management screen",
-@@ -6320,11 +6942,27 @@
+@@ -6320,11 +7082,27 @@
      },
      "Alert Profiles" : {
        "comment" : "A header label for the list of alert profiles.",
@@ -1463,7 +1613,7 @@ index c7150a85..2fa783bf 100644
      },
      "Algorithm Experiments" : {
        "comment" : "Navigation title for algorithms experiments screen\nThe title of the Algorithm Experiments section in settings",
-@@ -6657,20 +7295,57 @@
+@@ -6657,20 +7435,77 @@
              "state" : "translated",
              "value" : "Toate alertele sunt dezactivate până la"
            }
@@ -1484,6 +1634,26 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "已静音所有应用声音"
++          }
++        }
++      }
++    },
++    "All app sounds will be muted" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "将静音所有应用声音"
++          }
++        }
++      }
++    },
++    "All app sounds, including sounds for all critical alerts such as Urgent Low, Sensor Fail, Pump Expiration, and others will NOT sound for your selected time duration." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在你选定的时间段内，所有应用声音都将不会响起，包括紧急低血糖、传感器故障、泵到期等所有关键警报的声音。"
 +          }
 +        }
 +      }
@@ -1525,7 +1695,7 @@ index c7150a85..2fa783bf 100644
      },
      "All Favorites" : {
        "comment" : "section header for list of existing FavoriteFoods",
-@@ -6726,17 +7401,47 @@
+@@ -6726,17 +7561,57 @@
        }
      },
      "All Out" : {
@@ -1546,6 +1716,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "所有预设"
++          }
++        }
++      }
++    },
++    "All sounds from the app, including alerts such as Urgent Low, Sensor Fail, Pump Expiration, and others will NOT sound for your selected time duration." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在你选定的时间段内，来自应用的所有声音都将不会响起，包括紧急低血糖、传感器故障、泵到期等警报。"
 +          }
 +        }
 +      }
@@ -1577,7 +1757,7 @@ index c7150a85..2fa783bf 100644
      },
      "Amount Consumed" : {
        "comment" : "Label for carb quantity entry row on carb entry screen",
-@@ -7170,6 +7875,12 @@
+@@ -7170,6 +8045,12 @@
              "state" : "translated",
              "value" : "Manuel KŞ girişinizi kaydetmeye çalışırken bir hata oluştu."
            }
@@ -1590,7 +1770,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -7241,6 +7952,12 @@
+@@ -7241,6 +8122,12 @@
              "state" : "translated",
              "value" : "Beklenmeyen bir ekleme hatası durumu oluştu."
            }
@@ -1603,7 +1783,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -7694,7 +8411,15 @@
+@@ -7694,7 +8581,15 @@
        }
      },
      "App Store" : {
@@ -1620,7 +1800,7 @@ index c7150a85..2fa783bf 100644
      },
      "Apple" : {
        "comment" : "Default name on add favorite food screen",
-@@ -7744,7 +8469,15 @@
+@@ -7744,7 +8639,15 @@
        }
      },
      "Apple Health" : {
@@ -1637,7 +1817,7 @@ index c7150a85..2fa783bf 100644
      },
      "Are you sure you want to delete all history entries?" : {
        "comment" : "Action sheet confirmation message for pump history deletion",
-@@ -8164,7 +8897,15 @@
+@@ -8164,7 +9067,15 @@
      },
      "Are you sure you want to delete all your testing Data?\n(This action is not reversible)" : {
        "comment" : "The message displayed in an alert that lets the user delete all their testing data.",
@@ -1654,9 +1834,37 @@ index c7150a85..2fa783bf 100644
      },
      "Are you sure you want to delete this CGM?" : {
        "comment" : "Confirmation message for deleting a CGM",
-@@ -8452,18 +9193,49 @@
+@@ -8343,6 +9254,16 @@
+         }
        }
      },
++    "Are you sure you want to delete this preset?" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "确定要删除此预设吗？"
++          }
++        }
++      }
++    },
+     "Are you sure you want to delete this service?" : {
+       "comment" : "Confirmation message for deleting a service",
+       "extractionState" : "manual",
+@@ -8451,19 +9372,70 @@
+         }
+       }
+     },
++    "Are you sure you want to reset the secret key?" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "您确定要重置密钥吗？"
++          }
++        }
++      }
++    },
      "Are you sure you want to turn automation OFF?" : {
 -      "comment" : "Closed loop alert title"
 +      "comment" : "Closed loop alert title",
@@ -1705,10 +1913,20 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "ask yourself, does my body need more or less than usual?" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "问问自己：我的身体比平时需要更多还是更少？"
++          }
++        }
++      }
      },
      "at %@" : {
        "comment" : "Format fragment for a specific time",
-@@ -8591,10 +9363,25 @@
+@@ -8591,10 +9563,35 @@
        }
      },
      "at %1$@" : {
@@ -1719,6 +1937,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "于 %1$@"
++          }
++        }
++      }
++    },
++    "At 100%, your settings remain unchanged from your scheduled settings." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在 100% 时，你的设置与计划设置保持一致。"
 +          }
 +        }
 +      }
@@ -1736,7 +1964,7 @@ index c7150a85..2fa783bf 100644
      },
      "Authenticate to Bolus %@ Units" : {
        "comment" : "The message displayed during a device authentication prompt for bolus specification",
-@@ -8811,64 +9598,212 @@
+@@ -8811,64 +9808,222 @@
        }
      },
      "Automated" : {
@@ -1955,6 +2183,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Backfill" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "数据回填"
++          }
++        }
++      }
      },
      "Basal Rate" : {
 -
@@ -1969,7 +2207,7 @@ index c7150a85..2fa783bf 100644
      },
      "Basal Rate Schedule" : {
        "comment" : "Details for configuration error when basal rate schedule is missing",
-@@ -9134,7 +10069,14 @@
+@@ -9134,7 +10289,14 @@
        }
      },
      "Basal: " : {
@@ -1985,7 +2223,7 @@ index c7150a85..2fa783bf 100644
      },
      "Based on your predicted glucose, no bolus is recommended." : {
        "comment" : "Caption for bolus screen notice when no bolus is recommended for the predicted glucose",
-@@ -9220,13 +10162,35 @@
+@@ -9220,13 +10382,55 @@
        }
      },
      "Because Omar has gone low while working outdoors in the past, he raises his preset correction range to help prevent another low." : {
@@ -2009,6 +2247,26 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Before deciding to adjust your overall insulin," : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "在决定调整总体胰岛素之前，"
++          }
++        }
++      }
++    },
++    "below 100%" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "低于 100%"
++          }
++        }
++      }
      },
      "Below range (<70): %d%% · goal <4%%" : {
 -      "comment" : "TIR below-range summary"
@@ -2024,7 +2282,7 @@ index c7150a85..2fa783bf 100644
      },
      "Bluetooth\nOff" : {
        "comment" : "Message to the user to that the bluetooth is off",
-@@ -9504,6 +10468,12 @@
+@@ -9504,6 +10708,12 @@
              "state" : "translated",
              "value" : "Bluetooth Kapalı Uyarısı"
            }
@@ -2037,7 +2295,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -9593,6 +10563,12 @@
+@@ -9593,6 +10803,12 @@
              "state" : "translated",
              "value" : "Bluetooth Kullanılamıyor Uyarısı"
            }
@@ -2050,7 +2308,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -9722,7 +10698,15 @@
+@@ -9722,7 +10938,15 @@
        }
      },
      "Bolus Canceled: Delivered %1$@ of %2$@" : {
@@ -2067,7 +2325,7 @@ index c7150a85..2fa783bf 100644
      },
      "Bolus Issue" : {
        "comment" : "The notification title for a bolus issue",
-@@ -10075,7 +11059,14 @@
+@@ -10075,7 +11299,14 @@
        }
      },
      "Bolus: " : {
@@ -2083,7 +2341,7 @@ index c7150a85..2fa783bf 100644
      },
      "Bolused %1$@ of %2$@" : {
        "comment" : "The format string for bolus progress. (1: delivered volume)(2: total volume)",
-@@ -10388,17 +11379,47 @@
+@@ -10388,17 +11619,47 @@
        }
      },
      "Breathing is slightly uncomfortable. Conversation requires maximal effort." : {
@@ -2135,7 +2393,7 @@ index c7150a85..2fa783bf 100644
      },
      "Cancel" : {
        "comment" : "Button label for cancel\nButton text to cancel\nCancel button for reset loop alert\nCancel export button title\nThe title of the cancel action in an action sheet",
-@@ -10532,7 +11553,15 @@
+@@ -10532,7 +11793,15 @@
        }
      },
      "Cancel the manual temporary basal if you wish for the app to restart automated dosing.\n\nIf you wish for the app to automate your insulin, go to Settings and toggle Closed Loop to on." : {
@@ -2152,7 +2410,7 @@ index c7150a85..2fa783bf 100644
      },
      "Canceling Bolus" : {
        "comment" : "The title of the cell indicating a bolus is being canceled",
-@@ -10927,7 +11956,14 @@
+@@ -10927,7 +12196,14 @@
        }
      },
      "Carb Ratio" : {
@@ -2168,7 +2426,7 @@ index c7150a85..2fa783bf 100644
      },
      "Carb Ratio Schedule" : {
        "comment" : "Details for configuration error when carb ratio schedule is missing",
-@@ -10997,6 +12033,12 @@
+@@ -10997,6 +12273,12 @@
              "state" : "translated",
              "value" : "Karb Oranı Programı"
            }
@@ -2181,7 +2439,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -11338,6 +12380,12 @@
+@@ -11338,6 +12620,12 @@
              "state" : "translated",
              "value" : "Karbonhidrat Girişi Çok Büyük"
            }
@@ -2194,7 +2452,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -11646,14 +12694,35 @@
+@@ -11646,14 +12934,35 @@
              "state" : "translated",
              "value" : "Atenție"
            }
@@ -2232,7 +2490,7 @@ index c7150a85..2fa783bf 100644
      },
      "Change the pump battery immediately" : {
        "comment" : "The notification alert describing a low pump battery",
-@@ -11920,10 +12989,25 @@
+@@ -11920,10 +13229,35 @@
        }
      },
      "Changing it can lower the chance of your glucose levels going too low if you expect unusual changes." : {
@@ -2242,6 +2500,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "如果你预计会有异常变化，更改它可以降低血糖过低的可能性。"
++          }
++        }
++      }
++    },
++    "Changing the percentage will affect:" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更改百分比将影响："
 +          }
 +        }
 +      }
@@ -2260,7 +2528,7 @@ index c7150a85..2fa783bf 100644
      },
      "Check settings" : {
        "comment" : "Details for configuration error when one or more loop settings are missing",
-@@ -12364,11 +13448,24 @@
+@@ -12364,11 +13698,24 @@
              "state" : "translated",
              "value" : "Aygıtınızın saatini kontrol edin ve/veya tüm geçersiz verileri Apple Sağlık'tan kaldırın."
            }
@@ -2286,7 +2554,7 @@ index c7150a85..2fa783bf 100644
      },
      "Choose a longer absorption time for larger meals, or those containing fats and proteins. This is only guidance to the algorithm and need not be exact." : {
        "comment" : "Carb entry section footer text explaining absorption time",
-@@ -12537,7 +13634,14 @@
+@@ -12537,7 +13884,14 @@
        }
      },
      "Choose the glucose value (or values) you want %@ to target when changing how much basal insulin you get." : {
@@ -2302,7 +2570,7 @@ index c7150a85..2fa783bf 100644
      },
      "Close" : {
        "comment" : "Preset training needed alert cancel button\nThe button label of the action used to dismiss the unsafe notification permission alert",
-@@ -12625,11 +13729,24 @@
+@@ -12625,11 +13979,24 @@
              "state" : "translated",
              "value" : "Kapat"
            }
@@ -2328,7 +2596,7 @@ index c7150a85..2fa783bf 100644
      },
      "Closed Loop" : {
        "comment" : "The title text for the looping enabled switch cell",
-@@ -13236,6 +14353,12 @@
+@@ -13236,6 +14603,12 @@
              "state" : "translated",
              "value" : "từ lúc %1$@"
            }
@@ -2341,7 +2609,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -13378,13 +14501,34 @@
+@@ -13378,13 +14751,34 @@
        }
      },
      "Combination of high and low intensity" : {
@@ -2379,7 +2647,7 @@ index c7150a85..2fa783bf 100644
      },
      "Complete Setup" : {
        "comment" : "Title text for button to complete setup",
-@@ -13454,6 +14598,12 @@
+@@ -13454,6 +14848,32 @@
              "state" : "translated",
              "value" : "Kurulumu Tamamla"
            }
@@ -2389,10 +2657,30 @@ index c7150a85..2fa783bf 100644
 +            "state" : "translated",
 +            "value" : "完成设置"
 +          }
++        }
++      }
++    },
++    "Complete the training to change this preset’s settings." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "完成训练以更改此预设的设置。"
++          }
++        }
++      }
++    },
++    "Complete the training to change this preset’s settings. You can still update the details." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "完成训练以更改此预设的设置。你仍可更新详细信息。"
++          }
          }
        }
      },
-@@ -13734,17 +14884,44 @@
+@@ -13734,17 +15154,54 @@
              "state" : "translated",
              "value" : "Configurați ecranul de blocare / rândul Carplay"
            }
@@ -2401,6 +2689,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "配置锁屏 / CarPlay 显示行"
++          }
++        }
++      }
++    },
++    "Confirm Preset" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "确认预设"
 +          }
          }
        }
@@ -2440,7 +2738,7 @@ index c7150a85..2fa783bf 100644
      },
      "Continue" : {
        "comment" : "Button label for continue\nDefault alert dismissal",
-@@ -13872,7 +15049,14 @@
+@@ -13872,7 +15329,14 @@
        }
      },
      "Continue to %@" : {
@@ -2456,7 +2754,7 @@ index c7150a85..2fa783bf 100644
      },
      "Continuous Glucose Monitor" : {
        "comment" : "Descriptive text for Continuous Glucose Monitor",
-@@ -13994,7 +15178,14 @@
+@@ -13994,7 +15458,14 @@
        }
      },
      "Continuous or exercise without breaks" : {
@@ -2472,9 +2770,20 @@ index c7150a85..2fa783bf 100644
      },
      "Correction Range" : {
        "comment" : "The title of the glucose target range schedule screen\n   The title text for the glucose target range schedule",
-@@ -14123,10 +15314,24 @@
+@@ -14122,11 +15593,35 @@
+         }
        }
      },
++    "Correction range adjustment when preset is enabled" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "启用预设时的校正范围调整"
++          }
++        }
++      }
++    },
      "Correction range is a " : {
 -
 +      "localizations" : {
@@ -2499,7 +2808,7 @@ index c7150a85..2fa783bf 100644
      },
      "Could Not Restart %1$@" : {
        "comment" : "Format string for title of reset loop alert. (1: App name)",
-@@ -14172,11 +15377,24 @@
+@@ -14172,11 +15667,24 @@
              "state" : "translated",
              "value" : "Eșec la reporni %1$@"
            }
@@ -2525,7 +2834,7 @@ index c7150a85..2fa783bf 100644
      },
      "Critical Alerts" : {
        "comment" : "Critical Alerts Status text",
-@@ -14268,34 +15486,113 @@
+@@ -14268,34 +15776,123 @@
        }
      },
      "Critical Alerts and Time Sensitive Notifications are important types of iOS notifications used for events that require immediate attention. Examples include:" : {
@@ -2634,6 +2943,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Critical alerts will be muted" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "关键警报将被静音"
++          }
++        }
++      }
      },
      "Critical Alerts will still sound, but all others will be silenced." : {
 -      "comment" : "Additional description text for temporarily silencing non-critical alerts"
@@ -2649,7 +2968,7 @@ index c7150a85..2fa783bf 100644
      },
      "Critical Event Log Ready" : {
        "comment" : "Critical event log ready text",
-@@ -14377,6 +15674,12 @@
+@@ -14377,6 +15974,12 @@
              "state" : "translated",
              "value" : "Kritik Olay Günlüğü Hazır"
            }
@@ -2662,7 +2981,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -14460,6 +15763,12 @@
+@@ -14460,6 +16063,12 @@
              "state" : "translated",
              "value" : "Kritik Olay Günlükleri"
            }
@@ -2675,7 +2994,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -14543,17 +15852,44 @@
+@@ -14543,17 +16152,44 @@
              "state" : "translated",
              "value" : "Kritik Olay Günlükleri dışa aktarılamadı."
            }
@@ -2723,9 +3042,37 @@ index c7150a85..2fa783bf 100644
      },
      "Current Glucose" : {
        "comment" : "Label for glucose entry row on simple bolus screen",
-@@ -15015,10 +16351,26 @@
+@@ -14769,6 +16405,16 @@
+         }
        }
      },
++    "Currently Scheduled Correction Range" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "当前计划的校正范围"
++          }
++        }
++      }
++    },
+     "Custom Override" : {
+       "comment" : "The title of the cell indicating a generic temporary override is enabled",
+       "extractionState" : "manual",
+@@ -15014,11 +16660,37 @@
+         }
+       }
+     },
++    "Customizing Presets" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "自定义预设"
++          }
++        }
++      }
++    },
      "Daily glucose pattern" : {
 -      "comment" : "Accessibility label for the daily glucose pattern (AGP) chart"
 +      "comment" : "Accessibility label for the daily glucose pattern (AGP) chart",
@@ -2752,7 +3099,7 @@ index c7150a85..2fa783bf 100644
      },
      "Date" : {
        "comment" : "Date picker label",
-@@ -15146,11 +16498,27 @@
+@@ -15146,11 +16818,27 @@
        }
      },
      "Date Created" : {
@@ -2782,7 +3129,7 @@ index c7150a85..2fa783bf 100644
      },
      "dB" : {
        "comment" : "The short unit display string for decibles",
-@@ -15268,23 +16636,64 @@
+@@ -15268,23 +16956,64 @@
              "state" : "translated",
              "value" : "dB"
            }
@@ -2852,7 +3199,7 @@ index c7150a85..2fa783bf 100644
      },
      "Delete" : {
        "localizations" : {
-@@ -15406,7 +16815,15 @@
+@@ -15406,7 +17135,15 @@
      },
      "Delete \"%@\"?" : {
        "comment" : "A confirmation dialog that appears when the user taps the \"Delete Alert Profile\" button. The text inside the dialog is parameterized with the name of the profile. The argument is the string “”.",
@@ -2869,7 +3216,7 @@ index c7150a85..2fa783bf 100644
      },
      "Delete “%@”?" : {
        "localizations" : {
-@@ -15594,7 +17011,15 @@
+@@ -15594,7 +17331,15 @@
      },
      "Delete Alert Profile" : {
        "comment" : "A button that deletes a glucose alert profile.",
@@ -2886,7 +3233,7 @@ index c7150a85..2fa783bf 100644
      },
      "Delete All" : {
        "comment" : "Button title to delete all objects",
-@@ -15711,7 +17136,15 @@
+@@ -15711,7 +17456,15 @@
      },
      "Delete All Testing Data" : {
        "comment" : "The title of an alert that lets the user delete all their testing data.",
@@ -2903,7 +3250,7 @@ index c7150a85..2fa783bf 100644
      },
      "Delete CGM" : {
        "comment" : "Button title to delete CGM",
-@@ -15839,10 +17272,26 @@
+@@ -15839,10 +17592,26 @@
        }
      },
      "Delete Dose" : {
@@ -2932,7 +3279,7 @@ index c7150a85..2fa783bf 100644
      },
      "Delete Food" : {
        "localizations" : {
-@@ -15887,6 +17336,12 @@
+@@ -15887,6 +17656,12 @@
              "state" : "translated",
              "value" : "Ștergeți alimentele"
            }
@@ -2945,7 +3292,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -16299,10 +17754,26 @@
+@@ -16299,10 +18074,26 @@
        }
      },
      "Delete this dose?" : {
@@ -2974,7 +3321,7 @@ index c7150a85..2fa783bf 100644
      },
      "Deliver" : {
        "comment" : "Button text to deliver a bolus",
-@@ -16400,7 +17871,14 @@
+@@ -16400,7 +18191,14 @@
        }
      },
      "Delivery Details" : {
@@ -2990,7 +3337,7 @@ index c7150a85..2fa783bf 100644
      },
      "Delivery Limits" : {
        "comment" : "Title text for delivery limits",
-@@ -16541,16 +18019,46 @@
+@@ -16541,16 +18339,46 @@
        }
      },
      "Denied" : {
@@ -3041,7 +3388,7 @@ index c7150a85..2fa783bf 100644
      },
      "Diabetes Treatment" : {
        "comment" : "Descriptive text for Therapy Settings",
-@@ -16632,6 +18140,12 @@
+@@ -16632,6 +18460,12 @@
              "state" : "translated",
              "value" : "Diyabet Tedavisi"
            }
@@ -3054,7 +3401,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -16713,7 +18227,14 @@
+@@ -16713,7 +18547,14 @@
        }
      },
      "Difficulty maintaining exercise or holding a conversation." : {
@@ -3070,7 +3417,7 @@ index c7150a85..2fa783bf 100644
      },
      "Disables" : {
        "comment" : "The action hint of the workout mode toggle button when enabled",
-@@ -16980,6 +18501,12 @@
+@@ -16980,6 +18821,12 @@
              "state" : "translated",
              "value" : "Afișați opțiunile de control"
            }
@@ -3083,7 +3430,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -17018,7 +18545,15 @@
+@@ -17018,7 +18865,15 @@
        }
      },
      "Don't Start" : {
@@ -3100,7 +3447,7 @@ index c7150a85..2fa783bf 100644
      },
      "Done" : {
        "localizations" : {
-@@ -17117,6 +18652,12 @@
+@@ -17117,6 +18972,12 @@
              "state" : "translated",
              "value" : "Tamamlandı"
            }
@@ -3113,7 +3460,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -17210,7 +18751,14 @@
+@@ -17210,7 +19071,14 @@
        }
      },
      "Dose Type" : {
@@ -3129,7 +3476,7 @@ index c7150a85..2fa783bf 100644
      },
      "Dosing Strategy" : {
        "comment" : "The title of the Dosing Strategy section in settings",
-@@ -17302,7 +18850,14 @@
+@@ -17302,7 +19170,14 @@
        }
      },
      "Duration" : {
@@ -3145,7 +3492,7 @@ index c7150a85..2fa783bf 100644
      },
      "Duration exceeds: %1$.1f hours" : {
        "comment" : "Override error description: duration exceed max (1: max duration in hours).",
-@@ -17372,36 +18927,108 @@
+@@ -17372,36 +19247,128 @@
              "state" : "translated",
              "value" : "Süre aşıldı: %1$.1f saat"
            }
@@ -3216,6 +3563,26 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Each entry is one decoded packet. Tap to see when it arrived and every decoded field — including the realtime frame's historical lag, which is why the embedded 5-min value is always ~17 min behind." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每一条目是一个解码数据包。点按可查看它到达的时间和每个解码字段——包括实时帧的历史延迟，这就是内嵌的 5 分钟值总是滞后约 17 分钟的原因。"
++          }
++        }
++      }
++    },
++    "Each series is plotted by lifeCount (minutes since sensor start). Realtime current and Clinical word[5] are identical by spec — clinical dots should land on the realtime line except across reconnect gaps." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每条曲线按 lifeCount（自传感器启动以来的分钟数）绘制。按规范，实时当前值与临床 word[5] 相同——除跨重连间隙外，临床点应落在实时线上。"
++          }
++        }
++      }
      },
      "Easy breath. Can carry on a conversation." : {
 -
@@ -3263,7 +3630,7 @@ index c7150a85..2fa783bf 100644
      },
      "Enable\nBluetooth" : {
        "comment" : "Message to the user to enable bluetooth",
-@@ -17542,6 +19169,12 @@
+@@ -17542,6 +19509,12 @@
              "state" : "translated",
              "value" : "Activați aplicarea parțială pe bază de glicemie"
            }
@@ -3276,7 +3643,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -17589,6 +19222,12 @@
+@@ -17589,6 +19562,12 @@
              "state" : "translated",
              "value" : "Activați corecția retrospectivă integrală"
            }
@@ -3289,7 +3656,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -17742,19 +19381,55 @@
+@@ -17742,19 +19721,55 @@
        }
      },
      "End" : {
@@ -3350,7 +3717,24 @@ index c7150a85..2fa783bf 100644
      },
      "Enter a blood glucose from a meter for a recommended bolus amount." : {
        "comment" : "Caption for bolus screen notice when glucose data is missing or stale",
-@@ -18455,6 +20130,12 @@
+@@ -18256,6 +20271,16 @@
+         }
+       }
+     },
++    "Error" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "错误"
++          }
++        }
++      }
++    },
+     "Error Canceling Bolus" : {
+       "comment" : "The alert title for an error while canceling a bolus",
+       "localizations" : {
+@@ -18455,6 +20480,12 @@
              "state" : "translated",
              "value" : "Günlükleri Dışa Aktarırken Hata"
            }
@@ -3363,7 +3747,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -18591,7 +20272,14 @@
+@@ -18591,7 +20622,14 @@
        }
      },
      "Event" : {
@@ -3379,9 +3763,20 @@ index c7150a85..2fa783bf 100644
      },
      "Event History" : {
        "comment" : "Segmented button title for insulin delivery log event history",
-@@ -18707,7 +20395,14 @@
+@@ -18706,8 +20744,25 @@
+         }
        }
      },
++    "Eventual" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "最终"
++          }
++        }
++      }
++    },
      "Eventually" : {
 -
 +      "localizations" : {
@@ -3395,7 +3790,7 @@ index c7150a85..2fa783bf 100644
      },
      "Eventually %@" : {
        "comment" : "The subtitle format describing eventual glucose. (1: localized glucose value description)",
-@@ -18830,13 +20525,36 @@
+@@ -18830,13 +20885,36 @@
        }
      },
      "Example" : {
@@ -3435,7 +3830,7 @@ index c7150a85..2fa783bf 100644
      },
      "Exceeds maximum allowed bolus in settings" : {
        "comment" : "Bolus error description: bolus exceeds maximum bolus in settings.",
-@@ -18983,6 +20701,12 @@
+@@ -18983,6 +21061,12 @@
              "state" : "translated",
              "value" : "İzin verilen maksimum karbonhidrat miktarını aşıyor"
            }
@@ -3448,7 +3843,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -19106,10 +20830,24 @@
+@@ -19106,10 +21190,24 @@
        }
      },
      "Exercise is a common reason to use a preset. Different kinds of exercise and their intensity levels can affect your glucose levels in different ways." : {
@@ -3475,7 +3870,7 @@ index c7150a85..2fa783bf 100644
      },
      "Export Critical Event Logs" : {
        "comment" : "The title of the export critical event logs in support",
-@@ -19280,11 +21018,25 @@
+@@ -19280,11 +21378,25 @@
              "state" : "translated",
              "value" : "Dışa Aktar- %1$@"
            }
@@ -3502,7 +3897,7 @@ index c7150a85..2fa783bf 100644
      },
      "Failed to Resume Insulin Delivery" : {
        "comment" : "The alert title for a resume error",
-@@ -19382,16 +21134,45 @@
+@@ -19382,16 +21494,45 @@
        }
      },
      "Falling / Falling Quickly" : {
@@ -3552,7 +3947,7 @@ index c7150a85..2fa783bf 100644
      },
      "Favorite Foods" : {
        "comment" : "Title for Favorite Foods view",
-@@ -19626,10 +21407,24 @@
+@@ -19626,10 +21767,24 @@
        }
      },
      "Filter" : {
@@ -3579,7 +3974,7 @@ index c7150a85..2fa783bf 100644
      },
      "Fingerstick Glucose" : {
        "comment" : "Label for manual glucose entry row on bolus screen",
-@@ -19717,24 +21512,70 @@
+@@ -19717,24 +21872,70 @@
              "state" : "translated",
              "value" : "Parmak Ucu KŞ"
            }
@@ -3655,7 +4050,7 @@ index c7150a85..2fa783bf 100644
      },
      "Fix now by turning Notifications, Critical Alerts and Time Sensitive Notifications ON." : {
        "comment" : "Secondary text for alerts disabled warning, which appears on the main status screen.",
-@@ -19817,11 +21658,25 @@
+@@ -19817,11 +22018,25 @@
              "state" : "translated",
              "value" : "Bildirimleri, Kritik Uyarıları ve Zamana Duyarlı Bildirimleri AÇIK konuma getirerek şimdi düzeltin."
            }
@@ -3682,7 +4077,7 @@ index c7150a85..2fa783bf 100644
      },
      "Food Type" : {
        "comment" : "Label for food type entry on add favorite food screen",
-@@ -20063,10 +21918,24 @@
+@@ -20063,10 +22278,24 @@
        }
      },
      "For activities that raise your risk of going low, you can set a higher temporary correction range." : {
@@ -3709,7 +4104,7 @@ index c7150a85..2fa783bf 100644
      },
      "For safety purposes, you should allow Critical Alerts, Time Sensitive and Notification Permissions (non-critical alerts) on your device to continue using %1$@ and cannot turn off individual alarms." : {
        "comment" : "Description text for silencing time sensitive and non-critical alerts (1: app name)",
-@@ -20119,17 +21988,44 @@
+@@ -20119,17 +22348,44 @@
              "state" : "translated",
              "value" : "В целях безопасности вам следует разрешить критические оповещения, срочные оповещения и уведомления (некритические оповещения) на вашем устройстве, чтобы продолжить использовать %1$@ и не отключать отдельные тревоги."
            }
@@ -3757,7 +4152,7 @@ index c7150a85..2fa783bf 100644
      },
      "Forecasted blood glucose may still be higher than target range." : {
        "localizations" : {
-@@ -20287,6 +22183,12 @@
+@@ -20287,6 +22543,12 @@
              "state" : "translated",
              "value" : "Tahmini KŞ"
            }
@@ -3770,7 +4165,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -20341,11 +22243,24 @@
+@@ -20341,11 +22603,24 @@
              "state" : "translated",
              "value" : "Часто задаваемые вопросы об оповещениях"
            }
@@ -3796,7 +4191,7 @@ index c7150a85..2fa783bf 100644
      },
      "g" : {
        "comment" : "The short unit display string for grams",
-@@ -20552,7 +22467,15 @@
+@@ -20552,7 +22827,15 @@
        }
      },
      "Get help with iOS Permissions" : {
@@ -3813,7 +4208,7 @@ index c7150a85..2fa783bf 100644
      },
      "Glucose" : {
        "comment" : "Health access row label for glucose\nThe title of the glucose and prediction graph\nTitle for predicted glucose chart on bolus screen",
-@@ -20687,7 +22610,15 @@
+@@ -20687,7 +22970,15 @@
      },
      "Glucose Alerts" : {
        "comment" : "A link in the alert management screen that takes the user to the glucose alert settings view.",
@@ -3830,7 +4225,7 @@ index c7150a85..2fa783bf 100644
      },
      "Glucose Based Partial Application" : {
        "comment" : "Title for glucose based partial application experiment description\nTitle of glucose based partial application experiment",
-@@ -20733,11 +22664,24 @@
+@@ -20733,11 +23024,24 @@
              "state" : "translated",
              "value" : "Aplicare parțială pe bază de glicemie"
            }
@@ -3856,7 +4251,7 @@ index c7150a85..2fa783bf 100644
      },
      "Glucose data is %1$@ old" : {
        "comment" : "The error message when glucose data is too old to be used. (1: glucose data age in minutes)",
-@@ -21058,6 +23002,12 @@
+@@ -21058,6 +23362,12 @@
              "state" : "translated",
              "value" : "KŞ Verileri Artık Kullanılabilir"
            }
@@ -3869,7 +4264,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -21204,7 +23154,15 @@
+@@ -21204,7 +23514,15 @@
        }
      },
      "Glucose Metrics" : {
@@ -3886,7 +4281,7 @@ index c7150a85..2fa783bf 100644
      },
      "Glucose Momentum" : {
        "comment" : "Title of the prediction input effect for glucose momentum",
-@@ -21326,10 +23284,25 @@
+@@ -21326,10 +23644,25 @@
        }
      },
      "Glucose overview and ambulatory glucose profile" : {
@@ -3914,7 +4309,7 @@ index c7150a85..2fa783bf 100644
      },
      "Glucose Target Range Schedule" : {
        "comment" : "Details for configuration error when glucose target range schedule is missing",
-@@ -21399,38 +23372,123 @@
+@@ -21399,38 +23732,133 @@
              "state" : "translated",
              "value" : "KŞ Hedef Aralığı Programı"
            }
@@ -4034,6 +4429,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Got it!" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "知道了"
++          }
++        }
++      }
      },
      "grams" : {
 -
@@ -4048,7 +4453,7 @@ index c7150a85..2fa783bf 100644
      },
      "HARDWARE SOUNDS" : {
        "extractionState" : "stale",
-@@ -21482,17 +23540,45 @@
+@@ -21482,17 +23910,45 @@
              "state" : "translated",
              "value" : "АППАРАТНЫЕ ЗВУКИ"
            }
@@ -4097,7 +4502,7 @@ index c7150a85..2fa783bf 100644
      },
      "High Glucose" : {
        "localizations" : {
-@@ -21543,24 +23629,66 @@
+@@ -21543,24 +23999,86 @@
              "state" : "translated",
              "value" : "Высокий уровень глюкозы"
            }
@@ -4128,6 +4533,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "高强度运动意味着将自己推向 **最大强度**。它非常艰难，几乎无法说话，而且你无法长时间维持。"
++          }
++        }
++      }
++    },
++    "higher" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更高"
 +          }
 +        }
 +      }
@@ -4166,10 +4581,20 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "hour" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "小时"
++          }
++        }
++      }
      },
      "How can I silence non-Critical Alerts?" : {
        "localizations" : {
-@@ -21611,6 +23739,12 @@
+@@ -21611,6 +24129,12 @@
              "state" : "translated",
              "value" : "Как отключить некритичные оповещения?"
            }
@@ -4182,7 +4607,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -21664,6 +23798,12 @@
+@@ -21664,6 +24188,12 @@
              "state" : "translated",
              "value" : "Как отключить только срочные и некритические предупреждения?"
            }
@@ -4195,7 +4620,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -21717,14 +23857,34 @@
+@@ -21717,14 +24247,34 @@
              "state" : "translated",
              "value" : "Как временно отключить все звуки приложения %1$@?"
            }
@@ -4232,7 +4657,7 @@ index c7150a85..2fa783bf 100644
      },
      "How to update (LoopDocs)" : {
        "comment" : "The title text for how to update",
-@@ -21806,17 +23966,44 @@
+@@ -21806,17 +24356,44 @@
              "state" : "translated",
              "value" : "Nasıl güncellenir (LoopDocs)"
            }
@@ -4280,7 +4705,7 @@ index c7150a85..2fa783bf 100644
      },
      "https://mysite.herokuapp.com" : {
        "comment" : "The placeholder text for the nightscout site URL credential",
-@@ -21827,17 +24014,45 @@
+@@ -21827,17 +24404,45 @@
              "state" : "translated",
              "value" : "https://mysite.herokuapp.com"
            }
@@ -4329,7 +4754,7 @@ index c7150a85..2fa783bf 100644
      },
      "If iOS Focus Mode is ON and Mute Alerts is OFF, Critical Alerts will still be delivered and non-Critical Alerts will be silenced until %1$@ is added to each Focus mode as an Allowed App." : {
        "comment" : "Focus modes descriptive text (1: app name)",
-@@ -21890,35 +24105,104 @@
+@@ -21890,35 +24495,114 @@
              "state" : "translated",
              "value" : "Если режим фокусировки iOS включен, а функция отключения оповещений выключена, критические оповещения будут по-прежнему доставляться, а некритические будут глушиться до тех пор, пока %1$@ не будет добавлен в каждый режим фокусировки в качестве разрешенного приложения."
            }
@@ -4338,6 +4763,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "如果 iOS 专注模式处于开启状态，且“静音提醒”处于关闭状态，则关键提醒仍会正常推送，而非关键提醒将被静音，直到将 %1$@ 添加到每个专注模式的“允许的应用”列表中为止。"
++          }
++        }
++      }
++    },
++    "If vibration is enabled on your device, all alerts will still vibrate. Your insulin pump and CGM hardware may still sound." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "如果你的设备启用了振动，所有警报仍会振动。你的胰岛素泵和 CGM 硬件仍可能发出声音。"
 +          }
          }
        }
@@ -4443,7 +4878,7 @@ index c7150a85..2fa783bf 100644
      },
      "Immediate" : {
        "comment" : "Immediate Delivery status text",
-@@ -22051,16 +24335,45 @@
+@@ -22051,16 +24735,45 @@
        }
      },
      "In Range" : {
@@ -4493,7 +4928,34 @@ index c7150a85..2fa783bf 100644
      },
      "Indefinitely" : {
        "comment" : "The title of a target alert action specifying an indefinitely long workout targets duration",
-@@ -22528,11 +24841,25 @@
+@@ -22460,6 +25173,26 @@
+         }
+       }
+     },
++    "Insulin adjustment is above the safety threshold" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "胰岛素调整高于安全阈值"
++          }
++        }
++      }
++    },
++    "Insulin adjustment is below the safety threshold" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "胰岛素调整低于安全阈值"
++          }
++        }
++      }
++    },
+     "Insulin adjustments have been disabled!" : {
+       "comment" : "Notification body for crash recovery alert",
+       "localizations" : {
+@@ -22528,11 +25261,25 @@
              "state" : "translated",
              "value" : "İnsülin ayarlamaları devre dışı bırakıldı!"
            }
@@ -4520,7 +4982,7 @@ index c7150a85..2fa783bf 100644
      },
      "Insulin Delivery" : {
        "comment" : "The title of the insulin delivery graph",
-@@ -22660,7 +24987,14 @@
+@@ -22660,7 +25407,14 @@
        }
      },
      "Insulin Delivery Log" : {
@@ -4536,7 +4998,7 @@ index c7150a85..2fa783bf 100644
      },
      "Insulin effects" : {
        "comment" : "Details for missing data error when insulin effects are missing\nDetails for missing data error when insulin effects including pending insulin are missing",
-@@ -22782,7 +25116,14 @@
+@@ -22782,7 +25536,14 @@
        }
      },
      "Insulin Event" : {
@@ -4552,7 +5014,7 @@ index c7150a85..2fa783bf 100644
      },
      "Insulin Model" : {
        "comment" : "Details for configuration error when insulin model is missing\n   The title text for the insulin model setting row",
-@@ -23012,7 +25353,14 @@
+@@ -23012,7 +25773,14 @@
        }
      },
      "Insulin Resumed" : {
@@ -4568,7 +5030,7 @@ index c7150a85..2fa783bf 100644
      },
      "Insulin Sensitivities" : {
        "comment" : "The title of the insulin sensitivities schedule screen\n   The title text for the insulin sensitivity schedule",
-@@ -23141,7 +25489,14 @@
+@@ -23141,7 +25909,14 @@
        }
      },
      "Insulin Sensitivity Factor (ISF)" : {
@@ -4584,7 +5046,7 @@ index c7150a85..2fa783bf 100644
      },
      "Insulin Sensitivity Schedule" : {
        "comment" : "Details for configuration error when insulin sensitivity schedule is missing",
-@@ -23211,6 +25566,12 @@
+@@ -23211,6 +25986,12 @@
              "state" : "translated",
              "value" : "İnsülin Duyarlılık Programı"
            }
@@ -4597,7 +5059,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -23294,6 +25655,12 @@
+@@ -23294,6 +26075,22 @@
              "state" : "translated",
              "value" : "İnsülin Askıya Alındı"
            }
@@ -4607,10 +5069,20 @@ index c7150a85..2fa783bf 100644
 +            "state" : "translated",
 +            "value" : "胰岛素已暂停输注"
 +          }
++        }
++      }
++    },
++    "insulin than usual." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "胰岛素（相比平时）。"
++          }
          }
        }
      },
-@@ -23395,6 +25762,12 @@
+@@ -23395,6 +26192,12 @@
              "state" : "translated",
              "value" : "İnsülin Tipi"
            }
@@ -4623,7 +5095,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -23442,6 +25815,12 @@
+@@ -23442,6 +26245,12 @@
              "state" : "translated",
              "value" : "Corecție retrospectivă integrală"
            }
@@ -4636,7 +5108,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -23489,6 +25868,12 @@
+@@ -23489,6 +26298,12 @@
              "state" : "translated",
              "value" : "Corecția Retrospectivă Integrală (CRI) este o extensie a componentei algoritmului standard de Corecție Retrospectivă (CR) din Loop, care ajustează prognoza pe baza istoricului discrepanțelor dintre nivelurile de glicemie prezise și cele reale. \n \nSpre deosebire de CR, care analizează discrepanțele din ultimele 30 de minute, cu CRI, istoricul discrepanțelor se adună în timp. Așadar, discrepanțele pozitive continue în timp vor duce la creșterea dozării. Dacă discrepanțele sunt negative în timp, Loop va reduce și mai mult dozarea."
            }
@@ -4649,7 +5121,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -23572,11 +25957,24 @@
+@@ -23572,11 +26387,24 @@
              "state" : "translated",
              "value" : "%1$@ kesintiye uğradı: %3$@ %4$@'nın <b>%2$@</b> 'si"
            }
@@ -4675,7 +5147,7 @@ index c7150a85..2fa783bf 100644
      },
      "Invalid absorption time: %1$@ hours" : {
        "comment" : "Carb error description: invalid absorption time. (1: Input duration in hours).",
-@@ -23985,6 +26383,12 @@
+@@ -23985,6 +26813,12 @@
              "state" : "translated",
              "value" : "Geçersiz Gelecek Glikoz"
            }
@@ -4688,7 +5160,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -24056,11 +26460,24 @@
+@@ -24056,11 +26890,34 @@
              "state" : "translated",
              "value" : "Gelecekte %1$@ olan bir zaman damgasıyla geçersiz KŞ okuması"
            }
@@ -4697,6 +5169,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "血糖读数无效，其时间戳为 %1$@ ，该时间点在未来"
++          }
++        }
++      }
++    },
++    "Invalid Start Time" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开始时间无效"
 +          }
          }
        }
@@ -4714,7 +5196,7 @@ index c7150a85..2fa783bf 100644
      },
      "iOS Critical Alerts and Time Sensitive Alerts are types of Apple notifications. They are used for high-priority events. Some examples include:" : {
        "extractionState" : "stale",
-@@ -24112,11 +26529,25 @@
+@@ -24112,11 +26969,25 @@
              "state" : "translated",
              "value" : "Критические оповещения iOS и срочные оповещения — это типы уведомлений Apple. Они используются для проведения высокоприоритетных мероприятий. Вот некоторые примеры:"
            }
@@ -4741,7 +5223,7 @@ index c7150a85..2fa783bf 100644
      },
      "IOS FOCUS MODES" : {
        "extractionState" : "stale",
-@@ -24168,23 +26599,68 @@
+@@ -24168,23 +27039,68 @@
              "state" : "translated",
              "value" : "РЕЖИМЫ ФОКУСИРОВКИ IOS"
            }
@@ -4815,7 +5297,7 @@ index c7150a85..2fa783bf 100644
      },
      "Issue Report" : {
        "comment" : "The title text for the issue report menu item\nThe view controller title for the issue report screen",
-@@ -24373,17 +26849,46 @@
+@@ -24373,17 +27289,56 @@
              "state" : "translated",
              "value" : "Görünüşe göre yediğiniz bir yemeği kaydetmemiş olabilirsiniz. Şimdi kaydetmek için dokunun."
            }
@@ -4862,10 +5344,20 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Keeps the clinical channel subscribed so the clinical/raw charts update every minute. Off by default — only needed for stream inspection, and it adds per-reconnect clinical traffic. Takes effect on the next reconnect." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "保持临床通道订阅，使临床/原始图表每分钟更新。默认关闭——仅在检查数据流时需要，且会在每次重连时增加临床流量。将在下次重连时生效。"
++          }
++        }
++      }
      },
      "Large Meal Entered" : {
        "comment" : "Title of the warning shown when a large meal was entered",
-@@ -24469,28 +26974,87 @@
+@@ -24469,28 +27424,87 @@
        }
      },
      "Larger glucose drop" : {
@@ -4961,7 +5453,7 @@ index c7150a85..2fa783bf 100644
      },
      "Launches CGM app" : {
        "comment" : "Glucose HUD accessibility hint",
-@@ -24704,14 +27268,35 @@
+@@ -24704,14 +27718,35 @@
              "state" : "translated",
              "value" : "Daha fazla bilgi edin"
            }
@@ -4999,7 +5491,7 @@ index c7150a85..2fa783bf 100644
      },
      "Less than a minute remaining" : {
        "comment" : "Estimated remaining duration with less than a minute",
-@@ -24799,20 +27384,54 @@
+@@ -24799,20 +27834,54 @@
              "state" : "translated",
              "value" : "Bir dakikadan az kaldı"
            }
@@ -5058,7 +5550,7 @@ index c7150a85..2fa783bf 100644
      },
      "Live activity" : {
        "comment" : "Live activity screen title",
-@@ -24844,7 +27463,15 @@
+@@ -24844,7 +27913,15 @@
        }
      },
      "Live Activity" : {
@@ -5075,7 +5567,7 @@ index c7150a85..2fa783bf 100644
      },
      "Loading..." : {
        "comment" : "The loading message for the diagnostic report screen",
-@@ -24974,11 +27601,25 @@
+@@ -24974,11 +28051,25 @@
              "state" : "translated",
              "value" : "Ecran de blocare / Insulă dinamică / CarPlay"
            }
@@ -5102,7 +5594,7 @@ index c7150a85..2fa783bf 100644
      },
      "Log Dose" : {
        "comment" : "Accessibility label for the manual dose entry button on the insulin delivery screen\nButton text to log a dose\nTitle for dose logging screen",
-@@ -25149,6 +27790,12 @@
+@@ -25149,6 +28240,12 @@
              "state" : "translated",
              "value" : "Kayıtlı İnsülin Dozu"
            }
@@ -5115,7 +5607,24 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -25766,7 +28413,15 @@
+@@ -25278,6 +28375,16 @@
+         }
+       }
+     },
++    "Logout" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "登出"
++          }
++        }
++      }
++    },
+     "Loop Crashed" : {
+       "comment" : "Title for crash recovery alert",
+       "localizations" : {
+@@ -25766,7 +28873,15 @@
        }
      },
      "Loop is already looping." : {
@@ -5132,7 +5641,7 @@ index c7150a85..2fa783bf 100644
      },
      "Loop normally gives 40% of your predicted insulin needs each dosing cycle.\n\nWhen the Glucose Based Partial Application experiment is enabled, Loop will vary the percentage of recommended bolus delivered each cycle with glucose level.\n\nNear correction range, it will use 20% (similar to Temp Basal), and gradually increase to a maximum of 80% at high glucose (200 mg/dL, 11.1 mmol/L).\n\nPlease be aware that during fast rising glucose, such as after an unannounced meal, this feature, combined with velocity and retrospective correction effects, may result in a larger dose than your ISF would call for." : {
        "comment" : "Description of Glucose Based Partial Application toggle.",
-@@ -25966,6 +28621,12 @@
+@@ -25966,6 +29081,12 @@
              "state" : "translated",
              "value" : "Bluetooth etkinleştirilene kadar döngü başarılı bir şekilde çalışmayacaktır. KŞ ölçümleri alamayacak veya bolus yapamayacaksınız."
            }
@@ -5145,7 +5654,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -26065,7 +28726,15 @@
+@@ -26065,7 +29186,15 @@
        }
      },
      "Low" : {
@@ -5162,9 +5671,30 @@ index c7150a85..2fa783bf 100644
      },
      "Low Glucose" : {
        "comment" : "Title for bolus screen warning when glucose is below glucose warning limit.\nTitle for bolus screen warning when glucose is below suspend threshold, but a bolus is recommended",
-@@ -26151,13 +28820,37 @@
+@@ -26150,14 +29279,58 @@
+         }
        }
      },
++    "lower" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "更低"
++          }
++        }
++      }
++    },
++    "Lower = smoother. Realtime and Clinical word[5] should match; Embedded 5-min should be lowest." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "值越低越平滑。实时值与临床 word[5] 应一致；内嵌 5 分钟值应最低。"
++          }
++        }
++      }
++    },
      "Make sure to keep Notifications and Time Sensitive Notifications turned ON in iOS Settings to receive essential safety and maintenance notifications." : {
 -      "comment" : "Time sensitive notifications callout message when Critical Alerts are unavailable"
 +      "comment" : "Time sensitive notifications callout message when Critical Alerts are unavailable",
@@ -5203,7 +5733,7 @@ index c7150a85..2fa783bf 100644
      },
      "Manage Permissions in Settings" : {
        "comment" : "Manage Permissions in Settings button text",
-@@ -26244,7 +28937,14 @@
+@@ -26244,7 +29417,14 @@
        }
      },
      "Manager Identifier" : {
@@ -5219,7 +5749,7 @@ index c7150a85..2fa783bf 100644
      },
      "Managing Alerts" : {
        "comment" : "View title for how mute alerts work",
-@@ -26297,11 +28997,24 @@
+@@ -26297,11 +29477,24 @@
              "state" : "translated",
              "value" : "Управление оповещениями"
            }
@@ -5245,7 +5775,7 @@ index c7150a85..2fa783bf 100644
      },
      "Manual Dose: <b>%1$@</b> %2$@" : {
        "comment" : "Description of a bolus dose entry (1: value (? if no value) in bold, 2: unit)",
-@@ -26387,7 +29100,15 @@
+@@ -26387,7 +29580,15 @@
        }
      },
      "Manual temporary basal in progress. Automatic dosing is disabled." : {
@@ -5262,7 +5792,7 @@ index c7150a85..2fa783bf 100644
      },
      "Maximum Basal Rate Per Hour" : {
        "comment" : "Details for configuration error when maximum basal rate per hour is missing",
-@@ -26669,13 +29390,34 @@
+@@ -26669,13 +29870,34 @@
        }
      },
      "Maximum Intensity (Anaerobic)" : {
@@ -5300,7 +5830,7 @@ index c7150a85..2fa783bf 100644
      },
      "Meal Bolus" : {
        "comment" : "Title for bolus entry screen when also entering carbs",
-@@ -26773,16 +29515,45 @@
+@@ -26773,16 +29995,45 @@
        }
      },
      "Meal Summary" : {
@@ -5350,7 +5880,24 @@ index c7150a85..2fa783bf 100644
      },
      "mg/dL" : {
        "comment" : "The short unit display string for milligrams of glucose per decilter",
-@@ -27180,11 +29951,24 @@
+@@ -26910,6 +30161,16 @@
+         }
+       }
+     },
++    "min" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "分钟"
++          }
++        }
++      }
++    },
+     "Missed Meal Notifications" : {
+       "comment" : "Title for missed meal notifications toggle",
+       "localizations" : {
+@@ -27180,11 +30441,24 @@
              "state" : "translated",
              "value" : "Ayarlarda izin verilen maksimum bolus eksik"
            }
@@ -5376,7 +5923,7 @@ index c7150a85..2fa783bf 100644
      },
      "mmol/L" : {
        "comment" : "The short unit display string for millimoles of glucose per liter",
-@@ -27461,7 +30245,14 @@
+@@ -27461,7 +30735,14 @@
        }
      },
      "Monitor your glucose and active insulin at the start of a competition day" : {
@@ -5392,7 +5939,7 @@ index c7150a85..2fa783bf 100644
      },
      "More Info" : {
        "comment" : "Text for more info action on notification of upcoming TestFlight expiration\nText for more info action on notification of upcoming profile expiration",
-@@ -27577,13 +30368,34 @@
+@@ -27577,13 +30858,34 @@
        }
      },
      "Morning Exercise" : {
@@ -5430,7 +5977,7 @@ index c7150a85..2fa783bf 100644
      },
      "Mute All Alerts" : {
        "comment" : "Label for button to mute all alerts",
-@@ -27724,10 +30536,26 @@
+@@ -27724,10 +31026,26 @@
        }
      },
      "Mute All App Sounds" : {
@@ -5459,7 +6006,7 @@ index c7150a85..2fa783bf 100644
      },
      "Name" : {
        "comment" : "Label for name row on add favorite food screen\nPreset sorting option description for sorting by name",
-@@ -28042,6 +30870,12 @@
+@@ -28042,6 +31360,12 @@
              "state" : "translated",
              "value" : "Negatif süreye izin verilmez"
            }
@@ -5472,9 +6019,30 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -28081,10 +30915,24 @@
+@@ -28080,11 +31404,45 @@
+         }
        }
      },
++    "New Preset" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "新配置"
++          }
++        }
++      }
++    },
++    "Next Date" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "下一个日期"
++          }
++        }
++      }
++    },
      "Next, we’ll look at settings you can change and how they affect Omar’s insulin." : {
 -
 +      "localizations" : {
@@ -5499,7 +6067,7 @@ index c7150a85..2fa783bf 100644
      },
      "Nightscout" : {
        "comment" : "The title of the Nightscout service",
-@@ -28215,14 +31063,34 @@
+@@ -28215,14 +31573,34 @@
              "state" : "translated",
              "value" : "Nightscout"
            }
@@ -5536,7 +6104,7 @@ index c7150a85..2fa783bf 100644
      },
      "No alerts or alarms will sound while muted. Select how long you would you like to mute for." : {
        "comment" : "Message for mute alert duration selection action sheet",
-@@ -28269,6 +31137,12 @@
+@@ -28269,6 +31647,12 @@
              "state" : "translated",
              "value" : "Nicio alertă nu va suna când este dezactivat sunetul. Odată ce această perioadă se încheie, alertele și alarmele dumneavoastră vor relua normal."
            }
@@ -5549,7 +6117,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -28368,10 +31242,24 @@
+@@ -28368,10 +31752,44 @@
        }
      },
      "No change in glucose." : {
@@ -5573,10 +6141,30 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "No change to insulin settings." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "胰岛素设置无变化。"
++          }
++        }
++      }
++    },
++    "No clinical raw data yet." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "尚无临床原始数据。"
++          }
++        }
++      }
      },
      "No connected devices, or failure during device connection" : {
        "comment" : "The error message displayed for device connection errors.",
-@@ -28493,10 +31381,25 @@
+@@ -28493,10 +31911,25 @@
        }
      },
      "No Delivery" : {
@@ -5604,7 +6192,7 @@ index c7150a85..2fa783bf 100644
      },
      "No Maximum Bolus Configured" : {
        "comment" : "Alert title for a missing maximum bolus setting error",
-@@ -28594,7 +31497,14 @@
+@@ -28594,7 +32027,14 @@
        }
      },
      "No performance history available yet" : {
@@ -5620,7 +6208,41 @@ index c7150a85..2fa783bf 100644
      },
      "No Pump Configured" : {
        "comment" : "Alert title for a missing pump error",
-@@ -29192,13 +32102,36 @@
+@@ -28691,6 +32131,16 @@
+         }
+       }
+     },
++    "No reads captured yet." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "尚未捕获读数。"
++          }
++        }
++      }
++    },
+     "No Recent Glucose" : {
+       "comment" : "The title of the cell indicating that there is no recent glucose",
+       "extractionState" : "stale",
+@@ -29060,6 +32510,16 @@
+         }
+       }
+     },
++    "Noise (mean |Δ| between consecutive points)" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "噪声（相邻点之间 |Δ| 的均值）"
++          }
++        }
++      }
++    },
+     "None" : {
+       "comment" : "Indicates no favorite food is selected",
+       "localizations" : {
+@@ -29192,13 +32652,66 @@
        }
      },
      "None in last 24 hours" : {
@@ -5645,6 +6267,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Not set" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "未设置"
++          }
++        }
++      }
      },
      "Not Set" : {
 -      "comment" : "Health sharing status: not determined"
@@ -5657,10 +6289,30 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Note" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "注意"
++          }
++        }
++      }
++    },
++    "Note: These example values are based on your current settings. Values may be different when you enable the preset." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "注意：这些示例值基于你当前的设置。启用预设时数值可能不同。"
++          }
++        }
++      }
      },
      "Notification Delivery" : {
        "comment" : "Notification Delivery Status text",
-@@ -29357,6 +32290,12 @@
+@@ -29357,6 +32870,12 @@
              "state" : "translated",
              "value" : "Bildirim gönderimi, telefonunuzun ayarlarında Zamanlanmış Özet olarak ayarlanmıştır.\n\n%1$@ adresinden bildirim almakta gecikmeyi önlemek için bildirim gönderimini Anında Gönderim olarak ayarlanmasını öneririz."
            }
@@ -5673,7 +6325,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -29517,6 +32456,12 @@
+@@ -29517,6 +33036,12 @@
              "state" : "translated",
              "value" : "Bildirimler Gecikti"
            }
@@ -5686,7 +6338,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -29688,7 +32633,15 @@
+@@ -29688,7 +33213,25 @@
        }
      },
      "Observed changes in glucose, subtracting changes modeled from insulin delivery, can be used to estimate carbohydrate absorption." : {
@@ -5700,10 +6352,20 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "of scheduled" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "（相对计划值）"
++          }
++        }
++      }
      },
      "Off" : {
        "comment" : "Notification Setting Status is Off",
-@@ -29788,6 +32741,12 @@
+@@ -29788,6 +33331,12 @@
              "state" : "translated",
              "value" : "Kapalı"
            }
@@ -5716,7 +6378,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -29865,6 +32824,12 @@
+@@ -29865,6 +33414,12 @@
              "state" : "translated",
              "value" : "Oh hayır! Dozlama sırasında Loop çöktü ve bu iletişim kutusu kapatılana kadar insülin ayarlamaları duraklatıldı. Dozlama geçmişi doğru olmayabilir. Lütfen İnsülin İletim tablolarını gözden geçirin ve kan şekerinizi dikkatle izleyin."
            }
@@ -5729,7 +6391,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -30000,10 +32965,24 @@
+@@ -30000,10 +33555,24 @@
        }
      },
      "Omar asks himself, **do I expect I will need more or less insulin than usual?**" : {
@@ -5756,7 +6418,7 @@ index c7150a85..2fa783bf 100644
      },
      "Omar sets his correction range a little higher, to %@-%@ %@. This tells %@ to step in sooner." : {
        "localizations" : {
-@@ -30012,11 +32991,24 @@
+@@ -30012,11 +33581,24 @@
              "state" : "new",
              "value" : "Omar sets his correction range a little higher, to %1$@-%2$@ %3$@. This tells %4$@ to step in sooner."
            }
@@ -5782,7 +6444,7 @@ index c7150a85..2fa783bf 100644
      },
      "On" : {
        "comment" : "Notification Setting Status is On",
-@@ -30150,26 +33142,80 @@
+@@ -30150,26 +33732,140 @@
        }
      },
      "On until" : {
@@ -5854,6 +6516,26 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "One-Time Password" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "一次性密码"
++          }
++        }
++      }
++    },
++    "One-time use override has ended." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "单次使用的预设已结束。"
++          }
++        }
++      }
      },
      "Open iOS Settings" : {
        "comment" : "A button that opens the iOS settings app.",
@@ -5867,10 +6549,50 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "or" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "或"
++          }
++        }
++      }
++    },
++    "Overall Insulin" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "总体胰岛素"
++          }
++        }
++      }
++    },
++    "Overall Insulin Needs" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "全部胰岛素需要"
++          }
++        }
++      }
++    },
++    "Overall insulin should be adjusted when your body needs more or less insulin than usual." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "当你的身体比平时需要更多或更少的胰岛素时，应调整总体胰岛素。"
++          }
++        }
++      }
      },
      "Override Presets" : {
        "comment" : "The title text for the override presets",
-@@ -30298,35 +33344,107 @@
+@@ -30298,35 +33994,107 @@
        }
      },
      "Overview" : {
@@ -5988,7 +6710,7 @@ index c7150a85..2fa783bf 100644
      },
      "Possible Missed Meal" : {
        "comment" : "The notification title for a meal that was possibly not logged in Loop.",
-@@ -30406,10 +33524,25 @@
+@@ -30406,10 +34174,25 @@
        }
      },
      "Power lifting" : {
@@ -6016,7 +6738,7 @@ index c7150a85..2fa783bf 100644
      },
      "Pre-Meal Targets" : {
        "comment" : "The label of the pre-meal mode toggle button",
-@@ -31141,6 +34274,12 @@
+@@ -31141,6 +34924,12 @@
              "state" : "translated",
              "value" : "описание прогнозирования с помощью интегральной ретроспективной коррекции"
            }
@@ -6029,7 +6751,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -31356,39 +34495,117 @@
+@@ -31356,39 +35145,127 @@
              "state" : "translated",
              "value" : "Kritik Olay Günlüklerinin Hazırlanması"
            }
@@ -6121,6 +6843,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Presets for Daily Activities" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "日常活动预设"
++          }
++        }
++      }
      },
      "Presets for Daily Activity" : {
 -
@@ -6157,7 +6889,7 @@ index c7150a85..2fa783bf 100644
      },
      "Profile Expiration" : {
        "comment" : "Settings App Profile expiration view",
-@@ -31559,6 +34776,12 @@
+@@ -31559,6 +35436,12 @@
              "state" : "translated",
              "value" : "Profilin süresi doluyor"
            }
@@ -6170,7 +6902,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -31636,12 +34859,26 @@
+@@ -31636,12 +35519,26 @@
              "state" : "translated",
              "value" : "Profil Yakında Sona Eriyor"
            }
@@ -6198,7 +6930,7 @@ index c7150a85..2fa783bf 100644
      },
      "Pump" : {
        "comment" : "The title of the pump section in settings",
-@@ -32118,6 +35355,12 @@
+@@ -32118,6 +36015,12 @@
              "state" : "translated",
              "value" : "Pump Event"
            }
@@ -6211,7 +6943,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -32170,11 +35413,25 @@
+@@ -32170,11 +36073,25 @@
              "state" : "translated",
              "value" : "Срок работы помпы закончился"
            }
@@ -6238,7 +6970,7 @@ index c7150a85..2fa783bf 100644
      },
      "Pump Manager" : {
        "comment" : "Details for configuration error when pump manager is missing",
-@@ -32369,6 +35626,12 @@
+@@ -32369,6 +36286,12 @@
              "state" : "translated",
              "value" : "Pompa Yöneticisi Hatası: %1$@"
            }
@@ -6251,7 +6983,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -32836,6 +36099,12 @@
+@@ -32836,6 +36759,12 @@
              "state" : "translated",
              "value" : "Pompa Askıya Alındı. Otomatik dozlama devre dışı bırakıldı."
            }
@@ -6264,7 +6996,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -32962,11 +36231,25 @@
+@@ -32962,11 +36891,25 @@
              "state" : "translated",
              "value" : "%1$@ %2$@"
            }
@@ -6291,9 +7023,20 @@ index c7150a85..2fa783bf 100644
      },
      "Rapid-Acting – Adults" : {
        "comment" : "Title of insulin model preset",
-@@ -33221,10 +36504,25 @@
+@@ -33220,11 +37163,46 @@
+         }
        }
      },
++    "Raw Reads (newest first)" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "原始读数（最新在前）"
++          }
++        }
++      }
++    },
      "Reading & Changing Access" : {
 -      "comment" : "Health access section header for reading and changing access"
 +      "comment" : "Health access section header for reading and changing access",
@@ -6302,6 +7045,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "读取与更改权限"
++          }
++        }
++      }
++    },
++    "Recent glucose" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "最近的葡萄糖"
 +          }
 +        }
 +      }
@@ -6319,7 +7072,7 @@ index c7150a85..2fa783bf 100644
      },
      "Recommendation expired: %1$@ old" : {
        "comment" : "The error message when a recommendation has expired. (1: age of recommendation in minutes)",
-@@ -33573,7 +36871,14 @@
+@@ -33573,7 +37551,14 @@
        }
      },
      "Recommended bolus adjusted due to preset" : {
@@ -6335,7 +7088,7 @@ index c7150a85..2fa783bf 100644
      },
      "Recommended Bolus Exceeds Maximum Bolus" : {
        "comment" : "Title for bolus screen warning when recommended bolus exceeds max bolus",
-@@ -33785,14 +37090,36 @@
+@@ -33785,14 +37770,46 @@
        }
      },
      "Recommended Insulin Reduction" : {
@@ -6345,6 +7098,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "推荐的胰岛素减少量"
++          }
++        }
++      }
++    },
++    "Recommended starting values" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "推荐的起始值"
 +          }
 +        }
 +      }
@@ -6375,7 +7138,7 @@ index c7150a85..2fa783bf 100644
      },
      "Remote Bolus Entry: %@ U" : {
        "comment" : "The notification title for a remote bolus. (1: Bolus amount)\nThe notification title for a remote failure. (1: Bolus amount)",
-@@ -33951,19 +37278,49 @@
+@@ -33951,19 +37968,79 @@
              "state" : "translated",
              "value" : "Uzak Karbonhidrat Girişi: %d gram"
            }
@@ -6384,6 +7147,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "远程录入碳水：%d 克"
++          }
++        }
++      }
++    },
++    "Repeat" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "重复"
 +          }
          }
        }
@@ -6413,6 +7186,26 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Repeat weekly on" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "每周重复于"
++          }
++        }
++      }
++    },
++    "Required" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "需要"
++          }
++        }
++      }
      },
      "Required %1$@ App Update" : {
 -      "comment" : "The notification title for a required app update (1: app name)\nTitle for required version update modal (1: app name)"
@@ -6428,7 +7221,7 @@ index c7150a85..2fa783bf 100644
      },
      "Reservoir" : {
        "comment" : "Segmented button title for insulin delivery log reservoir history",
-@@ -34139,20 +37496,55 @@
+@@ -34139,20 +38216,65 @@
              "state" : "translated",
              "value" : "Резервуар пуст"
            }
@@ -6462,6 +7255,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Reset Secret Key" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "重置密钥"
++          }
++        }
++      }
      },
      "Restores all glucose alert thresholds, schedules, and sounds to their defaults, and removes any extra profiles." : {
 -
@@ -6488,9 +7291,40 @@ index c7150a85..2fa783bf 100644
      },
      "Retrospective Correction" : {
        "comment" : "Title of the prediction input effect for retrospective correction",
-@@ -34405,7 +37797,14 @@
+@@ -34404,8 +38526,45 @@
+         }
        }
      },
++    "Revert to recommended values" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "恢复为推荐值"
++          }
++        }
++      }
++    },
++    "Review Settings" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "检查设置"
++          }
++        }
++      }
++    },
++    "Review your preset settings below. To make any changes, navigate back to the setting you’d like to edit. You can edit these settings after saving your preset as well." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "请在下方检查你的预设设置。如需更改，请返回你想编辑的设置项。保存预设后你仍可编辑这些设置。"
++          }
++        }
++      }
++    },
      "safety" : {
 -
 +      "localizations" : {
@@ -6504,7 +7338,7 @@ index c7150a85..2fa783bf 100644
      },
      "Save" : {
        "localizations" : {
-@@ -34450,6 +37849,12 @@
+@@ -34450,6 +38609,12 @@
              "state" : "translated",
              "value" : "Salvați"
            }
@@ -6517,7 +7351,41 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -34722,21 +38127,56 @@
+@@ -34553,6 +38718,16 @@
+         }
+       }
+     },
++    "Save Preset" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "保存预设"
++          }
++        }
++      }
++    },
+     "Save without Bolusing" : {
+       "comment" : "Button text to save carbs and/or manual glucose entry without a bolus",
+       "localizations" : {
+@@ -34648,6 +38823,16 @@
+         }
+       }
+     },
++    "Schedule" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "计划"
++          }
++        }
++      }
++    },
+     "Scheduled" : {
+       "comment" : "Scheduled Delivery status text",
+       "localizations" : {
+@@ -34722,21 +38907,86 @@
              "state" : "translated",
              "value" : "Planlanan"
            }
@@ -6551,6 +7419,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Scheduled Range" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "计划范围"
++          }
++        }
++      }
      },
      "Scheduled reminder" : {
 -
@@ -6575,10 +7453,30 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Select" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "选择"
++          }
++        }
++      }
++    },
++    "Select Days" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "选择日期"
++          }
++        }
++      }
      },
      "Select Lock Screen Display Options" : {
        "comment" : "A section header for the lock screen display options.",
-@@ -34747,6 +38187,12 @@
+@@ -34747,6 +38997,22 @@
              "state" : "translated",
              "value" : "Selectați opțiunile de afișare ale ecranului de blocare"
            }
@@ -6588,10 +7486,20 @@ index c7150a85..2fa783bf 100644
 +            "state" : "translated",
 +            "value" : "选择锁屏显示选项"
 +          }
++        }
++      }
++    },
++    "Selected days" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "已选日期"
++          }
          }
        }
      },
-@@ -34809,7 +38255,14 @@
+@@ -34809,7 +39075,14 @@
        }
      },
      "Self-Initiated Events" : {
@@ -6607,7 +7515,7 @@ index c7150a85..2fa783bf 100644
      },
      "Sensor Failed" : {
        "localizations" : {
-@@ -34860,6 +38313,12 @@
+@@ -34860,6 +39133,12 @@
              "state" : "translated",
              "value" : "Ошибка сенсора"
            }
@@ -6620,9 +7528,20 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -34983,7 +38442,15 @@
+@@ -34982,8 +39261,46 @@
+         }
        }
      },
++    "Set an Adjusted Correction Range" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "设置调整后的校正范围"
++          }
++        }
++      }
++    },
      "Set the glucose value (or values) you want %1$@ to aim for in adjusting your basal insulin." : {
 -      "comment" : "Correction range description (1: app name)"
 +      "comment" : "Correction range description (1: app name)",
@@ -6634,10 +7553,47 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Set your correction range" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "设置你的校正范围"
++          }
++        }
++      }
++    },
++    "Set your overall insulin needs" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "设置你的总体胰岛素需求"
++          }
++        }
++      }
      },
      "Settings" : {
        "comment" : "Label of button that navigation user to iOS Settings\nSettings screen title\nWord referring to the app's settings screen",
-@@ -35184,17 +38651,46 @@
+@@ -35110,6 +39427,16 @@
+         }
+       }
+     },
++    "Settings Impact" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "设置影响"
++          }
++        }
++      }
++    },
+     "Setup Incomplete" : {
+       "comment" : "The title of the cell indicating that onboarding is suspended",
+       "localizations" : {
+@@ -35184,17 +39511,46 @@
              "state" : "translated",
              "value" : "Kurulum Tamamlanmadı"
            }
@@ -6687,7 +7643,7 @@ index c7150a85..2fa783bf 100644
      },
      "Shows last loop error" : {
        "comment" : "Loop Completion HUD accessibility hint",
-@@ -35401,6 +38897,12 @@
+@@ -35401,6 +39757,12 @@
              "state" : "translated",
              "value" : "Basit Bolus Hesaplayıcı"
            }
@@ -6700,7 +7656,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -35490,6 +38992,12 @@
+@@ -35490,6 +39852,12 @@
              "state" : "translated",
              "value" : "Basit Yemek Hesaplayıcı"
            }
@@ -6713,7 +7669,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -35613,10 +39121,24 @@
+@@ -35613,10 +39981,24 @@
        }
      },
      "Since he doesn’t plan to push himself too hard, he expects his insulin needs to stay the same, so he leaves the setting at 100%." : {
@@ -6740,7 +7696,7 @@ index c7150a85..2fa783bf 100644
      },
      "Site URL" : {
        "comment" : "The title of the nightscout site URL credential",
-@@ -35747,27 +39269,76 @@
+@@ -35747,27 +40129,86 @@
              "state" : "translated",
              "value" : "Site URL"
            }
@@ -6771,6 +7727,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "跳过并完成训练至"
++          }
++        }
++      }
++    },
++    "Skip Omnipod Onboarding?" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "跳过 Omnipod 入门引导"
 +          }
 +        }
 +      }
@@ -6823,7 +7789,7 @@ index c7150a85..2fa783bf 100644
      },
      "Software Update" : {
        "comment" : "Software update button link text",
-@@ -35843,32 +39414,97 @@
+@@ -35843,32 +40284,117 @@
              "state" : "translated",
              "value" : "Yazılım güncellemesi"
            }
@@ -6879,6 +7845,26 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Start at" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开始于"
++          }
++        }
++      }
++    },
++    "Start Date" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开始日期"
++          }
++        }
++      }
      },
      "Start Preset" : {
 -      "comment" : "The title of the notification action to start a preset"
@@ -6929,7 +7915,24 @@ index c7150a85..2fa783bf 100644
      },
      "Start time is out of range: %@" : {
        "comment" : "Carb error description: invalid start time is out of range.",
-@@ -36186,29 +39822,88 @@
+@@ -35947,6 +40473,16 @@
+         }
+       }
+     },
++    "Start time must be at least 1 minute in the future." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "开始时间必须至少在 1 分钟之后。"
++          }
++        }
++      }
++    },
+     "starting at %@" : {
+       "comment" : "The format for the description of a custom preset start date",
+       "localizations" : {
+@@ -36186,29 +40722,98 @@
        }
      },
      "Starting Glucose" : {
@@ -6962,6 +7965,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "统计"
++          }
++        }
++      }
++    },
++    "Status" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "状态"
 +          }
 +        }
 +      }
@@ -7026,7 +8039,7 @@ index c7150a85..2fa783bf 100644
      },
      "Support" : {
        "comment" : "Section title for Support\nThe title of the support section in settings",
-@@ -36296,6 +39991,12 @@
+@@ -36296,6 +40901,12 @@
              "state" : "translated",
              "value" : "Destek"
            }
@@ -7039,7 +8052,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -36479,16 +40180,47 @@
+@@ -36479,16 +41090,47 @@
        }
      },
      "Swimming" : {
@@ -7091,7 +8104,7 @@ index c7150a85..2fa783bf 100644
      },
      "Tap here to set up a CGM" : {
        "comment" : "Descriptive text for button to add CGM device",
-@@ -36872,7 +40604,14 @@
+@@ -36872,7 +41514,14 @@
        }
      },
      "Tap to listen" : {
@@ -7107,7 +8120,7 @@ index c7150a85..2fa783bf 100644
      },
      "Tap to Resume" : {
        "comment" : "The subtitle of the cell displaying an action to resume insulin delivery\nThe subtitle of the cell displaying an action to resume onboarding",
-@@ -37143,7 +40882,15 @@
+@@ -37143,7 +41792,15 @@
        }
      },
      "Tap to Unmute All App Sounds" : {
@@ -7124,7 +8137,7 @@ index c7150a85..2fa783bf 100644
      },
      "Tap Unmute to resume sound for your alerts and alarms." : {
        "comment" : "The alert body for unmute alert confirmation",
-@@ -37190,36 +40937,110 @@
+@@ -37190,36 +41847,110 @@
              "state" : "translated",
              "value" : "Atingeți Activare sunet pentru a relua sunetul pentru alerte și alarme."
            }
@@ -7244,7 +8257,7 @@ index c7150a85..2fa783bf 100644
      },
      "TestFlight" : {
        "comment" : "Settings app TestFlight section",
-@@ -37271,6 +41092,12 @@
+@@ -37271,6 +42002,12 @@
              "state" : "translated",
              "value" : "TestFlight"
            }
@@ -7257,7 +8270,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -37324,6 +41151,12 @@
+@@ -37324,6 +42061,12 @@
              "state" : "translated",
              "value" : "Срок действия TestFlight"
            }
@@ -7270,7 +8283,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -37446,10 +41279,24 @@
+@@ -37446,10 +42189,24 @@
        }
      },
      "That said, insulin needs vary from person to person. Some people find they don’t need to adjust their insulin at all for high-intensity exercise." : {
@@ -7297,7 +8310,7 @@ index c7150a85..2fa783bf 100644
      },
      "The bolus amount entered is smaller than the minimum deliverable." : {
        "comment" : "Alert message for a bolus too small validation error",
-@@ -37608,6 +41455,12 @@
+@@ -37608,6 +42365,12 @@
              "state" : "translated",
              "value" : "Bolus dozlama algoritması, bazal hızınızı ayarlamak için kullanılandan daha ihtiyatlı bir kan şekeri tahmini kullanır. \n\n Sonuç olarak, bir bolustan sonra tahmin edilen kan şekeriniz, hedef aralığınızdan daha yüksek olabilir."
            }
@@ -7310,7 +8323,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -37707,7 +41560,14 @@
+@@ -37707,7 +42470,14 @@
        }
      },
      "The exercise may not be vigorous enough to produce these results" : {
@@ -7326,7 +8339,7 @@ index c7150a85..2fa783bf 100644
      },
      "The legacy model used by Loop, allowing customization of action duration." : {
        "comment" : "Subtitle description of Walsh insulin model setting",
-@@ -38318,7 +42178,14 @@
+@@ -38318,7 +43088,14 @@
        }
      },
      "The sound played when this alarm fires." : {
@@ -7342,7 +8355,7 @@ index c7150a85..2fa783bf 100644
      },
      "Therapy Settings" : {
        "comment" : "Title text for button to Therapy Settings",
-@@ -38416,19 +42283,57 @@
+@@ -38416,19 +43193,77 @@
        }
      },
      "These patterns are based on published exercise consensus guidelines and are meant to be used as a starting point. What works for one person may not work for you." : {
@@ -7363,6 +8376,26 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "这些建议应作为起点使用。在运动期间检查你的血糖有助于你找到最适合自己的设置。"
++          }
++        }
++      }
++    },
++    "This adjustment will make your settings stronger." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "此调整会使你的设置更强。"
++          }
++        }
++      }
++    },
++    "This adjustment will make your settings weaker." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "此调整会使你的设置更弱。"
 +          }
 +        }
 +      }
@@ -7405,7 +8438,7 @@ index c7150a85..2fa783bf 100644
      },
      "This option only applies when Loop's Dosing Strategy is set to Automatic Bolus." : {
        "comment" : "String shown when glucose based partial application cannot be enabled because dosing strategy is not set to Automatic Bolus",
-@@ -38490,7 +42395,14 @@
+@@ -38490,7 +43325,14 @@
        }
      },
      "This range is usually higher than your correction range when you are not exercising." : {
@@ -7421,7 +8454,7 @@ index c7150a85..2fa783bf 100644
      },
      "This reflects a %@ %@ from the original %@ due to preset adjustments." : {
        "localizations" : {
-@@ -38499,24 +42411,67 @@
+@@ -38499,24 +43341,77 @@
              "state" : "new",
              "value" : "This reflects a %1$@ %2$@ from the original %3$@ due to preset adjustments."
            }
@@ -7454,6 +8487,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "此摘要基于一个 CGM 读数少于 30 分钟的预设。"
++          }
++        }
++      }
++    },
++    "Time" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "时间"
 +          }
 +        }
 +      }
@@ -7494,7 +8537,7 @@ index c7150a85..2fa783bf 100644
      },
      "Time Sensitive Alerts" : {
        "extractionState" : "stale",
-@@ -38568,6 +42523,12 @@
+@@ -38568,6 +43463,12 @@
              "state" : "translated",
              "value" : "Срочные оповещения"
            }
@@ -7507,7 +8550,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -38655,66 +42616,218 @@
+@@ -38655,66 +43556,278 @@
        }
      },
      "Time Sensitive Notifications are turned OFF" : {
@@ -7616,6 +8659,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "To help avoid lows, set a range " : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "为帮助避免低血糖，请设置一个范围 "
++          }
++        }
++      }
      },
      "To help avoid lows, set a range **higher** than your typical correction range." : {
 -
@@ -7635,6 +8688,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "为帮助避免低血糖，请将范围设置得高于你通常的校正范围。"
++          }
++        }
++      }
++    },
++    "To help avoid post-meal highs, set a range " : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "为帮助避免餐后高血糖，请设置一个范围 "
 +          }
 +        }
 +      }
@@ -7658,6 +8721,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "为帮助预防低血糖，她将提高她的校正范围。"
++          }
++        }
++      }
++    },
++    "To reduce the risk of highs or lows, you may want to set an adjusted range if you think your glucose will vary more than usual." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "为降低高血糖或低血糖的风险，如果你认为血糖波动会比平时大，可以设置一个调整后的范围。"
 +          }
 +        }
 +      }
@@ -7698,6 +8771,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Toggle off for a single use preset" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "关闭以设为单次使用预设"
++          }
++        }
++      }
      },
      "Total\nBolus" : {
 -
@@ -7720,6 +8803,16 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "Total Carbs" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "碳水总量"
++          }
++        }
++      }
      },
      "Total Insulin Delivery" : {
 -
@@ -7728,6 +8821,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "胰岛素输注总量"
++          }
++        }
++      }
++    },
++    "Training Complete" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "训练完成"
 +          }
 +        }
 +      }
@@ -7746,7 +8849,7 @@ index c7150a85..2fa783bf 100644
      },
      "Transmitter Low Battery" : {
        "localizations" : {
-@@ -38765,6 +42878,12 @@
+@@ -38765,6 +43878,12 @@
              "state" : "translated",
              "value" : "Батарейка трансмиттера садится"
            }
@@ -7759,7 +8862,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -38914,6 +43033,12 @@
+@@ -38914,6 +44033,12 @@
              "state" : "translated",
              "value" : "Выключите громкость на устройстве iOS или добавьте %1$@ в качестве разрешенного приложения для каждого режима фокусировки. Срочные и критические оповещения по-прежнему будут звучать, но некритические оповещения будут отключены."
            }
@@ -7772,7 +8875,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -39003,23 +43128,68 @@
+@@ -39003,23 +44128,68 @@
              "state" : "translated",
              "value" : "Uyarıları, alarmları veya sensör KŞ okumalarını almak için Bluetooth'u açın."
            }
@@ -7846,7 +8949,7 @@ index c7150a85..2fa783bf 100644
      },
      "U" : {
        "comment" : "The short unit display string for international units of insulin",
-@@ -39221,6 +43391,12 @@
+@@ -39221,6 +44391,12 @@
              "state" : "translated",
              "value" : "Uyarı Silinemiyor"
            }
@@ -7859,7 +8962,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -39310,6 +43486,12 @@
+@@ -39310,6 +44486,12 @@
              "state" : "translated",
              "value" : "Pompaya Ulaşılamıyor"
            }
@@ -7872,7 +8975,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -39494,6 +43676,12 @@
+@@ -39494,6 +44676,12 @@
              "state" : "translated",
              "value" : "Manuel KŞ Girişi Kaydedilemiyor"
            }
@@ -7885,7 +8988,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -39583,6 +43771,12 @@
+@@ -39583,6 +44771,12 @@
              "state" : "translated",
              "value" : "Devam etmekte olan bolus durdurulamıyor. iPhone'unuzu pompaya yaklaştırın ve tekrar deneyin. Ayrıntılar için insülin uygulama geçmişinizi kontrol edin ve kan şekerinizi yakından takip edin."
            }
@@ -7898,7 +9001,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -39874,6 +44068,12 @@
+@@ -39874,6 +45068,12 @@
              "state" : "translated",
              "value" : "Bilinmeyen ön ayar: %1$@"
            }
@@ -7911,7 +9014,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -40086,10 +44286,25 @@
+@@ -40086,10 +45286,25 @@
        }
      },
      "Unmute All App Sounds?" : {
@@ -7939,7 +9042,24 @@ index c7150a85..2fa783bf 100644
      },
      "Unsupported Notification Service: %1$@" : {
        "comment" : "Error message when a service can't be found to handle a push notification. (1: Service Identifier)",
-@@ -40522,7 +44737,15 @@
+@@ -40150,6 +45365,16 @@
+         }
+       }
+     },
++    "until " : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "直到 "
++          }
++        }
++      }
++    },
+     "until %@" : {
+       "comment" : "The format for the description of a custom preset end date",
+       "extractionState" : "stale",
+@@ -40522,7 +45747,15 @@
        }
      },
      "Urgent alarms, such as Urgent Low, will still sound, but all others will be silenced." : {
@@ -7956,7 +9076,7 @@ index c7150a85..2fa783bf 100644
      },
      "Urgent Low" : {
        "localizations" : {
-@@ -40573,6 +44796,12 @@
+@@ -40573,6 +45806,12 @@
              "state" : "translated",
              "value" : "Очень низкий"
            }
@@ -7969,8 +9089,20 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -40704,7 +44933,15 @@
+@@ -40702,9 +45941,27 @@
+         }
+       }
      },
++    "Use the + and - buttons to set whether you need" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用 + 和 - 按钮来设置你需要"
++          }
++        }
++      }
++    },
      "Use the alert schedule to automatically switch on your %@ alert profile on the days and times you set." : {
        "comment" : "A footer label explaining the purpose of the days picker. The argument is the name of the medication profile.",
 -      "isCommentAutoGenerated" : true
@@ -7986,7 +9118,7 @@ index c7150a85..2fa783bf 100644
      },
      "Use the Mute Alerts feature. It allows you to temporarily silence all of your alerts and alarms via the %1$@ app, including Critical Alerts and Time Sensitive Alerts." : {
        "comment" : "Description text for temporarily silencing all sounds (1: app name)",
-@@ -40757,14 +44994,35 @@
+@@ -40757,14 +46014,35 @@
              "state" : "translated",
              "value" : "Используйте функцию отключения оповещений. Она позволяет временно отключить все ваши оповещения и тревоги с помощью кнопки %1$@ , включая критические оповещения и срочные оповещения."
            }
@@ -8024,7 +9156,7 @@ index c7150a85..2fa783bf 100644
      },
      "Use Workout Glucose Targets" : {
        "comment" : "The title of the alert controller used to select a duration for workout targets",
-@@ -40979,23 +45237,68 @@
+@@ -40979,23 +46257,98 @@
              "state" : "translated",
              "value" : "Egzersiz Ön Ayarını Kullan"
            }
@@ -8033,6 +9165,36 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "使用运动预设"
++          }
++        }
++      }
++    },
++    "Using this adjustment may lead to an over delivery of insulin and result in serious injury. Monitor your glucose while this preset is in use." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用此调整可能导致胰岛素过量输注并造成严重伤害。使用此预设期间请监测你的血糖。"
++          }
++        }
++      }
++    },
++    "Using this adjustment may lead to an over delivery of insulin. Monitor your glucose while this preset is in use." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用此调整可能导致胰岛素过量输注。使用此预设期间请监测你的血糖。"
++          }
++        }
++      }
++    },
++    "Using this adjustment may lead to an under delivery of insulin. Monitor your glucose while this preset is in use." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "使用此调整可能导致胰岛素输注不足。使用此预设期间请监测你的血糖。"
 +          }
          }
        }
@@ -8098,7 +9260,7 @@ index c7150a85..2fa783bf 100644
      },
      "Viewing entry %lld of %lld" : {
        "localizations" : {
-@@ -41004,11 +45307,24 @@
+@@ -41004,11 +46357,34 @@
              "state" : "new",
              "value" : "Viewing entry %1$lld of %2$lld"
            }
@@ -8107,6 +9269,16 @@ index c7150a85..2fa783bf 100644
 +          "stringUnit" : {
 +            "state" : "translated",
 +            "value" : "正在查看第 %lld 条，共 %lld 条"
++          }
++        }
++      }
++    },
++    "Waiting for stream data…" : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "等待数据流……"
 +          }
          }
        }
@@ -8124,7 +9296,7 @@ index c7150a85..2fa783bf 100644
      },
      "Walsh" : {
        "comment" : "Title of insulin model setting",
-@@ -41137,7 +45453,15 @@
+@@ -41137,7 +46513,15 @@
        }
      },
      "Warning" : {
@@ -8141,7 +9313,7 @@ index c7150a85..2fa783bf 100644
      },
      "Warning! Safety notifications are turned OFF" : {
        "comment" : "Alert Permissions Need Attention alert title",
-@@ -41214,11 +45538,24 @@
+@@ -41214,11 +46598,24 @@
              "state" : "translated",
              "value" : "Uyarı! Güvenlik bildirimleri KAPALI"
            }
@@ -8167,7 +9339,7 @@ index c7150a85..2fa783bf 100644
      },
      "What are examples of Critical and Time Sensitive alerts?" : {
        "extractionState" : "stale",
-@@ -41270,11 +45607,25 @@
+@@ -41270,11 +46667,25 @@
              "state" : "translated",
              "value" : "Каковы примеры критических и срочных оповещений?"
            }
@@ -8194,7 +9366,7 @@ index c7150a85..2fa783bf 100644
      },
      "When current or forecasted glucose is below the glucose safety limit, Loop will not recommend a bolus, and will always recommend a temporary basal rate of 0 units per hour." : {
        "comment" : "Explanation of glucose safety limit",
-@@ -41498,7 +45849,14 @@
+@@ -41498,7 +46909,14 @@
        }
      },
      "When deciding to adjust your overall insulin, **ask yourself, does my body need more or less than usual?**" : {
@@ -8210,7 +9382,7 @@ index c7150a85..2fa783bf 100644
      },
      "When enabled, Loop can notify you when it detects a meal that wasn't logged." : {
        "comment" : "Description of missed meal notifications.",
-@@ -41662,17 +46020,45 @@
+@@ -41662,17 +47080,45 @@
              "state" : "translated",
              "value" : "Uygulama, Kapalı Döngü modundan çıktığında, tipik bir pompa gibi basitleştirilmiş bir bolus hesaplayıcı kullanır."
            }
@@ -8259,7 +9431,7 @@ index c7150a85..2fa783bf 100644
      },
      "While mute alerts is on, all alerts from your %1$@ app including Critical and Time Sensitive alerts will temporarily display without sounds and will vibrate only." : {
        "comment" : "App sounds descriptive text (1: app name)",
-@@ -41725,6 +46111,12 @@
+@@ -41725,6 +47171,12 @@
              "state" : "translated",
              "value" : "Пока отключение звука оповещений включено, все оповещения от вашего %1$@ приложения, включая критические и срочные оповещения, будут временно отображаться без звуков и будут только вибрировать."
            }
@@ -8272,7 +9444,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -41788,7 +46180,14 @@
+@@ -41788,7 +47240,14 @@
        }
      },
      "While sick, Paloma expects to eat less or not absorb everything she eats." : {
@@ -8288,7 +9460,7 @@ index c7150a85..2fa783bf 100644
      },
      "While trying to restart %1$@ an error occured.\n\n%2$@" : {
        "comment" : "Format string for message of reset loop alert. (1: App name) (2: error description)",
-@@ -41840,14 +46239,34 @@
+@@ -41840,14 +47299,54 @@
              "state" : "translated",
              "value" : "При попытке перезапустить %1$@ произошла ошибка. \n\n %2$@"
            }
@@ -8311,6 +9483,26 @@ index c7150a85..2fa783bf 100644
 +          }
 +        }
 +      }
++    },
++    "With correction range set to using your scheduled range, overall insulin needs adjustment is required." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "当校正范围设为使用你的计划范围时，需要调整总体胰岛素需求。"
++          }
++        }
++      }
++    },
++    "With overall insulin needs at 100%, an adjusted correction range is required." : {
++      "localizations" : {
++        "zh-Hans" : {
++          "stringUnit" : {
++            "state" : "translated",
++            "value" : "当总体胰岛素需求为 100% 时，需要一个调整后的校正范围。"
++          }
++        }
++      }
      },
      "With Preset On" : {
 -
@@ -8325,7 +9517,7 @@ index c7150a85..2fa783bf 100644
      },
      "Workout Targets" : {
        "comment" : "The label of the workout mode toggle button",
-@@ -42056,6 +46475,12 @@
+@@ -42056,6 +47555,12 @@
              "state" : "translated",
              "value" : "Geçici Egzersiz Ayarı 24 saatten uzun süredir açık. Hala etkin olmasını istediğinizden emin olun veya uygulamadan kapatın."
            }
@@ -8338,7 +9530,7 @@ index c7150a85..2fa783bf 100644
          }
        }
      },
-@@ -42146,11 +46571,25 @@
+@@ -42146,11 +47651,25 @@
              "state" : "translated",
              "value" : "Geçici Egzersiz Ayarı Hala Açık"
            }
@@ -8365,7 +9557,7 @@ index c7150a85..2fa783bf 100644
      },
      "Yes" : {
        "comment" : "The title of the action used when confirming entered amount of carbohydrates.",
-@@ -42242,28 +46681,85 @@
+@@ -42242,28 +47761,85 @@
        }
      },
      "Yes, Start Now" : {
@@ -8459,7 +9651,7 @@ index c7150a85..2fa783bf 100644
      },
      "You may not get sound, visual or vibration alerts regarding critical safety information.\n\nTo fix the issue, tap ‘Settings’ and make sure Notifications, Critical Alerts and Time Sensitive Notifications are turned ON." : {
        "comment" : "Format for Notifications permissions disabled alert body. (1: app name)",
-@@ -42350,23 +46846,68 @@
+@@ -42350,23 +47926,68 @@
        }
      },
      "You may review the training materials again at any time via the Learning Hub, located at the bottom of the Preset screen." : {
@@ -8534,7 +9726,7 @@ index c7150a85..2fa783bf 100644
      },
      "Your %1$@’s time has been changed. %2$@ needs accurate time records to make predictions about your glucose and adjust your insulin accordingly.\n\nCheck in your %1$@ Settings (General / Date & Time) and verify that 'Set Automatically' is turned ON. Failure to resolve could lead to serious under-delivery or over-delivery of insulin." : {
        "comment" : "Time change alert body. (1: app name)",
-@@ -42442,15 +46983,37 @@
+@@ -42442,15 +48063,37 @@
              "state" : "translated",
              "value" : "%1$@ 'inizin saati değiştirildi. %2$@ KŞ ile ilgili tahminlerde bulunmak ve insülininizi buna göre ayarlamak için doğru zaman kayıtlarına ihtiyaç duyar. \n\n %1$@ Ayarlarınızı (Genel / Tarih ve Saat) kontrol edin ve 'Otomatik Olarak Ayarla' seçeneğinin AÇIK olduğunu doğrulayın. Çözülmemesi, insülinin ciddi şekilde yetersiz veya fazla verilmesine yol açabilir."
            }
@@ -8574,7 +9766,7 @@ index c7150a85..2fa783bf 100644
      },
      "Your glucose is below %1$@. Are you sure you want to bolus?" : {
        "comment" : "Format string for simple bolus screen warning when glucose is below glucose warning limit.",
-@@ -42892,7 +47455,15 @@
+@@ -42892,7 +48535,15 @@
        }
      },
      "Your glucose is rapidly rising. Check that any carbs you've eaten were logged. If you logged carbs, check that the time you entered lines up with when you started eating." : {
@@ -8591,7 +9783,7 @@ index c7150a85..2fa783bf 100644
      },
      "Your maximum bolus amount is %1$@." : {
        "comment" : "Warning for simple bolus when max bolus is exceeded. (1: maximum bolus)",
-@@ -42978,10 +47549,26 @@
+@@ -42978,10 +48629,26 @@
        }
      },
      "Your pump and CGM will continue operating but the app will not make automatic adjustments. You will receive your scheduled basal rate(s)." : {
