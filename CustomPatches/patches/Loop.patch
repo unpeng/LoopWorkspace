@@ -9829,27 +9829,62 @@ index c7150a85..83e38f13 100644
      },
      "Your pump data is stale. %1$@ cannot recommend a bolus amount." : {
        "comment" : "Caption for bolus screen notice when pump data is missing or stale",
-diff --git a/Loop/Managers/RemoteDataServicesManager.swift b/Loop/Managers/RemoteDataServicesManager.swift
-index 11712704..ea42d3de 100644
---- a/Loop/Managers/RemoteDataServicesManager.swift
-+++ b/Loop/Managers/RemoteDataServicesManager.swift
-@@ -392,6 +392,16 @@ extension RemoteDataServicesManager {
-                     self.log.error("Error querying dosing decision data: %{public}@", String(describing: error))
-                     semaphore.signal()
-                 case .success(let queryAnchor, let data):
-+                    //wp begin
-+                    // 给药决策本身不记录当时的给药策略，这里在上传前补上，
-+                    // 让 Nightscout 的 loopStatus 能体现出用的是自动大剂量还是仅临时基础率
-+                    let strategy = self.settingsProvider.settings.automaticDosingStrategy
-+                    let data = data.map { decision -> StoredDosingDecision in
-+                        var decision = decision
-+                        decision.automaticDosingStrategy = strategy
-+                        return decision
-+                    }
-+                    //wp end
-                     Task {
-                         do {
-                             try await remoteDataService.uploadDosingDecisionData(data)
+diff --git a/Loop/Managers/LoopDataManager.swift b/Loop/Managers/LoopDataManager.swift
+index 8797bcd8..99768551 100644
+--- a/Loop/Managers/LoopDataManager.swift
++++ b/Loop/Managers/LoopDataManager.swift
+@@ -643,6 +643,9 @@ final class LoopDataManager: ObservableObject {
+ 
+         var dosingDecision = StoredDosingDecision(reason: reason.rawValue)
+         dosingDecision.settings = StoredDosingDecision.Settings(settingsProvider.settings)
++        //wp begin
++        dosingDecision.automaticDosingStrategy = settingsProvider.settings.automaticDosingStrategy
++        //wp end
+         dosingDecision.automaticDoseRecommendation = recommendation
+ 
+         do {
+@@ -692,6 +695,12 @@ final class LoopDataManager: ObservableObject {
+             if dosingStrategySelectionEnabled {
+                 dosingStrategy = settingsProvider.settings.automaticDosingStrategy
+             }
++
++            //wp begin
++            // 记录本周期实际生效的给药策略(已考虑 dosingStrategySelectionEnabled),
++            // 随决策一起持久化;不要在上传时用"当前"策略盖历史决策
++            dosingDecision.automaticDosingStrategy = dosingStrategy
++            //wp end
+             input.recommendationType = dosingStrategy.recommendationType
+ 
+             guard let latestGlucose = input.glucoseHistory.last else {
+@@ -889,6 +898,9 @@ final class LoopDataManager: ObservableObject {
+ 
+         if let output = displayState.output {
+             var dosingDecision = StoredDosingDecision(date: now, reason: "updateRemoteRecommendation")
++            //wp begin
++            dosingDecision.automaticDosingStrategy = settingsProvider.settings.automaticDosingStrategy
++            //wp end
+             dosingDecision.predictedGlucose = output.predictedGlucose
+             dosingDecision.insulinOnBoard = displayState.activeInsulin
+             dosingDecision.carbsOnBoard = displayState.activeCarbs
+@@ -1026,7 +1038,7 @@ extension LoopDataManager {
+     }
+ 
+     func storeManualBolusDosingDecision(_ bolusDosingDecision: BolusDosingDecision, withDate date: Date) async {
+-        let dosingDecision = StoredDosingDecision(id: bolusDosingDecision.id,
++        var dosingDecision = StoredDosingDecision(id: bolusDosingDecision.id,
+                                                   date: date,
+                                                   reason: bolusDosingDecision.reason.rawValue,
+                                                   settings: StoredDosingDecision.Settings(settingsProvider.settings),
+@@ -1045,6 +1057,9 @@ extension LoopDataManager {
+                                                   predictedGlucose: bolusDosingDecision.predictedGlucose,
+                                                   manualBolusRecommendation: bolusDosingDecision.manualBolusRecommendation,
+                                                   manualBolusRequested: bolusDosingDecision.manualBolusRequested)
++        //wp begin
++        dosingDecision.automaticDosingStrategy = settingsProvider.settings.automaticDosingStrategy
++        //wp end
+         Task { await dosingDecisionStore.storeDosingDecision(dosingDecision) }
+     }
+ 
 diff --git a/Loop/Managers/ServicesManager.swift b/Loop/Managers/ServicesManager.swift
 index c7252128..c01b5161 100644
 --- a/Loop/Managers/ServicesManager.swift

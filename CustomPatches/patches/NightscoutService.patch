@@ -157,10 +157,76 @@ index 8132f96..d4dc846 100644
        }
      },
 diff --git a/NightscoutServiceKit/NightscoutService.swift b/NightscoutServiceKit/NightscoutService.swift
-index 3fccce4..fecf4df 100644
+index 3fccce4..253cd8e 100644
 --- a/NightscoutServiceKit/NightscoutService.swift
 +++ b/NightscoutServiceKit/NightscoutService.swift
-@@ -469,9 +469,24 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
+@@ -38,6 +38,13 @@ public final class NightscoutService: Service {
+     public var isOnboarded: Bool
+ 
+     public let otpManager: OTPManager
++
++    //wp begin
++    /// 跳过 OTP 校验的发送者列表（命中远程通知的 entered-by 即免 OTP）。
++    /// 默认空 = 不豁免。逐设备持久化在 rawState，源码/分发包里不含任何值，
++    /// 由用户在本机的 Nightscout 服务设置里手动填写。安全说明见 RemoteCommandValidator。
++    public private(set) var otpExemptSenders: [String]
++    //wp end
+     
+     /// Maps loop syncIdentifiers to Nightscout objectIds
+     var objectIdCache: ObjectIdCache {
+@@ -70,7 +77,10 @@ public final class NightscoutService: Service {
+         self.isOnboarded = false
+         self.lockedObjectIdCache = Locked(ObjectIdCache())
+         self.otpManager = OTPManager(secretStore: KeychainManager())
+-        self.commandSourceV1 = RemoteCommandSourceV1(otpManager: otpManager)
++        //wp begin
++        self.otpExemptSenders = []
++        self.commandSourceV1 = RemoteCommandSourceV1(otpManager: otpManager, otpExemptSenders: Set(otpExemptSenders))
++        //wp end
+         self.commandSourceV1.delegate = self
+     }
+ 
+@@ -86,7 +96,10 @@ public final class NightscoutService: Service {
+         }
+         
+         self.otpManager = OTPManager(secretStore: KeychainManager())
+-        self.commandSourceV1 = RemoteCommandSourceV1(otpManager: otpManager)
++        //wp begin
++        self.otpExemptSenders = rawState["otpExemptSenders"] as? [String] ?? []
++        self.commandSourceV1 = RemoteCommandSourceV1(otpManager: otpManager, otpExemptSenders: Set(otpExemptSenders))
++        //wp end
+         self.commandSourceV1.delegate = self
+         
+         restoreCredentials()
+@@ -95,10 +108,26 @@ public final class NightscoutService: Service {
+     public var rawState: RawStateValue {
+         return [
+             "isOnboarded": isOnboarded,
+-            "objectIdCache": objectIdCache.rawValue
++            "objectIdCache": objectIdCache.rawValue,
++            //wp begin
++            "otpExemptSenders": otpExemptSenders
++            //wp end
+         ]
+     }
+ 
++    //wp begin
++    /// 由设置界面调用：更新 OTP 豁免发送者列表并持久化。
++    /// 每一项都会去除首尾空白、过滤空项;传入空数组即关闭豁免。
++    public func updateOTPExemptSenders(_ senders: [String]) {
++        let cleaned = senders
++            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
++            .filter { !$0.isEmpty }
++        self.otpExemptSenders = cleaned
++        self.commandSourceV1.updateOTPExemptSenders(Set(cleaned))
++        stateDelegate?.pluginDidUpdateState(self)
++    }
++    //wp end
++
+     public var lastDosingDecisionForAutomaticDose: StoredDosingDecision?
+ 
+     public var hasConfiguration: Bool { return siteURL != nil && apiSecret?.isEmpty == false }
+@@ -469,9 +498,24 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
                  
              case .bolusEntry(let bolusCommand):
                  commandType = .bolus
@@ -188,7 +254,7 @@ index 3fccce4..fecf4df 100644
                  
              case .carbsEntry(let carbCommand):
                  commandType = .carbs
-@@ -483,6 +498,16 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
+@@ -483,6 +527,16 @@ extension NightscoutService: RemoteCommandSourceV1Delegate {
                  )
                  success = true
                  message = String(format: "Carbs entry of %.1f g delivered successfully", carbCommand.amountInGrams)
@@ -461,35 +527,69 @@ index 0c5f8e3..0dc56db 100644
          } else {
              throw RemoteNotificationError.unhandledNotification(self)
          }
+diff --git a/NightscoutServiceKit/RemoteCommands/V1/RemoteCommandSourceV1.swift b/NightscoutServiceKit/RemoteCommands/V1/RemoteCommandSourceV1.swift
+index 0165004..fb12f44 100644
+--- a/NightscoutServiceKit/RemoteCommands/V1/RemoteCommandSourceV1.swift
++++ b/NightscoutServiceKit/RemoteCommands/V1/RemoteCommandSourceV1.swift
+@@ -17,10 +17,18 @@ class RemoteCommandSourceV1: RemoteCommandSource {
+     private var commandValidator: RemoteCommandValidator
+     private var recentNotifications = RecentNotifications()
+     
+-    init(otpManager: OTPManager) {
++    init(otpManager: OTPManager, otpExemptSenders: Set<String> = []) {
+         self.otpManager = otpManager
+-        self.commandValidator = RemoteCommandValidator(otpManager: otpManager)
++        self.commandValidator = RemoteCommandValidator(otpManager: otpManager, otpExemptSenders: otpExemptSenders)
+     }
++
++    //wp begin
++    /// 更新 OTP 豁免发送者（用户在设置里改动后即时生效，无需重建 service）。
++    /// RemoteCommandValidator 是值类型，重建代价极低。
++    func updateOTPExemptSenders(_ senders: Set<String>) {
++        self.commandValidator = RemoteCommandValidator(otpManager: otpManager, otpExemptSenders: senders)
++    }
++    //wp end
+     
+     //MARK: RemoteCommandSource
+     
 diff --git a/NightscoutServiceKit/RemoteCommands/Validators/RemoteCommandValidator.swift b/NightscoutServiceKit/RemoteCommands/Validators/RemoteCommandValidator.swift
-index 634eb4e..a3c477e 100644
+index 634eb4e..2230904 100644
 --- a/NightscoutServiceKit/RemoteCommands/Validators/RemoteCommandValidator.swift
 +++ b/NightscoutServiceKit/RemoteCommands/Validators/RemoteCommandValidator.swift
-@@ -10,6 +10,17 @@ struct RemoteCommandValidator {
+@@ -10,14 +10,37 @@ struct RemoteCommandValidator {
      
      let otpManager: OTPManager
      let nowDateSource: () -> Date = {Date()}
 +
 +    //wp begin
-+    /// 来自这些发送者的远程指令跳过一次性密码校验。
++    /// 跳过一次性密码校验的发送者集合（匹配远程通知的 entered-by 字段）。
 +    ///
-+    /// 注意这是一个有意为之的后门，用于自建的自动化脚本免去生成 OTP 的麻烦。
-+    /// 远程通知的 entered-by 字段没有任何可信性保证，任何能向本机 APNs
-+    /// 令牌投递通知的一方都可以填上这个值，从而在无 OTP 的情况下触发
-+    /// 输注大剂量、录入碳水、切换给药策略等操作。
-+    /// 只有在你能确保 APNs 投递路径可信时才应保留此项。
-+    private static let otpExemptSenders: Set<String> = ["pandy"]
++    /// 默认为空 = 不豁免任何人；源码里不再硬编码任何发送者。该值来自
++    /// NightscoutService 的本机持久化配置（rawState），由用户在本机的服务设置里
++    /// 手动填写，不会编进分发的二进制。
++    ///
++    /// ⚠️ 安全提示：entered-by 完全由发送方控制、不可信。任何能向本机 APNs 令牌
++    /// 投递通知的一方都能填上这里的值，从而在无 OTP 的情况下触发打大剂量、录碳水、
++    /// 切换给药策略等操作。仅在你能确保 APNs 投递路径可信、且填了足够私密、
++    /// 难以猜测的值时才启用它。
++    let otpExemptSenders: Set<String>
 +    //wp end
      
-     internal init(otpManager: OTPManager) {
+-    internal init(otpManager: OTPManager) {
++    internal init(otpManager: OTPManager, otpExemptSenders: Set<String> = []) {
          self.otpManager = otpManager
-@@ -18,6 +29,11 @@ struct RemoteCommandValidator {
++        self.otpExemptSenders = otpExemptSenders
+     }
+     
      func validate(remoteNotification: RemoteNotification) throws {
          try validateExpirationDate(remoteNotification: remoteNotification)
          if remoteNotification.otpValidationRequired() {
 +            //wp begin
-+            if let sender = remoteNotification.enteredBy, Self.otpExemptSenders.contains(sender) {
-+                return //Skip OTP validation for exempt senders
++            // 仅当本机显式配置了豁免发送者、且通知的 entered-by 命中时才跳过 OTP。
++            if !otpExemptSenders.isEmpty,
++               let sender = remoteNotification.enteredBy,
++               otpExemptSenders.contains(sender) {
++                return
 +            }
 +            //wp end
              try validateOTP(remoteNotification: remoteNotification)
@@ -564,3 +664,88 @@ index a25e264..51156dd 100644
          }
        }
      }
+diff --git a/NightscoutServiceKitUI/Models/ServiceStatusViewModel.swift b/NightscoutServiceKitUI/Models/ServiceStatusViewModel.swift
+index 3d54080..48f15d6 100644
+--- a/NightscoutServiceKitUI/Models/ServiceStatusViewModel.swift
++++ b/NightscoutServiceKitUI/Models/ServiceStatusViewModel.swift
+@@ -14,6 +14,10 @@ import LoopKit
+ protocol ServiceStatusViewModelDelegate {
+     func verifyConfiguration(completion: @escaping (Error?) -> Void)
+     var siteURL: URL? { get }
++    //wp begin
++    var otpExemptSenders: [String] { get }
++    func updateOTPExemptSenders(_ senders: [String])
++    //wp end
+ }
+ 
+ enum ServiceStatus {
+@@ -40,6 +44,22 @@ class ServiceStatusViewModel: ObservableObject {
+         
+     let delegate: ServiceStatusViewModelDelegate
+     var didLogout: (() -> Void)?
++
++    //wp begin
++    /// OTP 豁免发送者的可编辑文本（多个用逗号分隔）。默认空 = 不豁免。
++    @Published var otpExemptSendersText: String
++
++    /// 把编辑框内容解析成列表并写回 service 持久化。
++    func commitOTPExemptSenders() {
++        let senders = otpExemptSendersText
++            .split(separator: ",")
++            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
++            .filter { !$0.isEmpty }
++        delegate.updateOTPExemptSenders(senders)
++        // 规范化显示（去空白/空项）
++        otpExemptSendersText = senders.joined(separator: ", ")
++    }
++    //wp end
+     
+     var urlString: String {
+         return delegate.siteURL?.absoluteString ?? LocalizedString("Not Available", comment: "Error when nightscout service url is not set")
+@@ -47,6 +67,9 @@ class ServiceStatusViewModel: ObservableObject {
+ 
+     init(delegate: ServiceStatusViewModelDelegate) {
+         self.delegate = delegate
++        //wp begin
++        self.otpExemptSendersText = delegate.otpExemptSenders.joined(separator: ", ")
++        //wp end
+         
+         delegate.verifyConfiguration { (error) in
+             DispatchQueue.main.async {
+diff --git a/NightscoutServiceKitUI/Views/ServiceStatusView.swift b/NightscoutServiceKitUI/Views/ServiceStatusView.swift
+index 4ecbdde..f1e69a9 100644
+--- a/NightscoutServiceKitUI/Views/ServiceStatusView.swift
++++ b/NightscoutServiceKitUI/Views/ServiceStatusView.swift
+@@ -52,6 +52,21 @@ struct ServiceStatusView: View, HorizontalSizeClassOverride {
+                     }
+                 }.foregroundColor(Color.primary)
+                 .padding()
++                //wp begin
++                Divider()
++                VStack(alignment: .leading, spacing: 8) {
++                    Text("OTP 豁免发送者")
++                        .font(.subheadline).fontWeight(.semibold)
++                    TextField("留空则不豁免", text: $viewModel.otpExemptSendersText)
++                        .textInputAutocapitalization(.never)
++                        .disableAutocorrection(true)
++                        .onSubmit { viewModel.commitOTPExemptSenders() }
++                    Text("命中 entered-by 的远程指令将跳过一次性密码校验。多个用英文逗号分隔。仅在你信任 APNs 投递路径时才填写，留空最安全。")
++                        .font(.caption)
++                        .foregroundColor(.secondary)
++                }
++                .padding()
++                //wp end
+             }
+             .background(Color(UIColor.secondarySystemBackground))
+             .cornerRadius(10)
+@@ -65,6 +80,10 @@ struct ServiceStatusView: View, HorizontalSizeClassOverride {
+         .padding([.leading, .trailing])
+         .navigationBarTitle("")
+         .navigationBarItems(trailing: dismissButton)
++        //wp begin
++        // 离开设置界面时兜底提交，避免用户没按回车导致改动丢失
++        .onDisappear { viewModel.commitOTPExemptSenders() }
++        //wp end
+     }
+     
+     private var dismissButton: some View {
