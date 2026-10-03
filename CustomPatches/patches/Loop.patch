@@ -223,10 +223,32 @@ index dfcb0b95..63cfa137 100644
  				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
  				INFOPLIST_FILE = "Loop Intent Extension/Info.plist";
 diff --git a/Loop/AppDelegate.swift b/Loop/AppDelegate.swift
-index f54306c3..4a0ab2a8 100644
+index f54306c3..76526d52 100644
 --- a/Loop/AppDelegate.swift
 +++ b/Loop/AppDelegate.swift
-@@ -68,7 +68,57 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
+@@ -33,6 +33,21 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
+         // The window is owned by the scene, so app manager initialization and launch are
+         // deferred to `SceneDelegate.scene(_:willConnectTo:options:)`.
+         self.launchOptions = launchOptions
++
++        //wp begin
++        // 后台启动(被 CoreBluetooth 状态恢复、静默推送等拉起)时 scene 不会连接,
++        // 上面"推迟到 scene"就意味着 deviceDataManager 永远不会被创建 ——
++        // CGM manager 不存在 => 不重连 G6、收不到读数、也不会上传到 Nightscout,
++        // 直到用户手动打开 App 才恢复(表现为血糖曲线频繁间断)。
++        // CGMBLEKit 使用了 CBCentralManagerOptionRestoreIdentifierKey,本就依赖
++        // 被 BLE 事件唤醒后继续工作;Omnipod 的 BluetoothManager 同样如此。
++        // 这里把 managers 拉起来,但不创建主界面(UI 阶段仍留给 scene)。
++        if application.applicationState == .background {
++            log.default("Launched into background; bringing up managers without UI")
++            loopAppManager.launchManagersForBackgroundWork(launchOptions: launchOptions)
++        }
++        //wp end
++
+         return true
+     }
+ 
+@@ -68,7 +83,57 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
      func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
          log.default(#function)
  
@@ -285,7 +307,7 @@ index f54306c3..4a0ab2a8 100644
      }
  
      // MARK: - UIApplicationDelegate - Interface
-@@ -77,3 +127,67 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
+@@ -77,3 +142,67 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
          return loopAppManager.supportedInterfaceOrientations
      }
  }
@@ -449,7 +471,7 @@ index 3d07128e..e24f2dee 100644
  
          loopManager.mutateSettings { settings in
 diff --git a/Loop/Managers/LoopAppManager.swift b/Loop/Managers/LoopAppManager.swift
-index 04d561a0..729961ef 100644
+index 04d561a0..07bcd388 100644
 --- a/Loop/Managers/LoopAppManager.swift
 +++ b/Loop/Managers/LoopAppManager.swift
 @@ -96,7 +96,9 @@ class LoopAppManager: NSObject {
@@ -463,7 +485,7 @@ index 04d561a0..729961ef 100644
          dispatchPrecondition(condition: .onQueue(.main))
          precondition(state == .initialize)
  
-@@ -134,6 +136,79 @@ class LoopAppManager: NSObject {
+@@ -134,6 +136,83 @@ class LoopAppManager: NSObject {
  
      var isLaunchComplete: Bool { state == .launchComplete }
  
@@ -524,6 +546,10 @@ index 04d561a0..729961ef 100644
 +
 +        self.windowProvider = windowProvider
 +        windowProvider.window?.tintColor = .loopAccent
++
++        // OnboardingManager 在 launchManagers() 构造时就捕获了 windowProvider,
++        // 后台路径下那时为 nil,必须一并补登,否则引导界面无法呈现(影响全新安装)。
++        onboardingManager?.updateWindowProvider(windowProvider)
 +    }
 +
 +    /// 从当前阶段继续启动。
@@ -543,7 +569,30 @@ index 04d561a0..729961ef 100644
      private func resumeLaunch() {
          if state == .checkProtectedDataAvailable {
              checkProtectedDataAvailable()
-@@ -350,13 +425,28 @@ class LoopAppManager: NSObject {
+@@ -141,6 +220,22 @@ class LoopAppManager: NSObject {
+         if state == .launchManagers {
+             launchManagers()
+         }
++        //wp begin
++        // 没有窗口时不能推进 UI 阶段。会走到这里的后台场景有两个:
++        // 后台启动(scene 未连接),以及设备解锁后 applicationProtectedDataDidBecomeAvailable
++        // 在 App 仍处于后台时调用 launch()。若此时继续:
++        //   - launchHomeScreen 里 rootViewController 的 setter 是
++        //     windowProvider?.window?.rootViewController,会静默失效,但状态仍被推进到
++        //     .launchComplete;之后 scene 连接时三个判断全不成立,界面再也不会创建 => 白屏。
++        //   - launchOnboarding 若引导未完成,会设置 onboardingCompletion 且无法回调;
++        //     scene 连接后再次调用会命中 precondition(onboardingCompletion == nil) => 崩溃。
++        // 因此留在当前阶段,等 scene 连接后由 resumeLaunchFromCurrentState() 继续。
++        guard windowProvider?.window != nil else {
++            log.default("Deferring UI launch stages: no window yet (state: %{public}@)",
++                        String(describing: state))
++            return
++        }
++        //wp end
+         if state == .launchOnboarding {
+             launchOnboarding()
+         }
+@@ -350,13 +445,28 @@ class LoopAppManager: NSObject {
          handleRemoteNotification(launchOptions?[.remoteNotification] as? [String: AnyObject])
      }
  
@@ -860,6 +909,29 @@ index c9aef285..dd1e59ee 100644
      //Overrides
      
      func enactOverride(name: String, duration: TemporaryScheduleOverride.Duration?, remoteAddress: String) async throws {
+diff --git a/Loop/Managers/OnboardingManager.swift b/Loop/Managers/OnboardingManager.swift
+index b9f6c8c2..7e22fe8e 100644
+--- a/Loop/Managers/OnboardingManager.swift
++++ b/Loop/Managers/OnboardingManager.swift
+@@ -20,6 +20,18 @@ class OnboardingManager {
+     private let loopDataManager: LoopDataManager
+     private let supportManager: SupportManager
+     private weak var windowProvider: WindowProvider?
++
++    //wp begin
++    /// 补登 window。
++    ///
++    /// 后台启动路径(见 LoopAppManager.launchManagersForBackgroundWork)创建本对象时
++    /// windowProvider 为 nil。若不补登,引导界面的呈现语句
++    /// `windowProvider?.window?.rootViewController = onboardingViewController`
++    /// 会静默失效 —— 全新安装(引导未完成)将卡住、看不到引导界面。
++    func updateWindowProvider(_ windowProvider: WindowProvider?) {
++        self.windowProvider = windowProvider
++    }
++    //wp end
+     private let userDefaults: UserDefaults
+ 
+     private let log = OSLog(category: "OnboardingManager")
 diff --git a/Loop/Managers/RemoteDataServicesManager.swift b/Loop/Managers/RemoteDataServicesManager.swift
 index bf21376b..21ce68f7 100644
 --- a/Loop/Managers/RemoteDataServicesManager.swift
