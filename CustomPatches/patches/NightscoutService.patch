@@ -184,7 +184,7 @@ index 2adadb9..a1769d8 100644
              syncIdentifier: syncIdentifier.uuidString,
              isAPNSProduction: Bundle.main.isAPNSProductionEnvironment)
 diff --git a/NightscoutServiceKit/Localizable.xcstrings b/NightscoutServiceKit/Localizable.xcstrings
-index 5877d3d..63061b4 100644
+index 852fac7..defbce2 100644
 --- a/NightscoutServiceKit/Localizable.xcstrings
 +++ b/NightscoutServiceKit/Localizable.xcstrings
 @@ -1,6 +1,9 @@

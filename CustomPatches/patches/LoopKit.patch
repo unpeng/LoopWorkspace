@@ -620,7 +620,7 @@ index 00000000..0de6928d
 +    }
 +}
 diff --git a/LoopKit/Resources/Localizable.xcstrings b/LoopKit/Resources/Localizable.xcstrings
-index 05d820ff..f79adfd1 100644
+index a13e7b8c..031ad39f 100644
 --- a/LoopKit/Resources/Localizable.xcstrings
 +++ b/LoopKit/Resources/Localizable.xcstrings
 @@ -2012,6 +2012,12 @@
@@ -716,7 +716,7 @@ index 8dff88de..67327359 100644
                                     localizedReason: authenticationChallengeDescription,
                                     reply: { (success, error) in
 diff --git a/LoopKitUI/Resources/Localizable.xcstrings b/LoopKitUI/Resources/Localizable.xcstrings
-index 73bfc8b7..7d66ad1f 100644
+index 6d7fe960..792d13d4 100644
 --- a/LoopKitUI/Resources/Localizable.xcstrings
 +++ b/LoopKitUI/Resources/Localizable.xcstrings
 @@ -4193,6 +4193,9 @@

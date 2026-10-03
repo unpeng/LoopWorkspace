@@ -223,7 +223,7 @@ index dfcb0b95..63cfa137 100644
  				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
  				INFOPLIST_FILE = "Loop Intent Extension/Info.plist";
 diff --git a/Loop/Localizable.xcstrings b/Loop/Localizable.xcstrings
-index 9882e740..a6715dc8 100644
+index 1af4612a..7323ac84 100644
 --- a/Loop/Localizable.xcstrings
 +++ b/Loop/Localizable.xcstrings
 @@ -14757,6 +14757,12 @@
