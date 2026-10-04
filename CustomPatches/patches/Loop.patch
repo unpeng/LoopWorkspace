@@ -326,6 +326,166 @@ index 96e0c398..6b987365 100644
          }
        }
      }
+diff --git a/Loop/AppDelegate.swift b/Loop/AppDelegate.swift
+index 33af2f4a..6a5e3c2e 100644
+--- a/Loop/AppDelegate.swift
++++ b/Loop/AppDelegate.swift
+@@ -26,6 +26,22 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
+ 
+         self.launchOptions = launchOptions
+ 
++        //wp begin
++        // 后台启动(被 CoreBluetooth 状态恢复、静默推送等拉起)时 scene 不会连接,
++        // 上游把初始化推迟到 scene 就意味着 managers 永远不会被创建 ——
++        // CGM manager 不存在 => 不重连 G6、收不到读数、也不会上传到 Nightscout,
++        // 直到用户手动打开 App 才恢复(表现为血糖曲线频繁间断)。
++        // CGMBLEKit 与 Omnipod 的 BluetoothManager 都使用了
++        // CBCentralManagerOptionRestoreIdentifierKey,本就依赖被 BLE 事件唤醒后继续工作。
++        // 这里把 managers 拉起来,但不创建主界面(UI 阶段仍留给 scene)。
++        if application.applicationState == .background {
++            log.default("Launched into background; bringing up managers without UI")
++            Task { @MainActor in
++                await loopAppManager.launchManagersForBackgroundWork(launchOptions: launchOptions)
++            }
++        }
++        //wp end
++
+         return true
+     }
+ 
+@@ -55,7 +71,63 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
+     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+         log.default(#function)
+ 
+-        completionHandler(loopAppManager.handleRemoteNotification(userInfo as? [String: AnyObject]) ? .noData : .failed)
++        //wp begin
++        // 诊断: 记录唤醒时的 App 状态、剩余后台时间与启动是否完成。
++        // 息屏/低电量下排障时,这三个值能直接区分"App 没被唤醒到可执行状态"
++        // 与"后台时间不足导致执行中断"。
++        let stateName: String
++        switch application.applicationState {
++        case .active:     stateName = "active"
++        case .inactive:   stateName = "inactive"
++        case .background: stateName = "background"
++        @unknown default: stateName = "unknown"
++        }
++        let bgTime = application.backgroundTimeRemaining
++        let bgTimeDesc = bgTime > 1_000_000 ? "unlimited" : String(format: "%.1fs", bgTime)
++        log.default("Remote Notification: Received (appState: %{public}@, backgroundTimeRemaining: %{public}@, launchComplete: %{public}@)",
++                    stateName,
++                    bgTimeDesc,
++                    String(describing: loopAppManager.isLaunchComplete))
++
++        // 竞态修复: 在本方法返回前就取得后台断言,并把 completionHandler 推迟到
++        // 异步处理真正结束。原实现一返回就调 completionHandler(等于告知系统
++        // "处理完毕,可以挂起"),而真正的工作在 ServicesManager 的 Task 里异步跑、
++        // 后台断言也要等 Task 跑起来才申请 —— 息屏/低电量时系统可能在 Task 排到之前
++        // 就挂起 App,指令直接丢失。
++        let token = RemoteNotificationDispatchToken(application: application,
++                                                    log: log,
++                                                    handler: completionHandler)
++
++        let notification = userInfo as? [String: AnyObject]
++        let pendingLaunchOptions = launchOptions
++
++        // 根因修复: 后台唤醒时 scene 不会连接,App 初始化(含 servicesManager)不会发生。
++        // 本线 launchManagersForBackgroundWork 是 async(launchManagers 为 async),
++        // 因此整段放进 Task;completionHandler 已由 token 推迟,异步化不影响正确性。
++        Task { @MainActor in
++            if !loopAppManager.isManagersReady {
++                log.default("Remote Notification: Managers not ready, launching for background work")
++                await loopAppManager.launchManagersForBackgroundWork(launchOptions: pendingLaunchOptions)
++            }
++
++            let handled = loopAppManager.handleRemoteNotification(notification) { [weak self] in
++                self?.log.default("Remote Notification: Processing finished")
++                token.finish(.newData)
++            }
++
++            guard handled else {
++                log.error("Remote Notification: NOT handled - reporting .failed to system")
++                token.finish(.failed)
++                return
++            }
++
++            // 超时兜底: 系统期望在约 30 秒内回调,否则可能直接终止 App。
++            // finish 是幂等的,正常完成时这里不会产生任何效果。
++            DispatchQueue.main.asyncAfter(deadline: .now() + 25) {
++                token.finish(.failed)
++            }
++        }
++        //wp end
+     }
+ 
+     // MARK: - UIApplicationDelegate - Interface
+@@ -64,3 +136,67 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
+         return loopAppManager.supportedInterfaceOrientations
+     }
+ }
++
++//wp begin
++/// 远程通知分发期的后台断言 + 一次性完成回调。
++///
++/// 解决两个问题:
++/// 1. **挂起竞态**: 在 `didReceiveRemoteNotification` 返回前就同步取得后台断言,
++///    避免 App 在异步处理任务排到之前被挂起(息屏/低电量时最容易发生)。
++/// 2. **回调时机**: 把系统的 `fetchCompletionHandler` 推迟到处理真正结束时再调用,
++///    并保证它恰好被调用一次(正常完成 / 断言过期 / 超时兜底 三者竞争)。
++private final class RemoteNotificationDispatchToken {
++
++    private let handler: (UIBackgroundFetchResult) -> Void
++    private let log: DiagnosticLog
++    private let lock = NSLock()
++    private var finished = false
++    private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
++
++    init(application: UIApplication,
++         log: DiagnosticLog,
++         handler: @escaping (UIBackgroundFetchResult) -> Void)
++    {
++        self.handler = handler
++        self.log = log
++
++        backgroundTask = application.beginBackgroundTask(withName: "Remote Notification Dispatch") { [weak self] in
++            self?.log.error("Remote Notification: Dispatch background task expired before processing finished")
++            self?.finish(.failed)
++        }
++
++        if backgroundTask == .invalid {
++            log.error("Remote Notification: FAILED to acquire dispatch background task - work may be killed on suspend")
++        }
++    }
++
++    /// 幂等: 只有第一次调用生效。
++    func finish(_ result: UIBackgroundFetchResult) {
++        lock.lock()
++        if finished {
++            lock.unlock()
++            return
++        }
++        finished = true
++        let task = backgroundTask
++        backgroundTask = .invalid
++        lock.unlock()
++
++        let resultName: String
++        switch result {
++        case .newData: resultName = "newData"
++        case .noData:  resultName = "noData"
++        case .failed:  resultName = "failed"
++        @unknown default: resultName = "unknown"
++        }
++        log.default("Remote Notification: Reporting result to system: %{public}@", resultName)
++
++        DispatchQueue.main.async {
++            self.handler(result)
++            if task != .invalid {
++                UIApplication.shared.endBackgroundTask(task)
++            }
++        }
++    }
++}
++//wp end
 diff --git a/Loop/Localizable.xcstrings b/Loop/Localizable.xcstrings
 index c7150a85..83e38f13 100644
 --- a/Loop/Localizable.xcstrings
@@ -9829,6 +9989,222 @@ index c7150a85..83e38f13 100644
      },
      "Your pump data is stale. %1$@ cannot recommend a bolus amount." : {
        "comment" : "Caption for bolus screen notice when pump data is missing or stale",
+diff --git a/Loop/Managers/LoopAppManager.swift b/Loop/Managers/LoopAppManager.swift
+index 58d1938e..c33ed14f 100644
+--- a/Loop/Managers/LoopAppManager.swift
++++ b/Loop/Managers/LoopAppManager.swift
+@@ -115,7 +115,9 @@ class LoopAppManager: NSObject {
+ 
+     lazy private var cancellables = Set<AnyCancellable>()
+ 
+-    func initialize(windowProvider: WindowProvider, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
++    // wp: windowProvider 改为可选。后台被 BLE 事件/静默推送唤醒时 scene 不会连接、
++    //     没有窗口,需要能以 nil 完成初始化;scene 连接后由 registerWindowProvider(_:) 补登。
++    func initialize(windowProvider: WindowProvider?, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+         dispatchPrecondition(condition: .onQueue(.main))
+         precondition(state == .initialize)
+ 
+@@ -153,7 +155,8 @@ class LoopAppManager: NSObject {
+         registerBackgroundTasks()
+ 
+         Task {
+-            await resumeLaunch()
++            // wp: 走串行通道,避免与后台唤醒路径并发推进同一阶段
++            await progressLaunchSerially()
+         }
+     }
+ 
+@@ -163,6 +166,114 @@ class LoopAppManager: NSObject {
+ 
+     var isInInitialState: Bool { state == .initialize }
+ 
++    //wp begin
++    /// managers 是否已就绪(远程指令只需要这一步;servicesManager 在 launchManagers 中创建)。
++    var isManagersReady: Bool { servicesManager != nil }
++
++    /// 串行化启动推进用的任务链。
++    ///
++    /// 本线 `resumeLaunch()` 是 async,`launchManagers()` 内部有多个 await 挂起点,
++    /// 且只在最后才推进 state。若后台唤醒路径与 scene 连接路径同时推进,两者都会看到
++    /// `state == .launchManagers` 而**重复执行** `launchManagers()` ——
++    /// 实测会导致 TrueTime 的 NTPClient.start 二次启动断言失败而崩溃。
++    /// 这里用任务链保证任意时刻只有一次推进在跑。
++    private var launchProgressTask: Task<Void, Never>?
++
++    /// 串行推进启动流程:等上一次推进结束后再继续,避免并发进入同一阶段。
++    private func progressLaunchSerially() async {
++        let previous = launchProgressTask
++        let task = Task { @MainActor in
++            await previous?.value
++            await self.resumeLaunch()
++        }
++        launchProgressTask = task
++        await task.value
++    }
++
++    /// 后台唤醒专用启动路径。
++    ///
++    /// 上游把 App 初始化推迟到 `SceneDelegate.scene(_:willConnectTo:)`,但息屏/冷启动被
++    /// BLE 事件(CGMBLEKit/Omnipod 均使用 CBCentralManagerOptionRestoreIdentifierKey)
++    /// 或静默推送唤醒时 scene 不会连接,导致 servicesManager / deviceDataManager 为 nil:
++    /// 远程指令无法执行(本线 servicesManager 为隐式解包可选,会直接崩溃),
++    /// CGM manager 也不存在 => 不重连、不收读数、不上传。
++    ///
++    /// 这里只把启动推进到 managers 就绪,**不创建主界面**:
++    /// `launchOnboarding`/`launchHomeScreen` 需要 window,留给 scene 连接时再做。
++    ///
++    /// - Returns: managers 是否已就绪
++    @discardableResult
++    func launchManagersForBackgroundWork(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) async -> Bool {
++        dispatchPrecondition(condition: .onQueue(.main))
++
++        if isManagersReady {
++            return true
++        }
++
++        log.default("Background launch: starting (state: %{public}@)", String(describing: state))
++
++        if state == .initialize {
++            // 后台无窗口,windowProvider 传 nil。
++            initialize(windowProvider: nil, launchOptions: launchOptions)
++            // initialize 不再负责这两件事(上游已移到 launch()),后台路径需自行补上。
++            UNUserNotificationCenter.current().delegate = self
++            registerBackgroundTasks()
++        }
++
++        if state == .checkProtectedDataAvailable {
++            checkProtectedDataAvailable()
++        }
++
++        guard state == .launchManagers else {
++            // 多为设备重启后尚未解锁、受保护数据不可用。不能绕过;
++            // 解锁后 applicationProtectedDataDidBecomeAvailable 会继续启动。
++            log.error("Background launch: cannot proceed (state: %{public}@). Protected data may be unavailable until the device is unlocked.",
++                      String(describing: state))
++            return false
++        }
++
++        // 走串行推进,而不是直接 await launchManagers():
++        // scene 可能同时在推进同一阶段,直接调用会重复执行(见 launchProgressTask 说明)。
++        // UI 阶段会被 resumeLaunch 里的窗口守卫挡住,所以这里不会建主界面。
++        await progressLaunchSerially()
++
++        log.default("Background launch: managers ready: %{public}@ (state: %{public}@)",
++                    String(describing: isManagersReady),
++                    String(describing: state))
++        return isManagersReady
++    }
++
++    /// scene 连接时补登 window。
++    ///
++    /// 后台路径会以 `windowProvider == nil` 完成初始化,此后 `isInInitialState` 为 false。
++    /// 若不在这里补登,`rootViewController` 将始终为 nil,主界面永远建不起来。
++    func registerWindowProvider(_ windowProvider: WindowProvider) {
++        dispatchPrecondition(condition: .onQueue(.main))
++
++        self.windowProvider = windowProvider
++        windowProvider.window?.tintColor = .loopAccent
++
++        // OnboardingManager 在 launchManagers() 构造时就捕获了 windowProvider,
++        // 后台路径下那时为 nil,必须一并补登,否则引导界面无法呈现(影响全新安装)。
++        onboardingManager?.updateWindowProvider(windowProvider)
++    }
++
++    /// 从当前阶段继续启动。
++    ///
++    /// 后台路径可能已把状态推进到 `.launchOnboarding`,此时 `isLaunchPending` 为 false,
++    /// 仅靠 `launch()` 无法继续(且会触发 precondition)。
++    func resumeLaunchFromCurrentState() {
++        dispatchPrecondition(condition: .onQueue(.main))
++
++        guard !isLaunchComplete else { return }
++
++        log.default("Resuming launch from state: %{public}@", String(describing: state))
++        Task {
++            await progressLaunchSerially()
++        }
++    }
++    //wp end
++
+     private func resumeLaunch() async {
+         if state == .checkProtectedDataAvailable {
+             checkProtectedDataAvailable()
+@@ -170,8 +281,33 @@ class LoopAppManager: NSObject {
+         if state == .launchManagers {
+             await launchManagers()
+         }
++        //wp begin
++        // 没有窗口时不能推进 UI 阶段。会走到这里的后台场景有两个:
++        // 后台启动(scene 未连接),以及设备解锁后 applicationProtectedDataDidBecomeAvailable
++        // 在 App 仍处于后台时调用 launch()。若此时继续:
++        //   - launchHomeScreen 里 rootViewController 的 setter 是
++        //     windowProvider?.window?.rootViewController,会静默失效,但状态仍被推进到
++        //     .launchComplete;之后 scene 连接时判断全不成立,界面再也不会创建 => 白屏。
++        //   - launchOnboarding 若引导未完成,会设置 onboardingCompletion 且无法回调;
++        //     scene 连接后再次调用会命中 precondition(onboardingCompletion == nil) => 崩溃。
++        // 因此留在当前阶段,等 scene 连接后由 resumeLaunchFromCurrentState() 继续。
++        guard windowProvider?.window != nil else {
++            log.default("Deferring UI launch stages: no window yet (state: %{public}@)",
++                        String(describing: state))
++            return
++        }
++        //wp end
+         if state == .launchOnboarding {
+-            launchOnboarding()
++            //wp begin
++            // launchOnboarding() 之后 state 仍停在 .launchOnboarding(要等引导完成回调),
++            // 所以第二次推进会再调一次 OnboardingManager.launch(_:) 并命中它的
++            // precondition(onboardingCompletion == nil) 而崩溃。这里跳过已在进行中的引导。
++            if onboardingManager.isLaunchInProgress {
++                log.default("Onboarding already in progress; skipping duplicate launch")
++            } else {
++                launchOnboarding()
++            }
++            //wp end
+         }
+         if state == .launchHomeScreen {
+             NotificationManager.setNotificationCategories()
+@@ -525,7 +661,8 @@ class LoopAppManager: NSObject {
+             DispatchQueue.main.async {
+                 self.state = self.state.next
+                 Task {
+-                    await self.resumeLaunch()
++                    // wp: 走串行通道,与其他推进入口互斥
++                    await self.progressLaunchSerially()
+                     await self.alertManager.playbackAlertsFromPersistence()
+                 }
+             }
+@@ -692,13 +829,28 @@ class LoopAppManager: NSObject {
+         handleRemoteNotification(launchOptions?[.remoteNotification] as? [String: AnyObject])
+     }
+ 
++    // wp: 增加 completion —— 让调用方能等到"异步处理真正结束"再回调系统的
++    //     fetchCompletionHandler,而不是一返回就宣告处理完毕(详见 AppDelegate)。
+     @discardableResult
+-    func handleRemoteNotification(_ notification: [String: AnyObject]?) -> Bool {
++    func handleRemoteNotification(_ notification: [String: AnyObject]?, completion: (() -> Void)? = nil) -> Bool {
+         guard let notification = notification else {
+             return false
+         }
+-        servicesManager.handleRemoteNotification(notification)
++        //wp begin
++        // 冷启动后台唤醒时 App 初始化被推迟到 scene 连接(见 SceneDelegate),
++        // 息屏时 scene 不会连接 => servicesManager 尚未创建。它是隐式解包可选,
++        // 直接访问会 fatal error(unexpectedly found nil)。这里改为记录并返回 false,
++        // 由 AppDelegate 向系统上报 .failed。
++        guard servicesManager != nil else {
++            log.error("Remote Notification: DROPPED - servicesManager is nil (launch state: %{public}@). App was woken before initialization completed.",
++                      String(describing: state))
++            return false
++        }
++        log.default("Remote Notification: Forwarding to ServicesManager (launch state: %{public}@)",
++                    String(describing: state))
++        servicesManager.handleRemoteNotification(notification, completion: completion)
+         return true
++        //wp end
+     }
+     
+     // MARK: - Deeplinking
 diff --git a/Loop/Managers/LoopDataManager.swift b/Loop/Managers/LoopDataManager.swift
 index 8797bcd8..99768551 100644
 --- a/Loop/Managers/LoopDataManager.swift
@@ -9885,11 +10261,107 @@ index 8797bcd8..99768551 100644
          Task { await dosingDecisionStore.storeDosingDecision(dosingDecision) }
      }
  
+diff --git a/Loop/Managers/OnboardingManager.swift b/Loop/Managers/OnboardingManager.swift
+index cdbdfc22..eedcd459 100644
+--- a/Loop/Managers/OnboardingManager.swift
++++ b/Loop/Managers/OnboardingManager.swift
+@@ -23,6 +23,18 @@ class OnboardingManager {
+     private let settingsManager: SettingsManager
+     private let supportManager: SupportManager
+     private weak var windowProvider: WindowProvider?
++
++    //wp begin
++    /// 补登 window。
++    ///
++    /// 后台启动路径(见 LoopAppManager.launchManagersForBackgroundWork)创建本对象时
++    /// windowProvider 为 nil。若不补登,引导界面的呈现语句
++    /// `windowProvider?.window?.rootViewController = onboardingViewController`
++    /// 会静默失效 —— 全新安装(引导未完成)将卡住、看不到引导界面。
++    func updateWindowProvider(_ windowProvider: WindowProvider?) {
++        self.windowProvider = windowProvider
++    }
++    //wp end
+     private let userDefaults: UserDefaults
+ 
+     private let log = OSLog(category: "OnboardingManager")
+@@ -43,6 +55,16 @@ class OnboardingManager {
+ 
+     private var onboardingCompletion: (() -> Void)?
+ 
++    //wp begin
++    /// 是否已有一次 `launch(_:)` 在等待完成。
++    ///
++    /// `launch(_:)` 有 `precondition(onboardingCompletion == nil)`,而
++    /// `LoopAppManager.launchOnboarding()` 调用它之后 state 仍停在 `.launchOnboarding`
++    /// (要等引导完成回调才推进)。因此任何第二次启动推进都会再调一次 launch(_:) 而崩溃。
++    /// 新增的后台唤醒路径会引入这种第二次推进,故由调用方先查询本属性。
++    var isLaunchInProgress: Bool { onboardingCompletion != nil }
++    //wp end
++
+     init(pluginManager: PluginManager,
+          bluetoothProvider: BluetoothProvider,
+          deviceDataManager: DeviceDataManager,
 diff --git a/Loop/Managers/ServicesManager.swift b/Loop/Managers/ServicesManager.swift
-index c7252128..c01b5161 100644
+index c7252128..d9ef3c3b 100644
 --- a/Loop/Managers/ServicesManager.swift
 +++ b/Loop/Managers/ServicesManager.swift
-@@ -360,7 +360,26 @@ extension ServicesManager: ServiceDelegate {
+@@ -202,8 +202,23 @@ class ServicesManager {
+         }
+     }
+     
+-    func handleRemoteNotification(_ notification: [String: AnyObject]) {
++    // wp: 增加 completion —— 异步处理真正结束后回调,供 AppDelegate 决定何时
++    //     告知系统 fetchCompletionHandler(避免提前宣告完成而被挂起)。
++    func handleRemoteNotification(_ notification: [String: AnyObject], completion: (() -> Void)? = nil) {
+         Task {
++            //wp begin
++            // defer 保证所有退出路径(含 remoteCommandsEnabled 为 false 的提前返回)
++            // 都会回调,否则 AppDelegate 侧只能等超时兜底。
++            defer { completion?() }
++
++            // 诊断: 这里的工作是异步排队执行的,而 AppDelegate 已经同步调过
++            // completionHandler(等于告知系统"已处理完毕,可以挂起")。
++            // 记录 Task 启动时刻、后台断言是否拿到、各阶段耗时,用于判断指令
++            // 是否因 App 被提前挂起而中途丢失(息屏/低电量时最易发生)。
++            let startedAt = Date()
++            func elapsed() -> String { String(format: "%.2fs", -startedAt.timeIntervalSinceNow) }
++            log.default("Remote Notification: Task started executing")
++            //wp end
+             log.default("Remote Notification: Handling notification %{public}@", notification)
+             
+             guard FeatureFlags.remoteCommandsEnabled else {
+@@ -212,14 +227,29 @@ class ServicesManager {
+             }
+             
+             let backgroundTask = await beginBackgroundTask(name: "Handle Remote Notification")
++            //wp begin
++            if backgroundTask == nil || backgroundTask == .invalid {
++                log.error("Remote Notification: FAILED to acquire background task assertion - work may be killed when app suspends")
++            } else {
++                log.default("Remote Notification: Background task acquired (+%{public}@)", elapsed())
++            }
++            //wp end
+             do {
+                 try await remoteDataServicesManager.remoteNotificationWasReceived(notification)
++                //wp begin
++                log.default("Remote Notification: Execution SUCCEEDED (+%{public}@)", elapsed())
++                //wp end
+             } catch {
+                 log.error("Remote Notification: Error: %{public}@", String(describing: error))
++                //wp begin
++                log.error("Remote Notification: Execution FAILED (+%{public}@)", elapsed())
++                //wp end
+             }
+             
+             await endBackgroundTask(backgroundTask)
+-            log.default("Remote Notification: Finished handling")
++            //wp begin
++            log.default("Remote Notification: Finished handling (total %{public}@)", elapsed())
++            //wp end
+         }
+     }
+     
+@@ -360,7 +390,26 @@ extension ServicesManager: ServiceDelegate {
              throw error
          }
      }
@@ -9917,6 +10389,41 @@ index c7252128..c01b5161 100644
      enum BolusActionError: LocalizedError {
          
          case invalidBolus
+diff --git a/Loop/SceneDelegate.swift b/Loop/SceneDelegate.swift
+index 31b9e154..7be93f2c 100644
+--- a/Loop/SceneDelegate.swift
++++ b/Loop/SceneDelegate.swift
+@@ -29,12 +29,25 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate, WindowProvider {
+         }
+         let loopAppManager = appDelegate.loopAppManager
+ 
+-        guard loopAppManager.isInInitialState else {
+-            return
++        //wp begin
++        // 后台唤醒路径(见 LoopAppManager.launchManagersForBackgroundWork)可能已经以
++        // windowProvider == nil 完成初始化。此时 isInInitialState 为 false,
++        // 原来的 guard 会直接 return => 永远不补登 window、主界面永远建不起来。
++        // 因此先无条件补登,再按当前阶段决定如何继续。
++        loopAppManager.registerWindowProvider(self)
++
++        if loopAppManager.isInInitialState {
++            loopAppManager.initialize(windowProvider: self, launchOptions: appDelegate.launchOptions)
++            loopAppManager.launch()
++        } else if loopAppManager.isLaunchPending {
++            // 后台路径因受保护数据不可用而停在此阶段,现在可以继续。
++            loopAppManager.launch()
++        } else if !loopAppManager.isLaunchComplete {
++            // 后台路径已把状态推进到 .launchOnboarding(managers 就绪但没有 UI),
++            // 需要从当前阶段把剩下的 UI 阶段跑完。
++            loopAppManager.resumeLaunchFromCurrentState()
+         }
+-
+-        loopAppManager.initialize(windowProvider: self, launchOptions: appDelegate.launchOptions)
+-        loopAppManager.launch()
++        //wp end
+ 
+         if let url = connectionOptions.urlContexts.first?.url {
+             _ = loopAppManager.handle(url)
 diff --git a/Loop/Views/RecentGlucoseTableViewCell.swift b/Loop/Views/RecentGlucoseTableViewCell.swift
 index 497a6790..e26fbef1 100644
 --- a/Loop/Views/RecentGlucoseTableViewCell.swift
