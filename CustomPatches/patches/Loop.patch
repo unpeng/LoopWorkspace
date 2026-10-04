@@ -9932,7 +9932,7 @@ index 497a6790..e26fbef1 100644
          paddedView.layer.cornerRadius = 10
          paddedView.layer.borderWidth = 1
 diff --git a/Loop/Views/StatusTableView.swift b/Loop/Views/StatusTableView.swift
-index 220e16ee..6e20b13c 100644
+index a64ea2d1..a3e06ebd 100644
 --- a/Loop/Views/StatusTableView.swift
 +++ b/Loop/Views/StatusTableView.swift
 @@ -140,7 +140,7 @@ struct StatusTableView: View {

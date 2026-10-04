@@ -802,7 +802,7 @@ index 8f824906..2042d544 100644
 +    //wp end
  }
 diff --git a/LoopKitUI/Resources/Localizable.xcstrings b/LoopKitUI/Resources/Localizable.xcstrings
-index 2c7f71b9..bb7d0d9d 100644
+index 22e5ee0b..0d835e4d 100644
 --- a/LoopKitUI/Resources/Localizable.xcstrings
 +++ b/LoopKitUI/Resources/Localizable.xcstrings
 @@ -132,16 +132,44 @@
