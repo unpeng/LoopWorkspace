@@ -510,23 +510,34 @@ index 1c14cdf..5a0adc9 100644
      func otpValidationRequired() -> Bool {
          return true
 diff --git a/NightscoutServiceKit/RemoteCommands/V1/Notifications/RemoteNotification.swift b/NightscoutServiceKit/RemoteCommands/V1/Notifications/RemoteNotification.swift
-index 0c5f8e3..0dc56db 100644
+index 0c5f8e3..7aecf2b 100644
 --- a/NightscoutServiceKit/RemoteCommands/V1/Notifications/RemoteNotification.swift
 +++ b/NightscoutServiceKit/RemoteCommands/V1/Notifications/RemoteNotification.swift
-@@ -108,6 +108,13 @@ extension Dictionary<String, AnyObject> {
-             return try OverrideRemoteNotification(dictionary: self)
-         } else if OverrideCancelRemoteNotification.includedInNotification(self) {
-             return try OverrideCancelRemoteNotification(dictionary: self)
+@@ -100,6 +100,24 @@ extension Dictionary<String, AnyObject> {
+     }
+     
+     func toRemoteNotification() throws -> RemoteNotification {
 +        //wp begin
-+        // 放在链尾：它只靠 notes 的取值识别，是所有类型里条件最宽松的一个。
-+        // 若提前判断，任何 notes 恰好是 "automaticBolus"/"tempBasalOnly" 的
-+        // 大剂量、碳水或 override 通知都会被误判成切换给药策略。
-+        } else if AutomaticDosingStrategyRemoteNotification.includedInNotification(self) {
++        // 必须排在 Bolus 之前。
++        //
++        // 切换给药策略的调用方式是「带 remoteBolus 的通知 + notes 标记策略名」
++        // (Nightscout /api/v2/notifications/loop 会把 remoteBolus 转成 bolus-entry)。
++        // BolusRemoteNotification 的识别条件只看 bolus-entry 是否存在,若它先匹配,
++        // 切策略的请求会被当成大剂量执行 —— 策略没切、却输注了胰岛素,
++        // 使用者还会以为已经切换(例如误以为已关闭自动大剂量),这是实质风险。
++        //
++        // 之所以放在最前是安全的: includedInNotification 要求 notes 精确等于
++        // "automaticBolus" 或 "tempBasalOnly"(AutomaticDosingStrategy(remoteCommandValue:)
++        // 为精确匹配),而真实的大剂量/碳水指令的 notes 是 "克数|小时" 格式或为空,
++        // 不会命中。
++        if AutomaticDosingStrategyRemoteNotification.includedInNotification(self) {
 +            return try AutomaticDosingStrategyRemoteNotification(dictionary: self)
++        }
 +        //wp end
-         } else {
-             throw RemoteNotificationError.unhandledNotification(self)
-         }
++
+         if BolusRemoteNotification.includedInNotification(self) {
+             return try BolusRemoteNotification(dictionary: self)
+         } else if CarbRemoteNotification.includedInNotification(self) {
 diff --git a/NightscoutServiceKit/RemoteCommands/V1/RemoteCommandSourceV1.swift b/NightscoutServiceKit/RemoteCommands/V1/RemoteCommandSourceV1.swift
 index 0165004..fb12f44 100644
 --- a/NightscoutServiceKit/RemoteCommands/V1/RemoteCommandSourceV1.swift
