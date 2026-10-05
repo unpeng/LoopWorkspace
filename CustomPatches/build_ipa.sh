@@ -82,7 +82,20 @@ BUILD="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$APP_PLIST" 2>/dev
 SRC_IPA="$(ls "$EXPORT_TMP"/*.ipa 2>/dev/null | head -1)"
 if [ -z "${SRC_IPA:-}" ]; then echo "错误: 导出目录没有 .ipa"; exit 1; fi
 mkdir -p "$OUTPUT_DIR"
-DEST_IPA="$OUTPUT_DIR/Loop-${VER}-b${BUILD}-${METHOD}.ipa"
+
+# 文件名带日期和超级项目 commit 短哈希。
+# 版本号(3.15.2 b58)在合并上游后往往不变,只用它命名会导致同名覆盖、
+# 丢掉上一个包无法对比(例如上游 bump 子模块使体积从 39.7MB 涨到 50MB 那次)。
+DATE_TAG="$(date '+%Y%m%d')"
+GIT_SHA="$(git -C "$ROOT" rev-parse --short HEAD 2>/dev/null || echo 'nogit')"
+# 超级项目自身有未提交的跟踪文件改动时标记 dirty。
+# 用 --ignore-submodules=all 排除子模块:补丁机制下子模块工作区常态是脏的(restore.sh
+# 应用补丁所致),不应据此判定构建不可复现。
+if [ -n "$(git -C "$ROOT" status --porcelain --untracked-files=no --ignore-submodules=all 2>/dev/null)" ]; then
+    GIT_SHA="${GIT_SHA}-dirty"
+fi
+
+DEST_IPA="$OUTPUT_DIR/Loop-${VER}-b${BUILD}-${DATE_TAG}-${GIT_SHA}-${METHOD}.ipa"
 cp "$SRC_IPA" "$DEST_IPA"
 
 # ---- 签名/设备摘要 ----
@@ -94,10 +107,14 @@ EXPIRY="$(/usr/libexec/PlistBuddy -c 'Print :ExpirationDate' "$PROF_XML" 2>/dev/
 DEVCOUNT="$(/usr/libexec/PlistBuddy -c 'Print :ProvisionedDevices' "$PROF_XML" 2>/dev/null | grep -cE '^[[:space:]]+[0-9A-Fa-f]' || true)"
 [ -z "$DEVCOUNT" ] && DEVCOUNT="0"
 
+GIT_BRANCH="$(git -C "$ROOT" rev-parse --abbrev-ref HEAD 2>/dev/null || echo '?')"
+IPA_SIZE="$(du -h "$DEST_IPA" 2>/dev/null | cut -f1 | tr -d ' ')"
+
 echo ""
 echo "========================================================"
 echo "完成 ✅  $DEST_IPA"
-echo "  版本: $VER (build $BUILD)"
+echo "  版本: $VER (build $BUILD)    体积: $IPA_SIZE"
+echo "  来源: $GIT_BRANCH @ $GIT_SHA"
 echo "  导出: $METHOD    描述文件到期: $EXPIRY"
 if [ "$METHOD" = "development" ] || [ "$METHOD" = "ad-hoc" ]; then
     echo "  已注册设备: $DEVCOUNT 台 (仅这些设备能安装)"
