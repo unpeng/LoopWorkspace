@@ -10424,6 +10424,115 @@ index 31b9e154..7be93f2c 100644
  
          if let url = connectionOptions.urlContexts.first?.url {
              _ = loopAppManager.handle(url)
+diff --git a/Loop/View Controllers/StatusTableViewController.swift b/Loop/View Controllers/StatusTableViewController.swift
+index 91b1faa4..30c9f3fa 100644
+--- a/Loop/View Controllers/StatusTableViewController.swift	
++++ b/Loop/View Controllers/StatusTableViewController.swift	
+@@ -2231,6 +2231,14 @@ extension StatusTableViewController: SettingsViewModelDelegate {
+         }
+     }
+ 
++    //wp begin
++    /// 权威设置里当前的给药策略,供 SettingsViewModel 在外部(远程指令等)
++    /// 改动设置后把界面同步过来。
++    var currentAutomaticDosingStrategy: AutomaticDosingStrategy {
++        settingsManager.settings.automaticDosingStrategy
++    }
++    //wp end
++
+     func didTapIssueReport() {
+         // TODO: this dismiss here is temporary, until we know exactly where
+         // we want this screen to belong in the navigation flow
+diff --git a/Loop/View Models/SettingsViewModel.swift b/Loop/View Models/SettingsViewModel.swift
+index 9b918876..5bb74c4e 100644
+--- a/Loop/View Models/SettingsViewModel.swift	
++++ b/Loop/View Models/SettingsViewModel.swift	
+@@ -56,6 +56,10 @@ public protocol SettingsViewModelDelegate: AnyObject {
+     var closedLoopDescriptiveText: String? { get }
+     var automaticDosingEnabled: Bool { get set }
+     var automationHistory: [AutomationHistoryEntry] { get }
++    //wp begin
++    /// 权威设置中当前的给药策略,用于把外部(远程指令等)造成的变化同步回界面。
++    var currentAutomaticDosingStrategy: AutomaticDosingStrategy { get }
++    //wp end
+ }
+ 
+ @Observable
+@@ -104,15 +108,51 @@ class SettingsViewModel {
+ 
+     var automaticDosingStrategy: AutomaticDosingStrategy {
+         didSet {
++            //wp begin
++            // 从权威设置同步回来时不要回写,否则又走一遍 settingsManager 形成回环。
++            guard !isSyncingFromSettings else { return }
++            //wp end
+             delegate?.dosingStrategyChanged(automaticDosingStrategy)
+         }
+     }
+ 
+     var closedLoopPreference: Bool {
+        didSet {
++           //wp begin
++           guard !isSyncingFromSettings else { return }
++           //wp end
+            delegate?.dosingEnabledChanged(closedLoopPreference)
+        }
+     }
++
++    //wp begin
++    /// 正在用权威设置刷新本地副本,期间抑制 didSet 的回写。
++    @ObservationIgnored private var isSyncingFromSettings = false
++
++    /// 用权威设置刷新界面状态。
++    ///
++    /// `automaticDosingStrategy` / `closedLoopPreference` 是 App 启动时从
++    /// settingsManager 取一次的独立副本,之后只通过 didSet 单向写出,没有回读通路。
++    /// 因此远程指令改了 settingsManager 之后界面仍显示旧值(退出重进设置页也没用,
++    /// 本对象是 App 级单例,只有重启 App 才会重新取初值),会误导使用者 ——
++    /// 例如远程切到 tempBasalOnly,界面却仍显示自动大剂量。
++    private func syncFromSettings() {
++        guard let delegate else { return }
++
++        isSyncingFromSettings = true
++        defer { isSyncingFromSettings = false }
++
++        let strategy = delegate.currentAutomaticDosingStrategy
++        if automaticDosingStrategy != strategy {
++            automaticDosingStrategy = strategy
++        }
++
++        let dosingEnabled = delegate.automaticDosingEnabled
++        if closedLoopPreference != dosingEnabled {
++            closedLoopPreference = dosingEnabled
++        }
++    }
++    //wp end
+     
+     private(set) var deviceManager: DeviceDataManager?
+     
+@@ -193,6 +233,22 @@ class SettingsViewModel {
+         mostRecentPumpDataDate
+             .assign(to: \.mostRecentPumpDataDate, on: self)
+             .store(in: &cancellables)
++
++        //wp begin
++        // 订阅设置变更,把外部(远程指令等)造成的改动同步回界面。
++        // SettingsManager.storeSettings 在设置真正变化后会 notify(forChange: .preferences)。
++        NotificationCenter.default.publisher(for: .LoopDataUpdated)
++            .receive(on: DispatchQueue.main)
++            .sink { [weak self] note in
++                guard let context = note.userInfo?[LoopDataManager.LoopUpdateContextKey] as? LoopUpdateContext.RawValue,
++                      LoopUpdateContext(rawValue: context) == .preferences
++                else {
++                    return
++                }
++                self?.syncFromSettings()
++            }
++            .store(in: &cancellables)
++        //wp end
+     }
+ 
+     @MainActor func deleteAllTestingData() {
 diff --git a/Loop/Views/RecentGlucoseTableViewCell.swift b/Loop/Views/RecentGlucoseTableViewCell.swift
 index 497a6790..e26fbef1 100644
 --- a/Loop/Views/RecentGlucoseTableViewCell.swift
