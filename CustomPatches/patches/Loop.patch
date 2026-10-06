@@ -10206,7 +10206,7 @@ index 58d1938e..c33ed14f 100644
      
      // MARK: - Deeplinking
 diff --git a/Loop/Managers/LoopDataManager.swift b/Loop/Managers/LoopDataManager.swift
-index 8797bcd8..99768551 100644
+index 8797bcd8..bccafb74 100644
 --- a/Loop/Managers/LoopDataManager.swift
 +++ b/Loop/Managers/LoopDataManager.swift
 @@ -643,6 +643,9 @@ final class LoopDataManager: ObservableObject {
@@ -10232,17 +10232,24 @@ index 8797bcd8..99768551 100644
              input.recommendationType = dosingStrategy.recommendationType
  
              guard let latestGlucose = input.glucoseHistory.last else {
-@@ -889,6 +898,9 @@ final class LoopDataManager: ObservableObject {
+@@ -889,6 +898,16 @@ final class LoopDataManager: ObservableObject {
  
          if let output = displayState.output {
              var dosingDecision = StoredDosingDecision(date: now, reason: "updateRemoteRecommendation")
 +            //wp begin
 +            dosingDecision.automaticDosingStrategy = settingsProvider.settings.automaticDosingStrategy
++            // 3.15.2 重写 LoopDataManager 后漏填了下面两个字段,导致 Nightscout
++            // devicestatus 的 override 永远是 {active:false}。3.14.8 在所有决策
++            // 共用的 update(for:) 路径里会填(旧版 2170-2174 行),这里按同样语义补回。
++            if let scheduleOverride = temporaryPresetsManager.scheduleOverride, !scheduleOverride.hasFinished() {
++                dosingDecision.scheduleOverride = scheduleOverride
++            }
++            dosingDecision.glucoseTargetRangeSchedule = temporaryPresetsManager.effectiveCorrectionRangeSchedule()
 +            //wp end
              dosingDecision.predictedGlucose = output.predictedGlucose
              dosingDecision.insulinOnBoard = displayState.activeInsulin
              dosingDecision.carbsOnBoard = displayState.activeCarbs
-@@ -1026,7 +1038,7 @@ extension LoopDataManager {
+@@ -1026,7 +1045,7 @@ extension LoopDataManager {
      }
  
      func storeManualBolusDosingDecision(_ bolusDosingDecision: BolusDosingDecision, withDate date: Date) async {
@@ -10251,7 +10258,7 @@ index 8797bcd8..99768551 100644
                                                    date: date,
                                                    reason: bolusDosingDecision.reason.rawValue,
                                                    settings: StoredDosingDecision.Settings(settingsProvider.settings),
-@@ -1045,6 +1057,9 @@ extension LoopDataManager {
+@@ -1045,6 +1064,9 @@ extension LoopDataManager {
                                                    predictedGlucose: bolusDosingDecision.predictedGlucose,
                                                    manualBolusRecommendation: bolusDosingDecision.manualBolusRecommendation,
                                                    manualBolusRequested: bolusDosingDecision.manualBolusRequested)

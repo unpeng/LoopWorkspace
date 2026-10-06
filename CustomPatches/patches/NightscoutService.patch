@@ -55,17 +55,20 @@ index c97bbcb..e55a8bd 100644
  				branch = main;
  				kind = branch;
 diff --git a/NightscoutServiceKit/Extensions/StoredDosingDecision.swift b/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
-index 50c53c5..04d5b75 100644
+index 50c53c5..5894ea6 100644
 --- a/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
 +++ b/NightscoutServiceKit/Extensions/StoredDosingDecision.swift
-@@ -158,7 +158,10 @@ extension StoredDosingDecision {
+@@ -158,7 +158,13 @@ extension StoredDosingDecision {
                                     automaticDoseRecommendation: loopStatusAutomaticDoseRecommendation,
                                     recommendedBolus: loopStatusRecommendedBolus,
                                     enacted: automaticDoseDecision?.loopStatusEnacted,
 -                                   failureReason: automaticDoseDecision?.loopStatusFailureReason),
 +                                   failureReason: automaticDoseDecision?.loopStatusFailureReason,
 +                                   //wp begin
-+                                   automaticDosingStrategy: automaticDoseDecision?.automaticDosingStrategy.remoteCommandValue),
++                                   // 远程指令改策略时不会跑 loop 周期,配对的 "loop" 决策
++                                   // (automaticDoseDecision) 为 nil,这个字段就会整条消失。
++                                   // 回退到本决策自身——四个构造点我们都打了戳,一定有值。
++                                   automaticDosingStrategy: (automaticDoseDecision ?? self).automaticDosingStrategy.remoteCommandValue),
 +                                   //wp end
              overrideStatus: overrideStatus)
      }
